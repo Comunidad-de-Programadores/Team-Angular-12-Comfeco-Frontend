@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick(): void{
-    console.log(this.form);
+    console.log(this.form.value);
   }
 
   checkValid(campo: string) {
