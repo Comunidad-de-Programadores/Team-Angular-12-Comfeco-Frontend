@@ -5,6 +5,8 @@ import { PoliticsRoutingModule } from './politicas/politics.routes';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
+    // { path: 'recuperar', component: -},
+    // { path: 'registro', component: -},
     { path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
