@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { AuthModule } from './auth/auth.module';
+import { PoliticasModule } from './politicas/politicas.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    PoliticasModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

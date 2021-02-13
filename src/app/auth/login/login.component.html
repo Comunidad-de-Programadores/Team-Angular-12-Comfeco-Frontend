@@ -12,44 +12,23 @@
               </div>
               <form class="user" [formGroup]="form" (ngSubmit)="loginClick()">
                 <div class="form-group">
-                  <input
-                    type="email"
-                    class="form-control form-control-user"
-                    id="exampleInputEmail"
-                    aria-describedby="emailHelp"
-                    placeholder="Email"
-                    formControlName="email"
-                    [class.is-invalid]="checkValid('email')"
-                  />
+                  <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                    aria-describedby="emailHelp" placeholder="Email" formControlName="email"
+                    [class.is-invalid]="checkValid('email')" />
                 </div>
                 <div class="form-group">
-                  <input
-                    type="password"
-                    class="form-control form-control-user"
-                    id="exampleInputPassword"
-                    placeholder="Contraseña"
-                    formControlName="password"
-                    [class.is-invalid]="checkValid('password')"
-                  />
+                  <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    placeholder="Contraseña" formControlName="password" [class.is-invalid]="checkValid('password')" />
                 </div>
                 <div class="form-group">
                   <div class="custom-control custom-checkbox small">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck"
-                      formControlName="recordar"
-                    />
+                    <input type="checkbox" class="custom-control-input" id="customCheck" formControlName="recordar" />
                     <label class="custom-control-label" for="customCheck">
                       Recordar credenciales
                     </label>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-user btn-block"
-                  [disabled]="form.invalid"
-                >
+                <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="form.invalid">
                   Iniciar sesión
                 </button>
 
@@ -62,11 +41,9 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a> -->
               </form>
-              <hr />
+              <hr/>
               <div class="text-center">
-                <a class="small"
-                  >Olvidaste tu contraseña?</a
-                >
+                <a class="small">Olvidaste tu contraseña?</a>
               </div>
               <div class="text-center">
                 <a class="small">Regístrese!</a>
@@ -74,8 +51,8 @@
               <div class="text-center mt-1">
                 <p class="small">
                   Acceda a nuestros
-                  <a href="register.html">Términos y condiciones</a> y
-                  <a href="register.html">Acuerdos de privacidad</a>
+                  <a routerLink="/politics/terminos" target="_blank">Términos y condiciones</a> y
+                  <a routerLink="/politics/politicas" target="_blank">Acuerdos de privacidad</a>
                 </p>
               </div>
             </div>
