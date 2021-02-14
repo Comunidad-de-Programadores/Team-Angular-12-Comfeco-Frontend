@@ -1,0 +1,49 @@
+<style>
+  .active {
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+</style>
+<div class="row justify-content-center mx-0">
+  <div class="col-xl-10 col-lg-12 col-md-9">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="px-5 py-4">
+              <div class="text-center">
+                <div class="row">
+                  <div class="col text-right">
+                    <ul>
+                      <li>
+                        <a routerLink="terminos" routerLinkActive="active">Términos y condiciones</a>
+                      </li>
+                      <li>
+                        <a routerLink="politicas" routerLinkActive="active">Políticas de privacidad</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="px-5 py-1">
+              <div class="text-center">
+                <div class="row">
+                  <router-outlet></router-outlet>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

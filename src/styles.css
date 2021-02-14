@@ -1,0 +1,14 @@
+/* 
+ Reset de CSS
+*/
+* {
+    margin:0;
+    padding:0;
+}
+
+html, body{
+    height: 100%;
+    position: relative;
+    min-height:100vh !important;
+
+}
