@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { ForgotComponent } from './forgot/forgot.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ForgotComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +21,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     LoginComponent,
+    ForgotComponent,
+    RegisterComponent,
     ReactiveFormsModule
   ]
 })
