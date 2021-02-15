@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidatorsService } from '../../services/validators.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,12 +16,17 @@ export class RegisterComponent implements OnInit {
   //inicia una instancia para crear grupos de formulario
   form: FormGroup;
 
+  loading = false;
+
   constructor(
     //instancia para crear elementos de formulario
     private fb: FormBuilder,
 
     //instancia para validaciones de campos
-    private validador: ValidatorsService
+    private validador: ValidatorsService,
+
+    private user: UserService,
+    private toastr: ToastrService
   ) {
     //ejecuta la inicialiacion del formulario
     this.crearFormulario();
@@ -44,6 +52,25 @@ export class RegisterComponent implements OnInit {
   //guarda los datos ingresados para registrar al usuario
   registrar(){
     console.log(this.form);
+    const user: User = {
+      nick: this.form.value.name,
+      email: this.form.value.email,
+      password: this.form.value.password
+    };
+
+    this.loading = true;
+
+    this.user.createUser(user).subscribe((res: any) => {
+      this.loading = false;
+      this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
+    }, err => {
+      if (err?.email.kind) {
+        this.toastr.error(err.email.kind === 'unique' ? 'Ya existe una cuenta asociada a este correo electrónico' : 'Error al generar el usuario');
+      } else {
+        this.toastr.error('Error desconocido');
+      }
+      this.loading = false;
+    });
   }
 
   inputValid(campo: string){
