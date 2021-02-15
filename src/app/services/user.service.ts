@@ -9,14 +9,27 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class UserService {
 
-  private url = 'https://comfeco.herokuapp.com/user/';
+  private url = 'https://comfeco.herokuapp.com/user';
 
   constructor(private http: HttpClient) { }
 
   createUser(user: User) {
-    return this.http.post(`${ this.url }register`, user).pipe(
+    return this.http.post(`${ this.url }/register`, user).pipe(
       catchError(e => {
         return throwError(e.error.error.errors);
+      })
+    );
+  }
+
+  logIn(email: string, password: string) {
+    const credentials = {
+      email,
+      password
+    }
+
+    return this.http.post(`${ this.url }/login`, credentials).pipe(
+      catchError(e => {
+        return throwError(e.error.mensaje);
       })
     );
   }

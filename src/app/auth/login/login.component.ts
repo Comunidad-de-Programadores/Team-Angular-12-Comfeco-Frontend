@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -11,9 +12,11 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
+  loading = false;
 
   constructor( private fb: FormBuilder,
-               private toastr: ToastrService ) {   
+               private toastr: ToastrService,
+               private user: UserService ) {   
     this.crearFormulario();
   }
 
@@ -30,7 +33,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick(): void{
-    console.log(this.form.value);
+    const email = this.form.value.email;
+    const password = this.form.value.password;
+    this.loading = true;
+
+    this.user.logIn(email, password).subscribe((res: any) => {
+      this.loading = false;
+      this.toastr.info('Bienvenido '+ res.userFound.nick + '!');
+    }, err => {
+      this.loading = false;
+      this.toastr.error(err);
+    });
   }
 
   checkValid(campo: string) {
