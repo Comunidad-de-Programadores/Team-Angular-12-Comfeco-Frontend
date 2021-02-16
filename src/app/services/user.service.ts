@@ -25,11 +25,22 @@ export class UserService {
     const credentials = {
       email,
       password
-    }
+    };
 
     return this.http.post(`${ this.url }/login`, credentials).pipe(
       catchError(e => {
         return throwError(e.error.mensaje);
+      })
+    );
+  }
+  
+  sendEmail(email: string) {
+    const body = {
+      email
+    }
+    return this.http.post(`${ this.url }/sendemail`, body).pipe(
+      catchError(e => {
+        return throwError(e);
       })
     );
   }

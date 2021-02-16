@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-forgot',
@@ -11,7 +12,8 @@ export class ForgotComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private user: UserService
   ) {
     this.crearFormulario();
   }
@@ -31,6 +33,11 @@ export class ForgotComponent implements OnInit {
 
   sendData(){
     console.log(this.form.value);
+    const email = this.form.value.email;
+
+    this.user.sendEmail(email).subscribe((res: any) => {
+      console.log(res);
+    });
   }
 
 }
