@@ -44,4 +44,17 @@ export class UserService {
       })
     );
   }
+
+  changePassword(token: string, newpassword: string) {
+    const body = {
+      token,
+      newpassword
+    }
+
+    return this.http.post(`${ this.url }/changePassword`, body).pipe(
+      catchError(e => {
+        return throwError(e);
+      })
+    );
+  }
 }

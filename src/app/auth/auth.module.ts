@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ForgotComponent } from './forgot/forgot.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LoginComponent,
     ForgotComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     CommonModule,

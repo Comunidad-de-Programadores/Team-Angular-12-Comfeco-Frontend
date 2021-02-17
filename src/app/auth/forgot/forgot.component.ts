@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ForgotComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private user: UserService
+    private user: UserService,
+    private toast: ToastrService
   ) {
     this.crearFormulario();
   }
@@ -36,7 +38,7 @@ export class ForgotComponent implements OnInit {
     const email = this.form.value.email;
 
     this.user.sendEmail(email).subscribe((res: any) => {
-      console.log(res);
+      this.toast.success('Se ha enviado el correo a: '+ email);
     });
   }
 
