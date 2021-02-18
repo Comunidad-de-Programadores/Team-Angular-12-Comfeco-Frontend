@@ -15,16 +15,29 @@
                   <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                     aria-describedby="emailHelp" placeholder="Email" formControlName="email"
                     [class.is-invalid]="checkValid('email')" />
+                    <div *ngIf="checkValid('email')">
+                      <small *ngIf="form.controls.email.errors.required" class="text-danger">
+                          Campo requerido
+                      </small>
+                      <small *ngIf="form.controls.email.errors.pattern" class="text-danger">
+                          Formato no válido
+                      </small>
+                    </div>
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-user" id="exampleInputPassword"
                     placeholder="Contraseña" formControlName="password" [class.is-invalid]="checkValid('password')" />
+                    <div *ngIf="checkValid('password')">
+                      <small *ngIf="form.controls.password.errors.required" class="text-danger">
+                          Campo requerido
+                      </small>
+                    </div>
                 </div>
                 <div class="form-group">
                   <div class="custom-control custom-checkbox small">
                     <input type="checkbox" class="custom-control-input" id="customCheck" formControlName="recordar" />
                     <label class="custom-control-label" for="customCheck">
-                      Recordar credenciales
+                      Recordar email
                     </label>
                   </div>
                 </div>

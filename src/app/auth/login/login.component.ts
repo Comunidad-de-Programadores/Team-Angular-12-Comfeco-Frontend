@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('email')) {
+      this.form.get('email').setValue(localStorage.getItem('email'));
+      this.form.get('recordar').setValue(true);
+    }
   }
 
   crearFormulario(): void {
@@ -39,7 +43,12 @@ export class LoginComponent implements OnInit {
 
     this.user.logIn(email, password).subscribe((res: any) => {
       this.loading = false;
-      this.toastr.info('Bienvenido '+ res.userFound.nick + '!');
+      this.toastr.info('Bienvenido ' + res.userFound.nick + '!');
+      if (this.form.get('recordar').value === true) {
+        localStorage.setItem('email', this.form.get('email').value);
+      } else {
+        localStorage.removeItem('email');
+      }
     }, err => {
       this.loading = false;
       this.toastr.error(err);

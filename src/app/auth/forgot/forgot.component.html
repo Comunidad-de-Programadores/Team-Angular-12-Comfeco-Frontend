@@ -20,7 +20,7 @@
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo electronico" formControlName="email" [class.is-invalid]="inputValid('email')">
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="form.invalid">
                                       Enviar enlace
                                     </button>
                                 </form>

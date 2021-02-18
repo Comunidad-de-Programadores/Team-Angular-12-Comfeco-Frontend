@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidatorsService } from '../../services/validators.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   //inicia una instancia para crear grupos de formulario
   form: FormGroup;
 
   loading = false;
+
+  createUserSubscription: Subscription;
 
   constructor(
     //instancia para crear elementos de formulario
@@ -31,7 +34,7 @@ export class RegisterComponent implements OnInit {
     //ejecuta la inicialiacion del formulario
     this.crearFormulario();
   }
-
+  
   ngOnInit(): void {
   }
 
@@ -51,7 +54,6 @@ export class RegisterComponent implements OnInit {
 
   //guarda los datos ingresados para registrar al usuario
   registrar(){
-    console.log(this.form);
     const user: User = {
       nick: this.form.value.name,
       email: this.form.value.email,
@@ -60,7 +62,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    this.user.createUser(user).subscribe((res: any) => {
+    this.createUserSubscription = this.user.createUser(user).subscribe((res: any) => {
       this.loading = false;
       this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
     }, err => {
@@ -84,4 +86,7 @@ export class RegisterComponent implements OnInit {
     return ( password1 === password2 ) ? false : true;
   }
 
+  ngOnDestroy(): void {
+    this.createUserSubscription?.unsubscribe();
+  }
 }

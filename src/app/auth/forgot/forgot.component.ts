@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { UserService } from '../../services/user.service';
   templateUrl: './forgot.component.html',
   styleUrls: ['./forgot.component.css']
 })
-export class ForgotComponent implements OnInit {
+export class ForgotComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
+  sendEmailSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -19,7 +21,7 @@ export class ForgotComponent implements OnInit {
   ) {
     this.crearFormulario();
   }
-
+  
   ngOnInit(): void {
   }
 
@@ -34,12 +36,16 @@ export class ForgotComponent implements OnInit {
   }
 
   sendData(){
-    console.log(this.form.value);
-    const email = this.form.value.email;
-
-    this.user.sendEmail(email).subscribe((res: any) => {
-      this.toast.success('Se ha enviado el correo a: '+ email);
+    this.sendEmailSubscription = this.user.sendEmail(this.form.value.email).subscribe((res: any) => {
+      this.toast.success('Se ha enviado el correo a: ' + this.form.value.email);
+      
+      this.form.reset();
+    }, err => {
+      this.toast.error('Ocurrio un error al intentar recuperar la contraseña.');
     });
   }
 
+  ngOnDestroy(): void {
+    this.sendEmailSubscription?.unsubscribe();
+  }
 }
