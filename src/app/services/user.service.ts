@@ -2,19 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private url = 'https://comfeco.herokuapp.com/user';
+  private url = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
   createUser(user: User) {
-    return this.http.post(`${ this.url }/register`, user).pipe(
+    return this.http.post(`${ this.url }/user/register`, user).pipe(
       catchError(e => {
         return throwError(e.error.error.errors);
       })
@@ -27,7 +28,7 @@ export class UserService {
       password
     };
 
-    return this.http.post(`${ this.url }/login`, credentials).pipe(
+    return this.http.post(`${ this.url }/user/login`, credentials).pipe(
       catchError(e => {
         return throwError(e.error.mensaje);
       })
@@ -35,10 +36,7 @@ export class UserService {
   }
   
   sendEmail(email: string) {
-    const body = {
-      email
-    }
-    return this.http.post(`${ this.url }/sendemail`, body).pipe(
+    return this.http.post(`${ this.url }/user/sendemail`, { email }).pipe(
       catchError(e => {
         return throwError(e);
       })
@@ -46,12 +44,7 @@ export class UserService {
   }
 
   changePassword(token: string, newpassword: string) {
-    const body = {
-      token,
-      newpassword
-    }
-
-    return this.http.post(`${ this.url }/changePassword`, body).pipe(
+    return this.http.post(`${ this.url }/user/changePassword`, { token, newpassword }).pipe(
       catchError(e => {
         return throwError(e);
       })
