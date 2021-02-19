@@ -10,23 +10,20 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create una cuenta!</h1>
                         </div>
-                        <form *ngIf="!loading" class="user" [formGroup]="form" (ngSubmit)="registrar()">
+                        <form *ngIf="!loading" class="user" [formGroup]="form" (ngSubmit)="register()">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="name" placeholder="Nick"
-                                    formControlName="name" [class.is-invalid]="inputValid('name')">
-                                <div *ngIf="inputValid('name')">
-                                    <small *ngIf="form.controls.name.errors.required" class="text-danger">
+                                <input type="text" class="form-control form-control-user" id="nick" placeholder="Nick" formControlName="nick" [class.is-invalid]="inputValid('nick')">
+                                <div *ngIf="inputValid('nick')">
+                                    <small *ngIf="form.controls.nick.errors.required" class="text-danger">
                                         Campo requerido
                                     </small>
-                                    <small *ngIf="form.controls.name.errors.pattern" class="text-danger">
+                                    <small *ngIf="form.controls.nick.errors.pattern" class="text-danger">
                                         Formato no válido
                                     </small>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                    placeholder="Correo electrónico" formControlName="email"
-                                    [class.is-invalid]="inputValid('email')">
+                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Correo electrónico" formControlName="email" [class.is-invalid]="inputValid('email')">
                                 <div *ngIf="inputValid('email')">
                                     <small *ngIf="form.controls.email.errors.required" class="text-danger">
                                         Campo requerido
@@ -38,9 +35,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user"
-                                        id="exampleInputPassword" placeholder="Contraseña" formControlName="password"
-                                        [class.is-invalid]="inputValid('password')">
+                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña" formControlName="password" [class.is-invalid]="inputValid('password')">
                                     <div *ngIf="inputValid('password')">
                                         <small *ngIf="form.controls.password.errors.required" class="text-danger">
                                             Campo requerido
@@ -51,9 +46,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user"
-                                        id="exampleRepeatPassword" placeholder="Confirmar contraseña"
-                                        formControlName="confPassword" [class.is-invalid]="samePassword()">
+                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirmar contraseña" formControlName="confPassword" [class.is-invalid]="samePassword()">
                                     <div *ngIf="inputValid('confPassword')">
                                         <small *ngIf="form.controls.confPassword.errors.required" class="text-danger">
                                             Campo requerido
@@ -81,8 +74,7 @@
                         <app-loading *ngIf="loading"></app-loading>
                         <hr>
                         <div class="text-center">
-                            <a class="small" [routerLink]="['/recuperar']"
-                                routerLinkActive="router-link-active">Olvidaste tu contraseña?</a>
+                            <a class="small" [routerLink]="['/recuperar']" routerLinkActive="router-link-active">Olvidaste tu contraseña?</a>
                         </div>
                         <div class="text-center">
                             <a class="small" [routerLink]="['/login']" routerLinkActive="router-link-active">Ya tienes

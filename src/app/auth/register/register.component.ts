@@ -32,16 +32,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private toastr: ToastrService
   ) {
     //ejecuta la inicialiacion del formulario
-    this.crearFormulario();
+    this.createForm();
   }
-  
+
   ngOnInit(): void {
   }
 
   // crea el formulario
-  crearFormulario(): void {
+  createForm(): void {
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern('[a-zA-Z\\s]+$')]],
+      nick: ['', [Validators.required, Validators.pattern('[a-zA-Z\\s]+$')]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confPassword: ['', [Validators.required, Validators.minLength(8)]]
@@ -53,9 +53,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   //guarda los datos ingresados para registrar al usuario
-  registrar(){
+  register(){
     const user: User = {
-      nick: this.form.value.name,
+      nick: this.form.value.nick,
       email: this.form.value.email,
       password: this.form.value.password
     };
@@ -73,6 +73,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       }
       this.loading = false;
     });
+    this.form.reset();
   }
 
   inputValid(campo: string){
