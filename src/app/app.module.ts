@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { PoliticasModule } from './politicas/politicas.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     PoliticasModule,
     BrowserAnimationsModule,
+    PagesModule,
     ToastrModule.forRoot({positionClass: 'toast-top-right'}),
     HttpClientModule
   ],
