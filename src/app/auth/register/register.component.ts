@@ -53,26 +53,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   //guarda los datos ingresados para registrar al usuario
-  register(){
-    const user: User = {
-      nick: this.form.value.nick,
-      email: this.form.value.email,
-      password: this.form.value.password
-    };
+  register() {
+    if (this.form.valid) {
+      const user: User = {
+        nick: this.form.value.nick,
+        email: this.form.value.email,
+        password: this.form.value.password
+      };
 
-    this.loading = true;
+      this.loading = true;
 
-    this.createUserSubscription = this.user.createUser(user).subscribe((res: any) => {
-      this.loading = false;
-      this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
-    }, err => {
-      if (err?.email.kind) {
-        this.toastr.error(err.email.kind === 'unique' ? 'Ya existe una cuenta asociada a este correo electrónico' : 'Error al generar el usuario');
-      } else {
-        this.toastr.error('Error desconocido');
-      }
-      this.loading = false;
-    });
+      this.createUserSubscription = this.user.createUser(user).subscribe((res: any) => {
+        this.loading = false;
+        this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
+      }, err => {
+        if (err?.email.kind) {
+          this.toastr.error(err.email.kind === 'unique' ? 'Ya existe una cuenta asociada a este correo electrónico' : 'Error al generar el usuario');
+        } else {
+          this.toastr.error('Error desconocido');
+        }
+        this.loading = false;
+      });
+    } else {
+      this.toastr.error('Formulario no valido');
+    }
+
     this.form.reset();
   }
 

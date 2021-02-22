@@ -14,16 +14,16 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
 
-  constructor( private fb: FormBuilder,
-               private toastr: ToastrService,
-               private user: UserService ) {   
+  constructor(private fb: FormBuilder,
+    private toastr: ToastrService,
+    private user: UserService) {
     this.createForm();
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('email')) {
       this.form.get('email').setValue(localStorage.getItem('email'));
-      this.form.get('recordar').setValue(true);
+      this.form.get('rememberCheckbox').setValue(true);
     }
   }
 
@@ -36,23 +36,33 @@ export class LoginComponent implements OnInit {
 
   }
 
-  loginClick(): void{
-    const email = this.form.value.email;
-    const password = this.form.value.password;
-    this.loading = true;
+  loginClick(): void {
+    if (this.form.valid) {
+      const email = this.form.value.email;
+      const password = this.form.value.password;
+      this.loading = true;
 
-    this.user.logIn(email, password).subscribe((res: any) => {
-      this.loading = false;
-      this.toastr.info('Bienvenido ' + res.userFound.nick + '!');
-      if (this.form.get('recordar').value === true) {
+      if (this.form.get('rememberCheckbox').value === true) {
         localStorage.setItem('email', this.form.get('email').value);
       } else {
         localStorage.removeItem('email');
       }
-    }, err => {
-      this.loading = false;
-      this.toastr.error(err);
-    });
+
+      this.user.logIn(email, password).subscribe((res: any) => {
+        const user = res.userFound;
+        delete user.password;
+        this.loading = false;
+        this.toastr.info('Bienvenido ' + res.userFound.nick + '!');
+
+        // Guarda datos de usuario en localStorage
+        localStorage.setItem('user', JSON.stringify(user));
+      }, err => {
+        this.loading = false;
+        this.toastr.error(err);
+      });
+    } else {
+      this.toastr.error('Formulario no valido');
+    }
   }
 
   checkValid(campo: string) {

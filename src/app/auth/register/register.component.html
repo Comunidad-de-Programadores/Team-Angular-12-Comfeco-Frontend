@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="false">
+                            <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="form.invalid">
                                 Crear una cuenta
                             </button>
                             <hr>
@@ -74,10 +74,10 @@
                         <app-loading *ngIf="loading"></app-loading>
                         <hr>
                         <div class="text-center">
-                            <a class="small" [routerLink]="['/recuperar']" routerLinkActive="router-link-active">Olvidaste tu contraseña?</a>
+                            <a class="small" [routerLink]="['/auth/recuperar']" routerLinkActive="router-link-active">Olvidaste tu contraseña?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small" [routerLink]="['/login']" routerLinkActive="router-link-active">Ya tienes
+                            <a class="small" [routerLink]="['/auth/login']" routerLinkActive="router-link-active">Ya tienes
                                 una cuenta? Logeate!</a>
                         </div>
                         <div class="text-center">
