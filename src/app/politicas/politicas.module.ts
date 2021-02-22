@@ -4,6 +4,7 @@ import { PoliticasComponent } from './politicas/politicas.component';
 import { TerminosComponent } from './terminos/terminos.component';
 import { PoliticsComponent } from './politics.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [PoliticasComponent, TerminosComponent, PoliticsComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     PoliticsComponent,

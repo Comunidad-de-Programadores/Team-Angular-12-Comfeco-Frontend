@@ -11,10 +11,12 @@ export const routes: Routes = [
         path: 'auth',
         component: AuthComponent,
         children: [
+            { path: '', component: LoginComponent },
             { path: 'login', component: LoginComponent},
             { path: 'recuperar', component: ForgotComponent},
             { path: 'registro', component: RegisterComponent},
             { path: 'cambiar-contraseña', component: RecoverPasswordComponent },
+            { path: '', redirectTo: 'auth' , pathMatch: 'full'},
         ]
       }
 ]

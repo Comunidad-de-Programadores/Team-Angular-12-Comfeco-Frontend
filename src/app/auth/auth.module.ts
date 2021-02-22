@@ -26,10 +26,7 @@ import { AuthComponent } from './auth.component';
     SharedModule
   ],
   exports: [
-    LoginComponent,
-    ForgotComponent,
-    RegisterComponent,
-    ReactiveFormsModule
+    AuthComponent
   ]
 })
 export class AuthModule { }
