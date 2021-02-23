@@ -1,0 +1,20 @@
+.img-profile{
+    height: 2rem;
+    width: 2rem;
+}
+
+
+.popup{
+    max-width: 60px;
+}
+
+.headerLinks{
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+
+.black {
+    color: black !important;
+}
+

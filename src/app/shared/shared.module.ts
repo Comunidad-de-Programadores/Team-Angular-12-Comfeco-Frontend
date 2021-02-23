@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
+import { HeaderHomeComponent } from './header-home/header-home.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -10,15 +12,18 @@ import { LoadingComponent } from './loading/loading.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    HeaderHomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports:[
     HeaderComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    HeaderHomeComponent
   ]
 })
 export class SharedModule { }

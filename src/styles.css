@@ -1,10 +1,6 @@
 /* 
  Reset de CSS
 */
-* {
-    margin:0;
-    padding:0;
-}
 
 html, body{
     height: 100%;
@@ -16,4 +12,8 @@ html, body{
 body{
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.main-container{
+    min-height: 100vh;
 }

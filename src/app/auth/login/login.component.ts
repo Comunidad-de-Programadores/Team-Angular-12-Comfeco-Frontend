@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
-    private user: UserService) {
+    private user: UserService,
+    private router: Router) {
     this.createForm();
   }
 
@@ -56,6 +58,8 @@ export class LoginComponent implements OnInit {
 
         // Guarda datos de usuario en localStorage
         localStorage.setItem('user', JSON.stringify(user));
+        // Navegar al inicio
+        this.router.navigateByUrl('/client');
       }, err => {
         this.loading = false;
         this.toastr.error(err);
