@@ -34,9 +34,7 @@ export class HeaderHomeComponent implements OnInit {
   userData;
 
   constructor(private router: Router) { 
-    this.userData = JSON.parse(localStorage.getItem('user')); 
-    console.log(this.userData);
-    
+    this.userData = JSON.parse(localStorage.getItem('user'));     
   }
 
   ngOnInit(): void {

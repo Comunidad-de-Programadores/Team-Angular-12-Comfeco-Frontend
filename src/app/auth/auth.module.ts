@@ -23,7 +23,7 @@ import { AuthComponent } from './auth.component';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     AuthComponent
