@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunidadesComponent } from './comunidades/comunidades.component';
+import { SlidersComponent } from './sliders/sliders.component';
 
 
 
 @NgModule({
-  declarations: [ComunidadesComponent],
+  declarations: [ComunidadesComponent, SlidersComponent],
   imports: [
     CommonModule
   ],
   exports: [
-    ComunidadesComponent
+    ComunidadesComponent,
+    SlidersComponent
   ]
 })
 export class ComponentsModule { }
