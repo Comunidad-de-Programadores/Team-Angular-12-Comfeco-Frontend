@@ -58,6 +58,9 @@ export class LoginComponent implements OnInit {
 
         // Guarda datos de usuario en localStorage
         localStorage.setItem('user', JSON.stringify(user));
+        // Guarda datos de token <--
+        localStorage.setItem('token', res.token);
+        
         // Navegar al inicio
         this.router.navigateByUrl('/client');
       }, err => {

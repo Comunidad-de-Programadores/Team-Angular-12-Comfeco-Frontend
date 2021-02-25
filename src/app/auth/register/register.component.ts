@@ -64,7 +64,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.loading = true;
 
       this.createUserSubscription = this.user.createUser(user).subscribe((res: any) => {
+        const user = res.userSaved; // <--
+
         this.loading = false;
+        
+        // Guarda datos de usuario en localStorage <--
+        localStorage.setItem('user', JSON.stringify(user));
+        // Guarda datos de token <-- 
+        localStorage.setItem('token', res.token);
+        
         this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
       }, err => {
         if (err?.email.kind) {
