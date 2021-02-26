@@ -3,21 +3,22 @@
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Comunidades</h6>
         <div class="dropdown no-arrow">
-            <a  href="#" role="button" aria-haspopup="true" aria-expanded="false"> Ver más </a>
+            <a href="#" role="button" aria-haspopup="true" aria-expanded="false"> Ver más </a>
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body" *ngFor="let item of listCommunity">
         <div class="row mb-2">
             <div class="col-3">
-                <img class="img-comunidad rounded-circle" src="../assets/img/undraw_profile_2.svg">     
+                <img class="img-comunidad rounded-circle" [src]="item.img">
             </div>
-            <div class="col-6 my-auto text-center">
-                <h6 class="my-auto">Comunidad de Programadores</h6>
+            <div class="col-6 my-auto text-center text-uppercase">
+                <h6 class="my-auto">{{item.name}}</h6>
             </div>
             <div class="col-3 my-auto unirme text-right">
-                <a class="badge badge-primary small">Unirme</a>
+                <a [href]="item.link" class="badge badge-primary small">Unirme</a>
             </div>
         </div>
     </div>
+    <app-loading *ngIf="loading"></app-loading>
 </div>
