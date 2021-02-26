@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-timer',
@@ -22,15 +22,19 @@ export class TimerComponent implements OnInit {
   MILLISECONDS_OF_A_MINUTE = this.MILLISECONDS_OF_A_SECOND * 60;
   MILLISECONDS_OF_A_HOUR = this.MILLISECONDS_OF_A_MINUTE * 60;
   MILLISECONDS_OF_A_DAY = this.MILLISECONDS_OF_A_HOUR * 24
-
+  timerObs: Subscription;
   constructor() { }
 
   ngOnInit(): void {
     this.count();
   }
-
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.timerObs.unsubscribe();
+  }
   count() {
-    interval(this.MILLISECONDS_OF_A_SECOND).subscribe(
+    this.timerObs = interval(this.MILLISECONDS_OF_A_SECOND).subscribe(
       resp => {
         this.updateCountdown();
       }
