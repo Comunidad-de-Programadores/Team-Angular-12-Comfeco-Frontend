@@ -8,23 +8,23 @@ import { Router } from '@angular/router';
 })
 export class HeaderHomeComponent implements OnInit {
 
-  headerLinks = [ 
-    { 
+  headerLinks = [
+    {
       title: 'Inicio',
       routerLink: 'inicio',
       icon: 'fa fa-home',
     },
-    { 
+    {
       title: 'Comunidades',
       routerLink: '/client',
       icon: 'fa fa-users',
     },
-    { 
+    {
       title: 'Talleres',
       routerLink: '/client',
       icon: 'fa fa-briefcase',
     },
-    { 
+    {
       title: 'Creadores',
       routerLink: '/client',
       icon: 'fa fa-home',
@@ -33,8 +33,8 @@ export class HeaderHomeComponent implements OnInit {
 
   userData;
 
-  constructor(private router: Router) { 
-    this.userData = JSON.parse(localStorage.getItem('user'));     
+  constructor(private router: Router) {
+    this.userData = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit(): void {
