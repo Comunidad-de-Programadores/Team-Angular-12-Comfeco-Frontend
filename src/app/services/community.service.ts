@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 
 export class CommunityService
 {  
+    communities : Community[];
     option;
     
     private url = environment.baseUrl;
@@ -23,13 +24,13 @@ export class CommunityService
     getHeader() {
         const tk = localStorage.getItem('token');
         this.option = {
-        headers: new HttpHeaders({ 'access-token': `${tk}` })
+        headers: new HttpHeaders({ 'Content-Type': 'application/json','access-token': `${tk}` })
         };
     }
         
     loadCommunity()
     {
         this.getHeader();
-        return this.http.get<Community>(`${ this.url }/community`, this.option);
+        return this.http.get<Community[]>(`${ this.url }/community`, this.option);
     }
 }
