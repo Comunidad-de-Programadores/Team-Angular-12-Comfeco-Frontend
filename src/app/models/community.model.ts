@@ -1,7 +1,8 @@
 export interface Community
 {
-    name: string,
-    link: string,
+    _id: string,
+    description: string,
     img: string,
-    description: string
+    link: string,
+    name: string
 }

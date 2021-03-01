@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private validador: ValidatorsService,
 
     private user: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     //ejecuta la inicialiacion del formulario
     this.createForm();
@@ -45,7 +47,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confPassword: ['', [Validators.required, Validators.minLength(8)]]
-    },{
+    }, {
 
       //a nivel de formulario cuando los campos ya han sido creados
       validators: this.validador.samesPasswordService('password', 'confPassword')
@@ -65,15 +67,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
       this.createUserSubscription = this.user.createUser(user).subscribe((res: any) => {
         const user = res.userSaved; // <--
-
-        this.loading = false;
-        
         // Guarda datos de usuario en localStorage <--
         localStorage.setItem('user', JSON.stringify(user));
         // Guarda datos de token <-- 
         localStorage.setItem('token', res.token);
-        
+        this.loading = false;
         this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
+
+        // Navegar al inicio
+        this.router.navigateByUrl('/client');
       }, err => {
         if (err?.email.kind) {
           this.toastr.error(err.email.kind === 'unique' ? 'Ya existe una cuenta asociada a este correo electrónico' : 'Error al generar el usuario');
@@ -89,15 +91,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.form.reset();
   }
 
-  inputValid(campo: string){
+  inputValid(campo: string) {
     return this.form.get(campo).invalid && this.form.get(campo).touched;
   }
 
-  samePassword(){
+  samePassword() {
     const password1 = this.form.get('password').value;
     const password2 = this.form.get('confPassword').value;
 
-    return ( password1 === password2 ) ? false : true;
+    return (password1 === password2) ? false : true;
   }
 
   ngOnDestroy(): void {

@@ -1,0 +1,40 @@
+.card {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+}
+
+.card-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    column-gap: 0.5em;
+}
+
+.timeText {
+    justify-self: center;
+}
+
+.timeText p:first-child {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.timeText p:last-child {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+h3 {
+    text-align: center;
+}
+
+@media (min-width: 425px) {
+    .timeText p:first-child {
+        font-size: 3em;
+        text-align: center;
+    }
+    .timeText p:last-child {
+        text-align: center;
+    }
+}

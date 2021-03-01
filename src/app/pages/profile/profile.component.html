@@ -1,0 +1,100 @@
+<div class="container-fluid py-3">
+
+    <div class="row">
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="font-weight-bold text-primary text-uppercase">
+                                Mi perfil</div>
+                        </div>
+                        <div class="col-auto text-center">
+                            <i class="fas fa-user-circle fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="font-weight-bold text-success text-uppercase">
+                                Insignias</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-medal fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="font-weight-bold text-info text-uppercase">
+                                Grupos</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="font-weight-bold text-warning text-uppercase">
+                                Eventos</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-alt fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container-fluid bg-white p-2">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-header">
+                  <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{userData.nick}}</h5>
+                  <p class="card-text">Front Developer / UI/UX</p>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptates, minus architecto quasi debitis nesciunt error officia cum nulla, cupiditate molestias ab! Harum architecto dolorem optio qui aspernatur laboriosam necessitatibus.</p>
+                </div>
+                <div class="card-footer text-muted">
+                  <div>
+                    <i class="fab fa-twitter social-networks"></i>
+                    <i class="fab fa-facebook social-networks"></i>
+                    <i class="fab fa-instagram social-networks"></i>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6">Contenido dinamico
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex impedit expedita eveniet reiciendis ab modi harum culpa suscipit. Quam laudantium aperiam, neque tenetur totam labore atque eum quisquam ratione ullam?</p>
+        </div>
+        <div class="col-md-3">Eventos de tu interes
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non similique animi ipsam cum deserunt quia voluptate blanditiis ducimus. Facilis, dolore suscipit deserunt rerum quas quae aliquam earum eaque quam laborum?</p>
+        </div>
+    </div>
+</div>

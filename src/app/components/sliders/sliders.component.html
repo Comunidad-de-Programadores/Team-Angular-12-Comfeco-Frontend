@@ -1,20 +1,13 @@
-<!--Text decoration-->
-<div class="text-center">
-    <h2 class="text-gray-400">Bienvenidos a Community Fest and Code</h2>
-    <p class="text-gray-500 font-weight-bold subtitle">¡Conoce gente, aprende y gana!</p>
-    <p class="text-gray-400 paragraph font-weight-bold">La proxima edicion regresa en 2022, en la cual se planea involucrar a todos los programadores independientemente del area de conocimiento que se encuentre, todo con un mismo proposito, aprender en comunidad.</p>
-</div>
-
 <!--Slider 1-->
 <h3 class="text-gray-400 text-center font-weight-light">Ellos ya creen en esta iniciativa:</h3>
 <div id="carouselControls" class="carousel slide slider-creator" data-ride="carousel">
     <div class="carousel-inner mb-4">
-        <div class="carousel-item" *ngFor="let creator of creators; first as isFirst" [class.active]="isFirst">
-            <img [src]="creator.img" class="d-block w-100" alt="Creadores">
+        <div class="carousel-item" *ngFor="let creator of this.carruselunoservice.carruseluno; first as isFirst" [class.active]="isFirst">
+            <img src="{{creator.img}}" class="d-block w-100" alt="Creadores">
             <div class="carousel-caption d-none d-md-block">
                 <h5 class="text-gray-100 font-weight-bold creator-name">{{creator.name}}</h5>
                 <!-- <p class="text-gray-100 font-weight-bold creator-tecnology">{{creator.technology}}</p> -->
-                <img [src]="creator.technologyImg" alt="Tecnologia" width="60px" class="creator-img">
+                <img src="{{creator.technologyImg}}" alt="Tecnologia" width="60px" class="creator-img">
             </div>
         </div>
     </div>

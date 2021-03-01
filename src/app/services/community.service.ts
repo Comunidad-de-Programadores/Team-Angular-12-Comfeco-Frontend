@@ -5,31 +5,30 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable
-({
-    providedIn: 'root'
-})
+    ({
+        providedIn: 'root'
+    })
 
-export class CommunityService
-{  
+export class CommunityService {
     option;
-    
+
     private url = environment.baseUrl;
 
-        constructor(private http: HttpClient)
-        {
+    constructor(
+        private http: HttpClient
+    ) {
 
-        }
+    }
 
     getHeader() {
         const tk = localStorage.getItem('token');
         this.option = {
-        headers: new HttpHeaders({ 'access-token': `${tk}` })
+            headers: new HttpHeaders({ 'access-token': `${tk}` })
         };
     }
-        
-    loadCommunity()
-    {
+
+    loadCommunity() {
         this.getHeader();
-        return this.http.get<Community>(`${ this.url }/community`, this.option);
+        return this.http.get<Community>(`${this.url}/community`, this.option);
     }
 }
