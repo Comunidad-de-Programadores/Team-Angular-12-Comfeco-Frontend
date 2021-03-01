@@ -74,6 +74,7 @@
         <div class="col-md-3">
             <div class="card text-center">
                 <div class="card-header">
+                  <a class="float-right" href="#" title="Editar Perfil"><i class="fas fa-user-edit"></i></a>  
                   <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
                 </div>
                 <div class="card-body">
@@ -88,13 +89,88 @@
                     <i class="fab fa-instagram social-networks"></i>
                   </div>
                 </div>
-              </div>
+            </div>
         </div>
-        <div class="col-md-6">Contenido dinamico
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex impedit expedita eveniet reiciendis ab modi harum culpa suscipit. Quam laudantium aperiam, neque tenetur totam labore atque eum quisquam ratione ullam?</p>
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-header">
+                  <h5 class="text-center">Insignias</h5> 
+                  <swiper [config]="config">
+
+                    <div class="swiper-wrapper">
+        
+                        <div class="swiper-slide" *ngFor="let medal of listMedals">
+                            <div class="card-circle shadow">
+                                <img class="medal-img" [src]="medal.img" [alt]="medal.name" [title]="medal.name">
+                            </div>
+                        </div>
+        
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </swiper>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Actividad reciente</h5>
+                  <p class="card-text">Front Developer / UI/UX</p>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptates, minus architecto quasi debitis nesciunt error officia cum nulla, cupiditate molestias ab! Harum architecto dolorem optio qui aspernatur laboriosam necessitatibus.</p>
+                </div>
+                <div class="card-footer text-muted">
+                  <div>
+                    <i class="fab fa-twitter social-networks"></i>
+                    <i class="fab fa-facebook social-networks"></i>
+                    <i class="fab fa-instagram social-networks"></i>
+                  </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">Eventos de tu interes
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non similique animi ipsam cum deserunt quia voluptate blanditiis ducimus. Facilis, dolore suscipit deserunt rerum quas quae aliquam earum eaque quam laborum?</p>
+        <div class="col-md-3">
+            <div class="card shadow comunidades">
+
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Eventos de tu interés</h6>
+                    <div class="dropdown no-arrow">
+                        <a href="#" role="button" aria-haspopup="true" aria-expanded="false"> Ver más </a>
+                    </div>
+                </div>
+            
+                <div class="card-body">
+                    <div class="row mb-2 text-center">
+                        <div class="col">
+                            <img class="img-comunidad rounded-circle" src="https://www.comfeco.com/icons/code-icon.svg">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto text-center text-uppercase">
+                            <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto unirme">
+                            <a href="https://www.comfeco.com/" class="badge badge-primary small">Unirme</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2 text-center">
+                        <div class="col">
+                            <img class="img-comunidad rounded-circle" src="https://www.comfeco.com/icons/code-icon.svg">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto text-center text-uppercase">
+                            <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto unirme">
+                            <a href="https://www.comfeco.com/" class="badge badge-primary small">Unirme</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
