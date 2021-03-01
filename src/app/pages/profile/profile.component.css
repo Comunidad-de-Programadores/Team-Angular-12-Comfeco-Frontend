@@ -1,0 +1,10 @@
+#user-image {
+    width: 7rem;
+    height: auto;
+    border-radius: 30px;
+}
+
+.social-networks {
+    font-size: 1.5em;
+    margin: 5px;
+}

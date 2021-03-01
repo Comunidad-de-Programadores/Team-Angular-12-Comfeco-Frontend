@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, HomeComponent],
+  declarations: [PagesComponent, HomeComponent, ProfileComponent],
   imports: [
     CommonModule,
     RouterModule,
