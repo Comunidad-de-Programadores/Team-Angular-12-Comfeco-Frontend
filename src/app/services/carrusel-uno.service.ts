@@ -10,7 +10,7 @@ export class CarruselUnoService {
 
   carruseluno : CarruselUno[];
   option;
-  
+
   private url = environment.baseUrl;
 
       constructor(private http: HttpClient)
@@ -24,8 +24,8 @@ export class CarruselUnoService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json','access-token': `${tk}` })
       };
   }
-      
-  loadCarruselUno()
+
+  loadCarruselOne()
   {
       this.getHeader();
       return this.http.get<CarruselUno[]>(`${ this.url }/creator`, this.option);
