@@ -7,10 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { ProfileComponent } from './profile/profile.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, HomeComponent, ProfileComponent],
+  declarations: [PagesComponent, HomeComponent, ProfileComponent, EditarPerfilComponent],
   imports: [
     CommonModule,
     RouterModule,
