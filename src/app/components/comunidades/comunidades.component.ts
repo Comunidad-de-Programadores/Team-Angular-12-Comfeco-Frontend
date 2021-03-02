@@ -26,7 +26,7 @@ export class ComunidadesComponent implements OnInit {
 
   async getCommunities() {
     const res: any = await this.communityservice.loadCommunity().toPromise();
-    console.log(res);
+    //console.log(res);
     this.listCommunity = res.listCommunity;
     this.loading = false;
   }
