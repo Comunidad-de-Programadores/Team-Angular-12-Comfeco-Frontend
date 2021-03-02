@@ -12,4 +12,29 @@
 .medal-img {
     width: 2.5rem;
     height: auto;
+    background-color: white;
+    border-radius: 22%;
+    padding: 5px;
+}
+
+.header-profile, .header-badges, .header-events {
+    background-color: #4e73df;
+    color: white;
+}
+
+.btn-edit-profile {
+   color: white;
+}
+
+.swiper-button-next,.swiper-button-prev {
+    color: white;
+}
+
+.icon-check {
+    color: green;
+}
+
+.img-event {
+    width: 11rem;
+    height: auto;
 }

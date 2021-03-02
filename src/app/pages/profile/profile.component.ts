@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
 
   config: SwiperOptions = {
     slidesPerView: 2,
+    autoplay: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
