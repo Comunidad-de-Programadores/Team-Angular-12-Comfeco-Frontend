@@ -18,6 +18,7 @@ import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
     SharedModule,
     ComponentsModule,
     NgxUsefulSwiperModule
-  ]
+  ],
+  exports: [EditarPerfilComponent]
 })
 export class PagesModule { }
