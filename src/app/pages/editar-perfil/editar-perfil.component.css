@@ -18,8 +18,9 @@
 
 .listUl
 {
+    cursor: pointer !important;
     display:none;
-    width: 100%;
+    width: 95%;
     height: 20em;
     line-height: 2em;
     border: 1px solid #ccc;
@@ -27,6 +28,10 @@
     margin: 0;
     overflow: scroll;
     overflow-x: hidden;
+    color:black !important;
+    position: absolute;
+    z-index:80;
+    background-color:white;
 }
 
 .especifyInput
@@ -37,12 +42,13 @@
 
 /* Estilo del área del input[file] */
 .drag-drop {
+    cursor: pointer !important;
     height: 8em;
     width: 8em;
     background-color: #ccc;
     border-radius: 4em;
-    text-align: center;
-    color: white;
+    /* text-align: center; 
+    color: white;  */
     position: relative;
     margin: 0 auto 1em;
 }
@@ -68,6 +74,7 @@
 }
 
 input[type="file"] {
+        cursor: pointer !important;
         height: 10em;
         opacity: 0;
         position: absolute;

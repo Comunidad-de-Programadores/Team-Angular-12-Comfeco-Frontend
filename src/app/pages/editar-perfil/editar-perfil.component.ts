@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Country, ListCountries } from 'src/app/models/Country';
 import { EditUserServiceService } from './edit-user-service.service';
@@ -15,11 +16,33 @@ declare var $:any;
 })
 
 
-export class EditarPerfilComponent implements OnInit {
-  
+export class EditarPerfilComponent implements OnInit
+{
   //Load Countries, created result countries from service
   listCountries: ListCountries;
   arrayResultFromService: Array<String> = [];
+  resultado: string;
+  
+  //Form React
+  formEditPerfil = new FormGroup({
+    nickInput: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
+    emailInput: new FormControl('', [Validators.required, Validators.email]),
+    generoInput: new FormControl('', [Validators.maxLength(60)]),
+    dateBirthInput: new FormControl('', [Validators.required]),
+    countryInput: new FormControl('', [Validators.required]),
+    facebookInput: new FormControl('', [ Validators.maxLength(60)]),
+    githubInput: new FormControl('', [ Validators.maxLength(60)]),
+    linkedinInput: new FormControl('', [ Validators.maxLength(60)]),
+    twitterInput: new FormControl('', [ Validators.maxLength(60)]),
+    biografiaInput: new FormControl('', [Validators.maxLength(1000)]),
+  });
+
+  submit() {
+    if (this.formEditPerfil.valid)
+      this.resultado = "Todos los datos son válidos";
+    else
+      this.resultado = "Hay datos inválidos en el formulario";
+  }
 
   constructor(public servicecountries: EditUserServiceService)
   {
@@ -48,12 +71,12 @@ export class EditarPerfilComponent implements OnInit {
       containerListCountriesUl.style.display = 'block';
     });
 
-    countriesInput.addEventListener("blur", () => 
-    {
+    //countriesInput.addEventListener("blur", () => 
+    //{
       //No show List Countries
       //var containerListCountriesUl = document.getElementById('listCountriesUl');
      // containerListCountriesUl.style.display = 'none';
-    });
+    //});
 
     //Load default pictures
     let preview = document.getElementById('preview');
@@ -78,7 +101,7 @@ export class EditarPerfilComponent implements OnInit {
 
         img.setAttribute("src", reader.result as string);
         img.setAttribute("id", "newImgEditUser");
-        img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-129px;");
+        img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-80px;");
 
         //preview.innerHTML = '';
         preview.append(img); 

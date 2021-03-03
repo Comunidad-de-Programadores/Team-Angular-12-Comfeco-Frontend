@@ -24,7 +24,7 @@ import { EditUserServiceService } from './editar-perfil/edit-user-service.servic
     SharedModule,
     ComponentsModule,
     NgxUsefulSwiperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [EditarPerfilComponent],
   providers: [EditUserServiceService]

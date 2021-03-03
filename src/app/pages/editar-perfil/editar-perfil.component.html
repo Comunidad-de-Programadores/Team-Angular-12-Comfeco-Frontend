@@ -16,7 +16,7 @@
                 <i class="fa fa-arrow-circle-up fa-stack-1x top"></i> -->
 
             </span>
-            <span class="desc">Pulse aquí para añadir tú foto de perfil</span>
+            <!-- <span class="desc">Pulse aquí para añadir tú foto de perfil</span> -->
 
         <!-- <h4 class="mb-3">Editar perfil</h4>
 
@@ -38,11 +38,11 @@
         </div>
         <br>
 
-          <form class="needs-validation" novalidate > <!-- [formGroup]="formEdit" -->
+          <form class="needs-validation" [formGroup]="formEditPerfil" (ngSubmit)="submit()" novalidate > <!-- [formGroup]="formEdit" -->
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
                 <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
-                <input  formControlName="nick"
+                <input formControlName="nickInput" maxlength="60"
                         type="text" class="form-control" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" required>
                     <div class="invalid-feedback">
                         Valid first name is required.
@@ -51,8 +51,8 @@
   
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
                 <label for="emailInput" class="form-label float-left">Correo <span class="text-muted">*</span></label>
-                <input  formControlName="email"
-                        type="email" class="form-control" id="emailInput" placeholder="tucorreo@ejemplo.com" required>
+                <input type="email" formControlName="emailInput" maxlength="60"
+                class="form-control" id="emailInput" placeholder="tucorreo@ejemplo.com" required>
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
@@ -62,8 +62,8 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3"><br>
                 <label for="generoInput" class="form-label float-left">Genero</label>
-                  <input  formControlName="gender"
-                          type="text" class="form-control" id="generoInput" placeholder="Sin especificar" required>
+                  <input type="text" formControlName="generoInput" maxlength="60"
+                  class="form-control" id="generoInput" placeholder="Sin especificar" required>
                     <div class="invalid-feedback">
                         Your username is required.
                     </div>
@@ -71,7 +71,7 @@
   
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3"><br>
                 <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted">*</span></label>
-                <input  formControlName="birthday"
+                <input formControlName="dateBirthInput"
                         type="date" class="form-control" id="dateBirthInput" placeholder="">
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
@@ -81,8 +81,9 @@
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3"><br>
                 <label for="countryInput" class="form-label float-left" >País <span class="text-muted">*</span></label>
 
-                <input type="text" id="countryInput" class="form-control" placeholder="Sin especificar" required>
-                    <ul formControlName="country" id="listCountriesUl" class="listUl">
+                <input type="text" formControlName="countryInput"
+                id="countryInput" class="form-control" placeholder="Sin especificar" required>
+                    <ul id="listCountriesUl" class="listUl">
                       <span *ngFor="let dato of this.arrayResultFromService">
                         <li class="listIl" (click)="selectedCountry(this.dato);">{{dato}}</li>
                       </span>
@@ -122,49 +123,48 @@
                 </div>
                 </div> -->
               <div class="row">
-                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+                  <div class="col-xs-2 col-sm-4 col-md-4 col-lg-3 mt-5">
                       <img src="../assets/img/social-icons/facebook-icon.png" class="social-icon mr-3"/>
                       <label for="facebookInput" class="form-label">facebook.com/</label>
                   </div>
-                  <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
-                      <input  formControlName="facebook"
+                  <div class="col-xs-10 col-sm-8 col-md-8 col-lg-3 mt-5">
+                      <input formControlName="facebookInput"
                               type="text" class="form-control especifyInput" id="facebookInput" placeholder="(vacío)">
                   </div>
 
-                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+                  <div class="col-xs-2 col-sm-4 col-md-4 col-lg-3 mt-5">
                       <img src="../assets/img/social-icons/github-icon.png" class="social-icon mr-3"/>
                       <label for="githubInput" class="form-label">github.com/</label>
                   </div>
-                  <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
-                      <input  formControlName="github"
+                  <div class="col-xs-10 col-sm-8 col-md-8 col-lg-3 mt-5">
+                      <input formControlName="githubInput" 
                               type="text" class="form-control especifyInput" id="githubInput" placeholder="(vacío)">
                   </div>
               </div>
 
               <div class="row">
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+                <div class="col-xs-2 col-sm-2 col-md-4 col-lg-3 mt-5">
                     <img src="../assets/img/social-icons/linkedin-icon.png" class="social-icon mr-3"/>
                     <label for="linkedinInput" class="form-label">linkedin.com/in/</label>
                 </div>
-                <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
-                    <input 
-                            formControlName="linkedin"
+                <div class="col-xs-10 col-sm-10 col-md-8 col-lg-3 mt-5">
+                    <input formControlName="linkedinInput"                    
                             type="text" class="form-control especifyInput" id="linkedinInput" placeholder="(vacío)">
                 </div>
 
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+                <div class="col-xs-2 col-sm-2 col-md-4 col-lg-3 mt-5">
                     <img src="../assets/img/social-icons/twitter-icon.png" class="social-icon mr-3"/>
                     <label for="twitterInput" class="form-label">twitter.com/</label>
                 </div>
-                <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
-                  <input  formControlName="twitter"
+                <div class="col-xs-10 col-sm-10 col-md-8 col-lg-3 mt-5">
+                  <input formControlName="twitterInput"
                             type="text" class="form-control especifyInput" id="twitterInput" placeholder="(vacío)">
                 </div>
               </div>
               <div class="row">            
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4"><br>
                     <label for="biografiaInput" class="form-label float-left">Biografía</label>
-                    <textarea  formControlName="biography"
+                    <textarea  
                                rows="3" class="form-control" id="biografiaInput" placeholder=""></textarea>
                 </div>
               </div>
@@ -174,6 +174,6 @@
             <button class="w-12 btn btn-primary btn-lg float-right" type="button">Guardar cambios</button>
           </form>
       </div>
-
+      <br><br><br><br>
   
   
