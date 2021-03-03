@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { throwError } from 'rxjs';
@@ -11,8 +11,16 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
   private url = environment.baseUrl;
+  option;
 
   constructor(private http: HttpClient) { }
+
+  getHeader() {
+    const tk = localStorage.getItem('token');
+    this.option = {
+      headers: new HttpHeaders({ 'access-token': `${tk}` })
+    };
+  }
 
   createUser(user: User) {
     return this.http.post(`${ this.url }/user/register`, user).pipe(
@@ -50,4 +58,23 @@ export class UserService {
       })
     );
   }
+
+  putUser(value){
+    this.getHeader();
+    const body = new FormData();
+
+    body.append('nick', value.nick);
+    body.append('img', value.nick);
+    body.append('public_id', value.nick);
+    body.append('gender', value.nick);
+    body.append('birthday', value.nick);
+    body.append('country', value.nick);
+    body.append('biography', value.nick);
+    body.append('socialNetwork', value.nick);
+
+    return this.http.put(`${ this.url }/user`, body , this.option)
+  }
+
+
+
 }

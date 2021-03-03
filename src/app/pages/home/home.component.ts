@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
 
   async getCreators() {
     const resp: any = await this.creatorService.loadCreators().toPromise();
-    console.log(resp);
+    //console.log(resp);
     this.listCreators = resp.listCreator;
   }
 

@@ -1,100 +1,117 @@
-<div class="container-fluid py-3">
-
-    <div class="row">
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-primary text-uppercase">
-                                Mi perfil</div>
-                        </div>
-                        <div class="col-auto text-center">
-                            <i class="fas fa-user-circle fa-2x"></i>
-                        </div>
-                    </div>
-                </div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-header header-profile">
+              <a class="float-right" href="#" title="Editar Perfil"><i class="fas fa-user-edit btn-edit-profile"></i></a>  
+              <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
             </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-success text-uppercase">
-                                Insignias</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-medal fa-2x"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-body">
+              <h5 class="card-title">{{userData.nick}}</h5>
+              <p class="card-text">Front Developer / UI/UX</p>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptates, minus architecto quasi debitis nesciunt error officia cum nulla, cupiditate molestias ab! Harum architecto dolorem optio qui aspernatur laboriosam necessitatibus.</p>
             </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-info text-uppercase">
-                                Grupos</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-warning text-uppercase">
-                                Eventos</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar-alt fa-2x"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-footer text-muted">
+              <div>
+                <i class="fab fa-twitter social-networks"></i>
+                <i class="fab fa-facebook social-networks"></i>
+                <i class="fab fa-instagram social-networks"></i>
+              </div>
             </div>
         </div>
     </div>
-    
-</div>
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-header header-badges">
+              <h5 class="text-center">Insignias</h5> 
+              <swiper [config]="config">
 
-<div class="container-fluid bg-white p-2">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-header">
-                  <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
+                <div class="swiper-wrapper">
+    
+                    <div class="swiper-slide" *ngFor="let medal of listMedals">
+                        <div class="card-circle shadow">
+                            <img class="medal-img" [src]="medal.img" [alt]="medal.name" [title]="medal.name">
+                        </div>
+                    </div>
+    
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title">{{userData.nick}}</h5>
-                  <p class="card-text">Front Developer / UI/UX</p>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptates, minus architecto quasi debitis nesciunt error officia cum nulla, cupiditate molestias ab! Harum architecto dolorem optio qui aspernatur laboriosam necessitatibus.</p>
-                </div>
-                <div class="card-footer text-muted">
-                  <div>
-                    <i class="fab fa-twitter social-networks"></i>
-                    <i class="fab fa-facebook social-networks"></i>
-                    <i class="fab fa-instagram social-networks"></i>
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </swiper>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Actividad reciente</h5>
+              <hr>
+              <div>
+                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
+                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
+                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
                   </div>
-                </div>
+                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
+                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
+                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
+                  </div>
+                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
+                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
+                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
+                  </div>
+                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
+                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
+                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
+                  </div>
               </div>
+            </div>
         </div>
-        <div class="col-md-6">Contenido dinamico
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex impedit expedita eveniet reiciendis ab modi harum culpa suscipit. Quam laudantium aperiam, neque tenetur totam labore atque eum quisquam ratione ullam?</p>
-        </div>
-        <div class="col-md-3">Eventos de tu interes
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non similique animi ipsam cum deserunt quia voluptate blanditiis ducimus. Facilis, dolore suscipit deserunt rerum quas quae aliquam earum eaque quam laborum?</p>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow comunidades" style="overflow-y: auto; 
+        max-height: 500px;">
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between header-events">
+                <h6 class="m-0 font-weight-bold">Eventos de tu interés</h6>
+                <div class="dropdown no-arrow">
+                    <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false"> Ver más </a>
+                </div>
+            </div>
+        
+            <div class="card-body">
+               <div class="mb-2">
+                <div class="row mb-2 text-center">
+                    <div class="col">
+                        <img class="img-event" src="https://www.comfeco.com/icons/code-icon.svg">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col my-auto text-center text-uppercase">
+                        <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col my-auto unirme">
+                        <a href="https://www.comfeco.com/" class="badge badge-primary small">Unirme</a>
+                    </div>
+                </div>
+               </div>
+               <div class="mb-2">
+                <div class="row mb-2 text-center">
+                    <div class="col">
+                        <img class="img-event" src="https://www.comfeco.com/icons/code-icon.svg">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col my-auto text-center text-uppercase">
+                        <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col my-auto unirme">
+                        <a href="https://www.comfeco.com/" class="badge badge-primary small">Unirme</a>
+                    </div>
+                </div>
+               </div>
+            </div>
+            
         </div>
     </div>
 </div>

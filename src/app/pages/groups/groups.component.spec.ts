@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SlidersComponent } from './sliders.component';
+import { GroupsComponent } from './groups.component';
 
-describe('SlidersComponent', () => {
-  let component: SlidersComponent;
-  let fixture: ComponentFixture<SlidersComponent>;
+describe('GroupsComponent', () => {
+  let component: GroupsComponent;
+  let fixture: ComponentFixture<GroupsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SlidersComponent ]
+      declarations: [ GroupsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SlidersComponent);
+    fixture = TestBed.createComponent(GroupsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
