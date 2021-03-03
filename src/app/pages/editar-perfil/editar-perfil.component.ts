@@ -25,12 +25,13 @@ export class EditarPerfilComponent implements OnInit {
   {
   }
 
-   //Load county selected in input from form 
+  //Load county selected in input from form 
   public selectedCountry(countrySelected: any):void
   {
-    const containerInputCountry = document.getElementById('countryInput') as HTMLInputElement;
-    containerInputCountry.value = countrySelected;
-
+      const containerInputCountry = document.getElementById('countryInput') as HTMLInputElement;
+      containerInputCountry.value = countrySelected;
+      var containerListCountriesUl = document.getElementById('listCountriesUl');
+      containerListCountriesUl.style.display = 'none';
   };
 
   ngOnInit(): void {
@@ -50,8 +51,8 @@ export class EditarPerfilComponent implements OnInit {
     countriesInput.addEventListener("blur", () => 
     {
       //No show List Countries
-      var containerListCountriesUl = document.getElementById('listCountriesUl');
-      containerListCountriesUl.style.display = 'none';
+      //var containerListCountriesUl = document.getElementById('listCountriesUl');
+     // containerListCountriesUl.style.display = 'none';
     });
 
     //Load default pictures
@@ -83,8 +84,6 @@ export class EditarPerfilComponent implements OnInit {
         preview.append(img); 
       };
   }
-
-
   
 }
 

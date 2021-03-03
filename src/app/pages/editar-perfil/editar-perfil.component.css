@@ -27,8 +27,6 @@
     margin: 0;
     overflow: scroll;
     overflow-x: hidden;
-    position:relative;
-    z-index:22;
 }
 
 .especifyInput

@@ -36,12 +36,11 @@
               <span class="desc">Pulse aquí para añadir tú foto de perfil</span> -->
           </div>
         </div>
-        <br><br>
+        <br>
 
-        <div class="col">
           <form class="needs-validation" novalidate > <!-- [formGroup]="formEdit" -->
-            <div class="row g-3">
-              <div class="col-sm-6">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
                 <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
                 <input  formControlName="nick"
                         type="text" class="form-control" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" required>
@@ -50,7 +49,7 @@
                     </div>
               </div>
   
-              <div class="col-sm-6">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
                 <label for="emailInput" class="form-label float-left">Correo <span class="text-muted">*</span></label>
                 <input  formControlName="email"
                         type="email" class="form-control" id="emailInput" placeholder="tucorreo@ejemplo.com" required>
@@ -58,8 +57,10 @@
                         Please enter a valid email address for shipping updates.
                     </div>
               </div>
-              
-              <div class="col-4 mt-2"><br>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3"><br>
                 <label for="generoInput" class="form-label float-left">Genero</label>
                   <input  formControlName="gender"
                           type="text" class="form-control" id="generoInput" placeholder="Sin especificar" required>
@@ -68,7 +69,7 @@
                     </div>
               </div>
   
-              <div class="col-4 mt-2"><br>
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3"><br>
                 <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted">*</span></label>
                 <input  formControlName="birthday"
                         type="date" class="form-control" id="dateBirthInput" placeholder="">
@@ -77,29 +78,18 @@
                 </div>
               </div>
   
-              <div class="col-4 mt-2"><br>
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3"><br>
                 <label for="countryInput" class="form-label float-left" >País <span class="text-muted">*</span></label>
 
                 <input type="text" id="countryInput" class="form-control" placeholder="Sin especificar" required>
-                    <ul id="listCountriesUl" class="listUl">
+                    <ul formControlName="country" id="listCountriesUl" class="listUl">
                       <span *ngFor="let dato of this.arrayResultFromService">
-                        <li class="listIl" (click)="selectedCountry(this.dato);" data-country="{{dato}}">{{dato}}</li>
+                        <li class="listIl" (click)="selectedCountry(this.dato);">{{dato}}</li>
                       </span>
                     </ul>
-
-
-<!--                <select  formControlName="country"
-                        class="form-control" id="countryInput" placeholder="Sin especificar" required>
-                
-                  <option *ngFor="let country of listCountries">  
-                    {{country.name}}
-                  </option>
-                </select> -->
-                <div class="invalid-feedback">
-                  Please enter your shipping address.
-                </div>
               </div>
-
+            </div>
+            
               <!-- <div class="col-6 mt-3"><br>
                 <label for="passwordInput" class="form-label float-left">Contraseña <span class="text-muted">*</span></label>
                 <div class="input-group">
@@ -131,55 +121,58 @@
                     Please enter your shipping address.
                 </div>
                 </div> -->
+              <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+                      <img src="../assets/img/social-icons/facebook-icon.png" class="social-icon mr-3"/>
+                      <label for="facebookInput" class="form-label">facebook.com/</label>
+                  </div>
+                  <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
+                      <input  formControlName="facebook"
+                              type="text" class="form-control especifyInput" id="facebookInput" placeholder="(vacío)">
+                  </div>
 
-                <div class="col-2 form-inline mt-5">
-                    <img src="../assets/img/social-icons/facebook-icon.png" class="social-icon mr-3"/>
-                    <label for="facebookInput" class="form-label">facebook.com/</label>
-                </div>
-                <div class="col-4 mt-5">
-                    <input  formControlName="facebook"
-                            type="text" class="form-control especifyInput" id="facebookInput" placeholder="(vacío)">
-                </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
+                      <img src="../assets/img/social-icons/github-icon.png" class="social-icon mr-3"/>
+                      <label for="githubInput" class="form-label">github.com/</label>
+                  </div>
+                  <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
+                      <input  formControlName="github"
+                              type="text" class="form-control especifyInput" id="githubInput" placeholder="(vacío)">
+                  </div>
+              </div>
 
-                <div class="col-2 form-inline mt-5">
-                    <img src="../assets/img/social-icons/github-icon.png" class="social-icon mr-3"/>
-                    <label for="githubInput" class="form-label">github.com/</label>
-                </div>
-                <div class="col-4 mt-5">
-                    <input  formControlName="github"
-                            type="text" class="form-control especifyInput" id="githubInput" placeholder="(vacío)">
-                </div>
-
-                <div class="col-2 form-inline mt-5">
+              <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
                     <img src="../assets/img/social-icons/linkedin-icon.png" class="social-icon mr-3"/>
                     <label for="linkedinInput" class="form-label">linkedin.com/in/</label>
                 </div>
-                <div class="col-4 mt-5">
+                <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
                     <input 
                             formControlName="linkedin"
                             type="text" class="form-control especifyInput" id="linkedinInput" placeholder="(vacío)">
                 </div>
 
-                <div class="col-2 form-inline mt-5">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt-5">
                     <img src="../assets/img/social-icons/twitter-icon.png" class="social-icon mr-3"/>
                     <label for="twitterInput" class="form-label">twitter.com/</label>
                 </div>
-                <div class="col-4 mt-5">
+                <div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 mt-5">
                   <input  formControlName="twitter"
                             type="text" class="form-control especifyInput" id="twitterInput" placeholder="(vacío)">
                 </div>
-
-                <div class="col-12 mt-3"><br>
+              </div>
+              <div class="row">            
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4"><br>
                     <label for="biografiaInput" class="form-label float-left">Biografía</label>
                     <textarea  formControlName="biography"
                                rows="3" class="form-control" id="biografiaInput" placeholder=""></textarea>
                 </div>
-            </div>
+              </div>
   
             <hr class="my-4">
-            <button class="w-12 btn btn-primary btn-lg float-right" type="submit">Guardar cambios</button>
+            <button class="w-12 btn btn-primary btn-lg float-right" type="submit">Cambiar password</button>
+            <button class="w-12 btn btn-primary btn-lg float-right" type="button">Guardar cambios</button>
           </form>
-        </div>
       </div>
 
 
