@@ -28,5 +28,6 @@ import { EditUserServiceService } from './editar-perfil/edit-user-service.servic
   ],
   exports: [EditarPerfilComponent],
   providers: [EditUserServiceService]
+
 })
 export class PagesModule { }

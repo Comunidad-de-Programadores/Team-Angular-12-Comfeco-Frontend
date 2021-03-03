@@ -10,10 +10,10 @@ const routes: Routes = [{
   path: 'client',
   component: PagesComponent,
   children: [
-    { path: 'inicio', component: HomeComponent },
+    //{ path: 'inicio', component: HomeComponent },
     { path: 'perfil', component: MainProfileComponent },
-    { path: 'editar-perfil', component: EditarPerfilComponent },
-    { path: '', redirectTo: 'inicio', pathMatch: 'full' }
+    { path: 'editarperfil', component: EditarPerfilComponent },
+    //{ path: '', redirectTo: 'inicio', pathMatch: 'full' }
   ]
 }
 ];

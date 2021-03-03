@@ -17,6 +17,7 @@ export const routes: Routes = [
       AuthRoutingModule,
       PagesRoutingModule
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    
   })
 export class AppRoutingModule { }

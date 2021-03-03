@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <div class="card text-center">
             <div class="card-header header-profile">
-              <a class="float-right" href="#" title="Editar Perfil"><i class="fas fa-user-edit btn-edit-profile"></i></a>  
+              <a class="float-right" [routerLink]="['/client/editarperfil']" title="Editar Perfil"><i class="fas fa-user-edit btn-edit-profile"></i></a>  <!-- Edit User -->
               <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
             </div>
             <div class="card-body">
