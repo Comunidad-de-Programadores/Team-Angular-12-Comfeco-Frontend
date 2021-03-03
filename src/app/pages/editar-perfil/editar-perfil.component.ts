@@ -1,142 +1,126 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Country, ListCountries } from 'src/app/models/Country';
-import { EditUserServiceService } from './edit-user-service.service';
+import { CountryService } from 'src/app/services/country.service';
 
 //Podemoms usar jQuery, ahora
-declare var jQuery:any;
-declare var $:any;
+// declare var jQuery:any;
+// declare var $:any;
 
 @Component({
   selector: 'app-editar-perfil',
   templateUrl: './editar-perfil.component.html',
   styleUrls: ['./editar-perfil.component.css']
 })
+export class EditarPerfilComponent implements OnInit {
 
+  file: File;
+  nameFile: string;
+  imagePath: string|ArrayBuffer;
+  listCountries = [];
 
-export class EditarPerfilComponent implements OnInit
-{
-  //Load Countries, created result countries from service
-  listCountries: ListCountries;
-  arrayResultFromService: Array<String> = [];
-  resultado: string;
-  
-  //Form React
-  formEditPerfil = new FormGroup({
-    nickInput: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
-    emailInput: new FormControl('', [Validators.required, Validators.email]),
-    generoInput: new FormControl('', [Validators.maxLength(60)]),
-    dateBirthInput: new FormControl('', [Validators.required]),
-    countryInput: new FormControl('', [Validators.required]),
-    facebookInput: new FormControl('', [ Validators.maxLength(60)]),
-    githubInput: new FormControl('', [ Validators.maxLength(60)]),
-    linkedinInput: new FormControl('', [ Validators.maxLength(60)]),
-    twitterInput: new FormControl('', [ Validators.maxLength(60)]),
-    biografiaInput: new FormControl('', [Validators.maxLength(1000)]),
+  formEdit = new FormGroup({
+    nick: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+    gender: new FormControl('', [Validators.required]),
+    birthday: new FormControl('', [Validators.required]),
+    country: new FormControl('', [Validators.required]),
+    biography: new FormControl('', [Validators.required]),
+    facebook: new FormControl('', [Validators.required]),
+    github: new FormControl('', [Validators.required]),
+    linkedin: new FormControl('', [Validators.required]),
+    twitter: new FormControl('', [Validators.required]),
   });
 
-  submit() {
-    if (this.formEditPerfil.valid)
-      this.resultado = "Todos los datos son válidos";
-    else
-      this.resultado = "Hay datos inválidos en el formulario";
-  }
-
-  constructor(public servicecountries: EditUserServiceService)
-  {
-  }
-
-  //Load county selected in input from form 
-  public selectedCountry(countrySelected: any):void
-  {
-      const containerInputCountry = document.getElementById('countryInput') as HTMLInputElement;
-      containerInputCountry.value = countrySelected;
-      var containerListCountriesUl = document.getElementById('listCountriesUl');
-      containerListCountriesUl.style.display = 'none';
-  };
+  constructor(private countries: CountryService) {
+   }
 
   ngOnInit(): void {
-   
-    //Load input time real
-    const countriesInput = document.getElementById('countryInput') as HTMLInputElement;
-    
-    countriesInput.addEventListener("input", () => 
-    {
-      this.arrayResultFromService = this.servicecountries.getCountriesCountrys(countriesInput.value);
 
-      //Show List Countries
-      var containerListCountriesUl = document.getElementById('listCountriesUl');
-      containerListCountriesUl.style.display = 'block';
-    });
+    this.getCountries();
+    this.initForm();
 
-    //countriesInput.addEventListener("blur", () => 
-    //{
-      //No show List Countries
-      //var containerListCountriesUl = document.getElementById('listCountriesUl');
-     // containerListCountriesUl.style.display = 'none';
-    //});
+  //   document.getElementById("file").onchange = function (e:Event) {
+  //   // Creamos el objeto de la clase FileReader
+  //   let reader = new FileReader();
 
-    //Load default pictures
-    let preview = document.getElementById('preview');
+  //   const target = e.target as HTMLInputElement;
 
-    preview.setAttribute("style", "background:url('../assets/img/user-edit/user-empty.png') no-repeat center;background-size:115px;background-color:gray;");
+  //   // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+  //   reader.readAsDataURL(target.files[0]);
 
-    document.getElementById("file").onchange = function (e:Event)
-    {
-      // Creamos el objeto de la clase FileReader
-      let reader = new FileReader();
-      const target = e.target as HTMLInputElement;
+  //   // Le decimos que cuando este listo ejecute el código interno
+  //   reader.onload = function () {
+  //     let preview = document.getElementById('preview');
 
-      // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-      reader.readAsDataURL(target.files[0]);
+  //     let img = <HTMLImageElement> document.createElement('img');
 
-      // Le decimos que cuando este listo ejecute el código interno
-      reader.onload = function ()
-      {
-        let preview = document.getElementById('preview');
+  //     img.setAttribute("src", reader.result as string);
+  //     img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-125px;");
 
-        let img = <HTMLImageElement> document.createElement('img');
-
-        img.setAttribute("src", reader.result as string);
-        img.setAttribute("id", "newImgEditUser");
-        img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-80px;");
-
-        //preview.innerHTML = '';
-        preview.append(img); 
-      };
-  }
-  
+  //     //preview.innerHTML = '';
+  //     preview.append(img);
+  //   };
+  // }
 }
 
-//Show the password with those function with the event.
-mostrarPassword()
-{
-  var cambio = document.getElementById("passwordInput") as HTMLInputElement;
-  if(cambio.type == "password"){
-    cambio.type = "text";
-    $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-  }
-  else
-  {
-    cambio.type = "password";
-    $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-  }
-};
+changeListener($event): void {
+  this.file = $event.target.files[0];
+  console.log(this.file);
+  this.nameFile = this.file['name'];
+  this.readThis($event.target);
+}
 
-mostrasPasswordRepeat()
-{
-  var cambio = document.getElementById("passwordRepeatInput") as HTMLInputElement;
-  if(cambio.type == "password"){
-    cambio.type = "text";
-    $('#iconShow').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-  }
-  else
-  {
-    cambio.type = "password";
-    $('#iconShow').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-  }
-};
+readThis(inputValue: any): void {
+  const file: File = inputValue.files[0];
+  const myReader: FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.imagePath = myReader.result;
+  };
+  
+  myReader.readAsDataURL(file);
+}
+
+async getCountries(){
+  const res: any = await this.countries.getCountries().toPromise();
+  this.listCountries = res;
+}
+
+initForm(){
+  this.formEdit.get('nick').setValue('123');
+}
+
+
+
+
+
+
+// mostrarPassword()
+// {
+//   var cambio = document.getElementById("passwordInput") as HTMLInputElement;
+//   if(cambio.type == "password"){
+//     cambio.type = "text";
+//     $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+//   }
+//   else
+//   {
+//     cambio.type = "password";
+//     $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+//   }
+// };
+
+// mostrasPasswordRepeat()
+// {
+//   var cambio = document.getElementById("passwordRepeatInput") as HTMLInputElement;
+//   if(cambio.type == "password"){
+//     cambio.type = "text";
+//     $('#iconShow').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+//   }
+//   else
+//   {
+//     cambio.type = "password";
+//     $('#iconShow').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+//   }
+// };
 
 }

@@ -4,36 +4,6 @@
     height: 24px;
 }
 
-.listIl
-{
-    list-style:none;
-    padding: 1px;
-    margin-left: 12px;
-}
-
-.listIl:first-child
-{
-    margin-top:20px;
-}
-
-.listUl
-{
-    cursor: pointer !important;
-    display:none;
-    width: 95%;
-    height: 20em;
-    line-height: 2em;
-    border: 1px solid #ccc;
-    padding: 0;
-    margin: 0;
-    overflow: scroll;
-    overflow-x: hidden;
-    color:black !important;
-    position: absolute;
-    z-index:80;
-    background-color:white;
-}
-
 .especifyInput
 {
     width: 100%;
@@ -42,13 +12,12 @@
 
 /* Estilo del área del input[file] */
 .drag-drop {
-    cursor: pointer !important;
     height: 8em;
     width: 8em;
     background-color: #ccc;
     border-radius: 4em;
-    /* text-align: center; 
-    color: white;  */
+    text-align: center;
+    color: white;
     position: relative;
     margin: 0 auto 1em;
 }
@@ -57,7 +26,7 @@
     display: block;
     font-size: .7em;
     padding: 0 .5em;
-    color: white;
+    color: #000;
 }
 
 .drag-drop img{
@@ -74,7 +43,6 @@
 }
 
 input[type="file"] {
-        cursor: pointer !important;
         height: 10em;
         opacity: 0;
         position: absolute;
@@ -93,7 +61,6 @@ input[type="file"] {
 
 /* .drag-drop:hover span.desc {
     color: #fff;
-    text-decoration: underline white;
 } 
 
 .drag-drop:hover .pulsating {

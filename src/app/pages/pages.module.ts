@@ -13,7 +13,6 @@ import { GroupsComponent } from './groups/groups.component';
 import { EventsComponent } from './events/events.component';
 import { MainProfileComponent } from './main-profile/main-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditUserServiceService } from './editar-perfil/edit-user-service.service';
 
 
 @NgModule({
@@ -24,10 +23,8 @@ import { EditUserServiceService } from './editar-perfil/edit-user-service.servic
     SharedModule,
     ComponentsModule,
     NgxUsefulSwiperModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  exports: [EditarPerfilComponent],
-  providers: [EditUserServiceService]
-
+  exports: [EditarPerfilComponent]
 })
 export class PagesModule { }

@@ -12,7 +12,7 @@ const routes: Routes = [{
   children: [
     { path: 'inicio', component: HomeComponent },
     { path: 'perfil', component: MainProfileComponent },
-    { path: 'editarperfil', component: EditarPerfilComponent },
+    { path: 'editar-perfil', component: EditarPerfilComponent },
     { path: '', redirectTo: 'inicio', pathMatch: 'full' }
   ]
 }
