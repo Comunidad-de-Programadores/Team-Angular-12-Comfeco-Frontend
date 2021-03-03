@@ -77,13 +77,14 @@ readThis(inputValue: any): void {
   myReader.onloadend = (e) => {
     this.imagePath = myReader.result;
   };
-  
+
   myReader.readAsDataURL(file);
 }
 
 async getCountries(){
   const res: any = await this.countries.getCountries().toPromise();
   this.listCountries = res;
+  console.log(this.listCountries);
 }
 
 initForm(){
