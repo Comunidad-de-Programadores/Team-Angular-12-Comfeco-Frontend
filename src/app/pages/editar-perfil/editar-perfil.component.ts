@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Country, ListCountries } from 'src/app/models/Country';
+import { EditUserServiceService } from './edit-user-service.service';
 
 //Podemoms usar jQuery, ahora
 declare var jQuery:any;
@@ -13,11 +17,32 @@ declare var $:any;
 
 export class EditarPerfilComponent implements OnInit {
   
-  private switchs: Boolean;
+  //Load Countries, created result countries from service
+  listCountries: ListCountries;
+  arrayResultFromService: Array<String> = [];
 
-  constructor() { this.switchs = false; }
+  constructor(public servicecountries: EditUserServiceService)
+  {
+  }
+
+  /*loadDates(pais:String)
+  {
+    this.listCountries = this.service.getCountriesCountrys(pais);
+    console.log(this.listCountries);
+  }*/
 
   ngOnInit(): void {
+
+    //Load input time real
+    const countriesInput = document.getElementById('countryInput') as HTMLInputElement;
+    
+    countriesInput.addEventListener("input", () => 
+    {
+      this.arrayResultFromService = this.servicecountries.getCountriesCountrys(countriesInput.value);
+
+      //console.log("x-> " + this.servicecountries.getCountriesCountrys(countriesInput.value));
+    });
+
 
     //Load default pictures
     let preview = document.getElementById('preview');

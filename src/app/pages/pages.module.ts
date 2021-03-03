@@ -8,6 +8,7 @@ import { ComponentsModule } from '../components/components.module';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { ProfileComponent } from './profile/profile.component';
 import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { EditUserServiceService } from './editar-perfil/edit-user-service.service';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
     ComponentsModule,
     NgxUsefulSwiperModule
   ],
-  exports: [EditarPerfilComponent]
+  exports: [EditarPerfilComponent],
+  providers: [EditUserServiceService]
 })
 export class PagesModule { }

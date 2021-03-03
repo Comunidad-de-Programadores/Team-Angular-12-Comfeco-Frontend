@@ -6,8 +6,8 @@
     <main>
       <div class="py-5 text-center">
 
-        <h4 class="mb-3">Editar perfil</h4>
-
+        <h3 class="mb-3">Editar perfil</h3>
+        <br>
         <div id="preview" class="drag-drop">
             <input type="file" multiple="multiple" id="file"/>
             <span class="fa-stack fa-2x">
@@ -60,6 +60,11 @@
               <div class="col-4 mt-2"><br>
                 <label for="countryInput" class="form-label float-left" >País <span class="text-muted">*</span></label>
                 <input type="text" class="form-control" id="countryInput" placeholder="Sin especificar" required>
+                  <select id="listCenTra">
+                    <option value="" *ngFor="let dato of this.arrayResultFromService">
+                      {{dato}}
+                  </option>
+                  </select>
                 <div class="invalid-feedback">
                   Please enter your shipping address.
                 </div>
