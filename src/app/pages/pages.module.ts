@@ -12,6 +12,7 @@ import { BadgesComponent } from './badges/badges.component';
 import { GroupsComponent } from './groups/groups.component';
 import { EventsComponent } from './events/events.component';
 import { MainProfileComponent } from './main-profile/main-profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MainProfileComponent } from './main-profile/main-profile.component';
     RouterModule,
     SharedModule,
     ComponentsModule,
-    NgxUsefulSwiperModule
+    NgxUsefulSwiperModule,
+    ReactiveFormsModule
   ],
   exports: [EditarPerfilComponent]
 })
