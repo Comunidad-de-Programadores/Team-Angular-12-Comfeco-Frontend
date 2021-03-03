@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-=======
-<p>editar-perfil works!</p>
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> 5d85f7a49387cea34a14585134350068f606201d
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 <div class="container">
-    <main>
       <div class="py-5 text-center">
-
-<<<<<<< HEAD
         <h3 class="mb-3">Editar perfil</h3>
         <br>
         <div id="preview" class="drag-drop">
@@ -25,8 +17,8 @@
 
             </span>
             <span class="desc">Pulse aquí para añadir tú foto de perfil</span>
-=======
-        <h4 class="mb-3">Editar perfil</h4>
+
+        <!-- <h4 class="mb-3">Editar perfil</h4>
 
         <div>
           <div id="preview" class="drag-drop">
@@ -43,13 +35,11 @@
               </span>
               <span class="desc">Pulse aquí para añadir tú foto de perfil</span> -->
           </div>
->>>>>>> 5d85f7a49387cea34a14585134350068f606201d
         </div>
-
         <br><br>
 
         <div class="col">
-          <form class="needs-validation" novalidate [formGroup]="formEdit">
+          <form class="needs-validation" novalidate > <!-- [formGroup]="formEdit" -->
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
@@ -89,22 +79,22 @@
   
               <div class="col-4 mt-2"><br>
                 <label for="countryInput" class="form-label float-left" >País <span class="text-muted">*</span></label>
-<<<<<<< HEAD
-                <input type="text" class="form-control" id="countryInput" placeholder="Sin especificar" required>
-                  <select id="listCenTra">
-                    <option value="" *ngFor="let dato of this.arrayResultFromService">
-                      {{dato}}
-                  </option>
-                  </select>
-=======
-                <select  formControlName="country"
+
+                <input type="text" id="countryInput" class="form-control" placeholder="Sin especificar" required>
+                    <ul id="listCountriesUl" class="listUl">
+                      <span *ngFor="let dato of this.arrayResultFromService">
+                        <li class="listIl" (click)="selectedCountry(this.dato);" data-country="{{dato}}">{{dato}}</li>
+                      </span>
+                    </ul>
+
+
+<!--                <select  formControlName="country"
                         class="form-control" id="countryInput" placeholder="Sin especificar" required>
                 
                   <option *ngFor="let country of listCountries">  
                     {{country.name}}
                   </option>
-                </select>
->>>>>>> 5d85f7a49387cea34a14585134350068f606201d
+                </select> -->
                 <div class="invalid-feedback">
                   Please enter your shipping address.
                 </div>
@@ -191,9 +181,8 @@
           </form>
         </div>
       </div>
-    </main>
 
-</div>
+
 <br><br><br><br>
   
   

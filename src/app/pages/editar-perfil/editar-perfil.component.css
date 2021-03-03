@@ -4,6 +4,33 @@
     height: 24px;
 }
 
+.listIl
+{
+    list-style:none;
+    padding: 1px;
+    margin-left: 12px;
+}
+
+.listIl:first-child
+{
+    margin-top:20px;
+}
+
+.listUl
+{
+    display:none;
+    width: 100%;
+    height: 20em;
+    line-height: 2em;
+    border: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    position:relative;
+    z-index:22;
+}
+
 .especifyInput
 {
     width: 100%;
