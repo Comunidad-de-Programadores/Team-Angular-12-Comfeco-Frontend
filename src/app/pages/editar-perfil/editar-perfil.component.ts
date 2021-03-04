@@ -1,13 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Country, ListCountries } from 'src/app/models/Country';
 import { EditUserServiceService } from './edit-user-service.service';
 
-//Podemoms usar jQuery, ahora
-declare var jQuery:any;
-declare var $:any;
+
 
 @Component({
   selector: 'app-editar-perfil',
@@ -23,20 +21,6 @@ export class EditarPerfilComponent implements OnInit
   arrayResultFromService: Array<String> = [];
   resultado: string;
   
-  //Form React
-  formEditPerfil = new FormGroup({
-    nickInput: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
-    emailInput: new FormControl('', [Validators.required, Validators.email]),
-    generoInput: new FormControl('', [Validators.maxLength(60)]),
-    dateBirthInput: new FormControl('', [Validators.required]),
-    countryInput: new FormControl('', [Validators.required]),
-    facebookInput: new FormControl('', [ Validators.maxLength(60)]),
-    githubInput: new FormControl('', [ Validators.maxLength(60)]),
-    linkedinInput: new FormControl('', [ Validators.maxLength(60)]),
-    twitterInput: new FormControl('', [ Validators.maxLength(60)]),
-    biografiaInput: new FormControl('', [Validators.maxLength(1000)]),
-  });
-
   submit() {
     if (this.formEditPerfil.valid)
       this.resultado = "Todos los datos son válidos";
@@ -44,8 +28,9 @@ export class EditarPerfilComponent implements OnInit
       this.resultado = "Hay datos inválidos en el formulario";
   }
 
-  constructor(public servicecountries: EditUserServiceService)
+  constructor(public servicecountries: EditUserServiceService, private fb: FormBuilder)
   {
+
   }
 
   //Load county selected in input from form 
@@ -56,6 +41,26 @@ export class EditarPerfilComponent implements OnInit
       var containerListCountriesUl = document.getElementById('listCountriesUl');
       containerListCountriesUl.style.display = 'none';
   };
+
+  //Form React
+     formEditPerfil = new FormGroup({
+      nick: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]),
+      emailInput: new FormControl('', [Validators.required, Validators.email]),
+      generoInput: new FormControl('', [Validators.maxLength(60)]),
+      dateBirthInput: new FormControl('', [Validators.required]),
+      countryInput: new FormControl('', [Validators.required]),
+      facebookInput: new FormControl('', [ Validators.maxLength(60)]),
+      githubInput: new FormControl('', [ Validators.maxLength(60)]),
+      linkedinInput: new FormControl('', [ Validators.maxLength(60)]),
+      twitterInput: new FormControl('', [ Validators.maxLength(60)]),
+      biografiaInput: new FormControl('', [Validators.maxLength(1000)])
+    });
+
+
+  checkValid(campo: string)
+  {
+    return this.formEditPerfil.get(campo).invalid && this.formEditPerfil.get(campo).touched;
+  }
 
   ngOnInit(): void {
    
@@ -109,34 +114,5 @@ export class EditarPerfilComponent implements OnInit
   }
   
 }
-
-//Show the password with those function with the event.
-mostrarPassword()
-{
-  var cambio = document.getElementById("passwordInput") as HTMLInputElement;
-  if(cambio.type == "password"){
-    cambio.type = "text";
-    $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-  }
-  else
-  {
-    cambio.type = "password";
-    $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-  }
-};
-
-mostrasPasswordRepeat()
-{
-  var cambio = document.getElementById("passwordRepeatInput") as HTMLInputElement;
-  if(cambio.type == "password"){
-    cambio.type = "text";
-    $('#iconShow').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-  }
-  else
-  {
-    cambio.type = "password";
-    $('#iconShow').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-  }
-};
 
 }

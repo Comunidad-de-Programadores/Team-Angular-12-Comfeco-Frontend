@@ -38,24 +38,31 @@
         </div>
         <br>
 
-          <form class="needs-validation" [formGroup]="formEditPerfil" (ngSubmit)="submit()" novalidate > <!-- [formGroup]="formEdit" -->
+          <form [formGroup]="formEditPerfil" (ngSubmit)="submit()"> <!-- novalidate [formGroup]="formEdit" -->
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
-                <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
-                <input formControlName="nickInput" maxlength="60"
-                        type="text" class="form-control" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" required>
-                    <div class="invalid-feedback">
+                <label for="nick" class="form-label float-left">Nick <span class="text-muted">*</span></label>
+                <input formControlName="nick" maxlength="60"
+                        type="text" class="form-control" id="nick" placeholder="Nick de usuario, el que verán los usuarios" value="" required/>
+                <div class="text-danger" *ngIf="checkValid('nick')"> <!-- Validation for nick -->
+                    <div *ngIf="this.formEditPerfil.get('nick').errors?.required">
                         Valid first name is required.
                     </div>
+                  </div>
               </div>
   
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4">
                 <label for="emailInput" class="form-label float-left">Correo <span class="text-muted">*</span></label>
                 <input type="email" formControlName="emailInput" maxlength="60"
                 class="form-control" id="emailInput" placeholder="tucorreo@ejemplo.com" required>
-                    <div class="invalid-feedback">
+                <div class="text-danger" *ngIf="checkValid('emailInput')">
+                  <div *ngIf="this.formEditPerfil.get('emailInput').errors?.required">
                         Please enter a valid email address for shipping updates.
-                    </div>
+                  </div>
+                  <div *ngIf="this.formEditPerfil.get('emailInput').errors?.email">
+                    Don't is a email.
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -73,8 +80,10 @@
                 <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted">*</span></label>
                 <input formControlName="dateBirthInput"
                         type="date" class="form-control" id="dateBirthInput" placeholder="">
-                <div class="invalid-feedback">
-                  Please enter a valid email address for shipping updates.
+                <div class="text-danger" *ngIf="checkValid('dateBirthInput')">
+                  <div *ngIf="this.formEditPerfil.get('dateBirthInput').errors?.required">    
+                    Don't write a date.
+                  </div>
                 </div>
               </div>
   
@@ -88,6 +97,11 @@
                         <li class="listIl" (click)="selectedCountry(this.dato);">{{dato}}</li>
                       </span>
                     </ul>
+                <div class="text-danger" *ngIf="checkValid('countryInput')">
+                  <div *ngIf="this.formEditPerfil.get('countryInput').errors?.required">    
+                    Don't write a country.
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -164,14 +178,14 @@
               <div class="row">            
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4"><br>
                     <label for="biografiaInput" class="form-label float-left">Biografía</label>
-                    <textarea  
+                    <textarea formControlName="biografiaInput"
                                rows="3" class="form-control" id="biografiaInput" placeholder=""></textarea>
                 </div>
               </div>
   
             <hr class="my-4">
-            <button class="w-12 btn btn-primary btn-lg float-right" type="submit">Cambiar password</button>
             <button class="w-12 btn btn-primary btn-lg float-right" type="button">Guardar cambios</button>
+            <button onclick="window.location=href='client/editarperfilpassword/'" class="w-12 btn btn-primary btn-lg float-right spacingButton" type="button">Cambiar password</button>
           </form>
       </div>
       <br><br><br><br>

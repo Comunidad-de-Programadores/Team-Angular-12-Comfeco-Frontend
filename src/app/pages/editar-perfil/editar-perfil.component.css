@@ -16,6 +16,17 @@
     margin-top:20px;
 }
 
+.spacingButton
+{
+    margin-right: 10px;
+}
+
+.text-danger
+{
+    position: absolute;
+    padding: 2px;
+}
+
 .listUl
 {
     cursor: pointer !important;
