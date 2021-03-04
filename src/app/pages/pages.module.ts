@@ -13,12 +13,10 @@ import { GroupsComponent } from './groups/groups.component';
 import { EventsComponent } from './events/events.component';
 import { MainProfileComponent } from './main-profile/main-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditUserServiceService } from './editar-perfil/edit-user-service.service';
-import { EditarPerfilPasswordComponent } from './editar-perfil-password/editar-perfil-password.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, HomeComponent, ProfileComponent, EditarPerfilComponent, BadgesComponent, GroupsComponent, EventsComponent, MainProfileComponent, EditarPerfilPasswordComponent],
+  declarations: [PagesComponent, HomeComponent, ProfileComponent, EditarPerfilComponent, BadgesComponent, GroupsComponent, EventsComponent, MainProfileComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,8 +25,6 @@ import { EditarPerfilPasswordComponent } from './editar-perfil-password/editar-p
     NgxUsefulSwiperModule,
     ReactiveFormsModule
   ],
-  exports: [EditarPerfilComponent, EditarPerfilPasswordComponent],
-  providers: [EditUserServiceService]
-
+  exports: [EditarPerfilComponent]
 })
 export class PagesModule { }
