@@ -22,21 +22,24 @@ export class ProfileComponent implements OnInit {
   ];
 
   config: SwiperOptions = {
-    slidesPerView: 2,
+    slidesPerView: 4,
     autoplay: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
     breakpoints: {
-      1024: {
+      1280: {
         slidesPerView: 4
       },
-      768: {
-        slidesPerView: 4
+      1024: {
+        slidesPerView: 3
       },
       425: {
         slidesPerView: 2
+      },
+      375: {
+        slidesPerView: 1
       }
     }
   };

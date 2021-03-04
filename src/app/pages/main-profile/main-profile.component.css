@@ -1,3 +1,43 @@
 .border-profile {
     border: 1px solid #4e73df;
 }
+
+.profile-background {
+    background-color: white !important;
+    color: #4e73df !important;
+}
+
+.profile-background.active {
+    background-color: #4e73df !important;
+    color: white !important;
+}
+
+.badge-background {
+    background-color: white !important;
+    color: #1cc88a !important;
+}
+
+.badge-background.active {
+    background-color: #1cc88a !important;
+    color: white !important;
+}
+
+.groups-background {
+    background-color: white !important;
+    color: #36b9cc !important;
+}
+
+.groups-background.active {
+    background-color: #36b9cc !important;
+    color: white !important;
+}
+
+.events-background {
+    background-color: white !important;
+    color: #f6c23e !important;
+}
+
+.events-background.active {
+    background-color: #f6c23e !important;
+    color: white !important;
+}

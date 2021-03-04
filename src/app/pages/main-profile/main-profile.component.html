@@ -3,27 +3,29 @@
     <div class="row">
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow btn" (click)="changeMenu('profile')">
+            <div class="card profile-background shadow btn" [ngClass]="(activeView == 'profile') ? 'active' : 'border-left-primary'" (click)="changeMenu('profile')">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="font-weight-bold text-primary text-uppercase">
+                            <div class="font-weight-bold text-uppercase">
                                 Mi perfil</div>
                         </div>
                         <div class="col-auto text-center">
-                            <i class="fas fa-user-circle fa-2x"></i>
+                            <i class="fas fa-user fa-2x"></i>
                         </div>
                     </div>
                 </div>
+           </div>
+            <div *ngIf="activeView === 'profile'" class="row bg-primary animate__animated animate__fadeInLeft animate__faster" style="height: 4px;">
             </div>
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow btn" (click)="changeMenu('badges')">
+            <div class="card shadow badge-background btn" [ngClass]="(activeView == 'badges') ? 'active' : 'border-left-success'" (click)="changeMenu('badges')">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="font-weight-bold text-success text-uppercase">
+                            <div class="font-weight-bold text-uppercase">
                                 Insignias</div>
                         </div>
                         <div class="col-auto">
@@ -32,14 +34,15 @@
                     </div>
                 </div>
             </div>
+            <div *ngIf="activeView === 'badges'" class="row bg-success animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;"></div>
         </div>
         
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow btn" (click)="changeMenu('groups')">
+            <div class="card shadow groups-background btn" [ngClass]="(activeView == 'groups') ? 'active' : 'border-left-info'" (click)="changeMenu('groups')">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="font-weight-bold text-info text-uppercase">
+                            <div class="font-weight-bold text-uppercase">
                                 Grupos</div>
                         </div>
                         <div class="col-auto">
@@ -48,14 +51,15 @@
                     </div>
                 </div>
             </div>
+            <div *ngIf="activeView === 'groups'" class="row bg-info animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;"></div>
         </div>
         
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow btn" (click)="changeMenu('events')">
+            <div class="card shadow events-background btn" [ngClass]="(activeView == 'events') ? 'active' : 'border-left-warning'" (click)="changeMenu('events')">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="font-weight-bold text-warning text-uppercase">
+                            <div class="font-weight-bold text-uppercase">
                                 Eventos</div>
                         </div>
                         <div class="col-auto">
@@ -64,12 +68,13 @@
                     </div>
                 </div>
             </div>
+            <div *ngIf="activeView === 'events'" class="row bg-warning animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;"></div>
         </div>
     </div>
     
 </div>
 
-<div class="container-fluid bg-white p-2 border-profile">
+<div class="container-fluid bg-white p-2" [ngClass]="{'profile':'border border-primary', 'badges':'border border-success', 'groups':'border border-info', 'events':'border border-warning'}[activeView]">
     <div [ngSwitch]="activeView">
         <div *ngSwitchCase="'profile'">
             <app-profile></app-profile>

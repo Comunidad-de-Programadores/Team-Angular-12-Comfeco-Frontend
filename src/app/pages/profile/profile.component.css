@@ -10,7 +10,7 @@
 }
 
 .medal-img {
-    width: 2.5rem;
+    width: 3rem;
     height: auto;
     background-color: white;
     border-radius: 22%;
@@ -35,6 +35,6 @@
 }
 
 .img-event {
-    width: 11rem;
+    width: 100%;
     height: auto;
 }
