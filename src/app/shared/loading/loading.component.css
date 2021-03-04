@@ -1,0 +1,65 @@
+@media only screen and (max-width: 600px) {
+    section {
+        min-width: 350px;
+    }
+}
+
+.loader {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 75px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*LOADER-4*/
+
+.loader-4 {
+    border: 7px double #ff5722;
+    -webkit-animation: ball-turn 1s linear infinite;
+    animation: ball-turn 1s linear infinite;
+}
+
+.loader-4:before, .loader-4:after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ff5722;
+    border-radius: 50%;
+    bottom: 0;
+    right: 37px;
+}
+
+.loader-4:after {
+    left: 37px;
+    top: 0;
+}
+
+
+/* ----------------     KEYFRAMES    ----------------- */
+
+@-webkit-keyframes ball-turn {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ball-turn {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
