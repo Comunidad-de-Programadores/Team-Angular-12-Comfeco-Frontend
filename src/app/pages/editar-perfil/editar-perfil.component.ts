@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -63,56 +62,49 @@ export class EditarPerfilComponent implements OnInit
   }
 
   ngOnInit(): void {
-   
-    //Load input time real
-    const countriesInput = document.getElementById('countryInput') as HTMLInputElement;
-    
-    countriesInput.addEventListener("input", () => 
-    {
-      this.arrayResultFromService = this.servicecountries.getCountriesCountrys(countriesInput.value);
 
-      //Show List Countries
-      var containerListCountriesUl = document.getElementById('listCountriesUl');
-      containerListCountriesUl.style.display = 'block';
-    });
+    //this.getCountries();
+    //this.initForm();
 
-    //countriesInput.addEventListener("blur", () => 
-    //{
-      //No show List Countries
-      //var containerListCountriesUl = document.getElementById('listCountriesUl');
-     // containerListCountriesUl.style.display = 'none';
-    //});
+     document.getElementById("file").onchange = function (e:Event) {
+     // Creamos el objeto de la clase FileReader
+     let reader = new FileReader();
 
-    //Load default pictures
-    let preview = document.getElementById('preview');
+     const target = e.target as HTMLInputElement;
 
-    preview.setAttribute("style", "background:url('../assets/img/user-edit/user-empty.png') no-repeat center;background-size:115px;background-color:gray;");
+     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+     reader.readAsDataURL(target.files[0]);
 
-    document.getElementById("file").onchange = function (e:Event)
-    {
-      // Creamos el objeto de la clase FileReader
-      let reader = new FileReader();
-      const target = e.target as HTMLInputElement;
+     // Le decimos que cuando este listo ejecute el código interno
+     reader.onload = function () {
+       let preview = document.getElementById('preview');
 
-      // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-      reader.readAsDataURL(target.files[0]);
+       let img = <HTMLImageElement> document.createElement('img');
 
-      // Le decimos que cuando este listo ejecute el código interno
-      reader.onload = function ()
-      {
-        let preview = document.getElementById('preview');
+       img.setAttribute("src", reader.result as string);
+       img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-125px;");
 
-        let img = <HTMLImageElement> document.createElement('img');
+       //preview.innerHTML = '';
+       preview.append(img);
+     };
+   }
+}
 
-        img.setAttribute("src", reader.result as string);
-        img.setAttribute("id", "newImgEditUser");
-        img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-80px;");
+//changeListener($event): void {
+//  this.file = $event.target.files[0];
+//  console.log(this.file);
+//  this.nameFile = this.file['name'];
+//  this.readThis($event.target);
+//}
 
-        //preview.innerHTML = '';
-        preview.append(img); 
-      };
-  }
+//readThis(inputValue: any): void {
+//  const file: File = inputValue.files[0];
+//  const myReader: FileReader = new FileReader();
+
+//  myReader.onloadend = (e) => {
+//    this.imagePath = myReader.result;
+//  };
   
+//  myReader.readAsDataURL(file);*/
 }
 
-}

@@ -25,7 +25,7 @@ import { EditarPerfilPasswordComponent } from './editar-perfil-password/editar-p
     SharedModule,
     ComponentsModule,
     NgxUsefulSwiperModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [EditarPerfilComponent, EditarPerfilPasswordComponent],
   providers: [EditUserServiceService]
