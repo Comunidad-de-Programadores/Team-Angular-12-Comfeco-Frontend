@@ -8,13 +8,22 @@
             <div class="card-body">
               <h5 class="card-title">{{userData.nick}}</h5>
               <p class="card-text">Front Developer / UI/UX</p>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptates, minus architecto quasi debitis nesciunt error officia cum nulla, cupiditate molestias ab! Harum architecto dolorem optio qui aspernatur laboriosam necessitatibus.</p>
+              <p class="card-text"> {{userData.biography || '' }} </p>
             </div>
             <div class="card-footer text-muted">
               <div>
-                <i class="fab fa-twitter social-networks"></i>
-                <i class="fab fa-facebook social-networks"></i>
-                <i class="fab fa-instagram social-networks"></i>
+                  <a [href]="'https://www.'+userData.socialNetwork[3] " target="_blank"> 
+                      <i class="fab fa-twitter social-networks"></i>
+                  </a>
+                  <a [href]="'https://www.'+userData.socialNetwork[0] " target="_blank">
+                      <i class="fab fa-facebook social-networks"></i>
+                  </a>
+                  <a [href]="'https://www.'+userData.socialNetwork[1] " target="_blank">
+                      <i class="fab fa-github social-networks"></i>
+                  </a>
+                  <a [href]="'https://www.'+userData.socialNetwork[2] " target="_blank">
+                      <i class="fab fa-linkedin social-networks"></i>
+                  </a>
               </div>
             </div>
         </div>

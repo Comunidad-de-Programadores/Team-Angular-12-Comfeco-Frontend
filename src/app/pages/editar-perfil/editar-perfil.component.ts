@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { CountryService } from 'src/app/services/country.service';
-
-//Podemoms usar jQuery, ahora
-// declare var jQuery:any;
-// declare var $:any;
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-editar-perfil',
   templateUrl: './editar-perfil.component.html',
-  styleUrls: ['./editar-perfil.component.css']
+  styleUrls: ['./editar-perfil.component.css'],
 })
-export class EditarPerfilComponent implements OnInit {
-
+export class EditarPerfilComponent implements OnInit, OnDestroy {
   file: File;
   nameFile: string;
-  imagePath: string|ArrayBuffer;
+  imagePath: string | ArrayBuffer;
   listCountries = [];
+  subscription: Subscription;
 
   formEdit = new FormGroup({
     nick: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+    email: new FormControl('', [
+      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+    ]),
     gender: new FormControl('', [Validators.required]),
     birthday: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
@@ -31,96 +31,107 @@ export class EditarPerfilComponent implements OnInit {
     twitter: new FormControl('', [Validators.required]),
   });
 
-  constructor(private countries: CountryService) {
-   }
+  constructor(
+    private countries: CountryService,
+    private userService: UserService
+  ) {}
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
-
     this.getCountries();
     this.initForm();
+    this.subscription = this.userService.getUserSubject().subscribe(
+      (res)=>{
+        this.setFormData(res)
+      }
+    )
+  }
 
-  //   document.getElementById("file").onchange = function (e:Event) {
-  //   // Creamos el objeto de la clase FileReader
-  //   let reader = new FileReader();
+  changeListener($event): void {
+    this.file = $event.target.files[0];
+    this.nameFile = this.file['name'];
+    this.readThis($event.target);
+  }
 
-  //   const target = e.target as HTMLInputElement;
+  readThis(inputValue: any): void {
+    const file: File = inputValue.files[0];
+    const myReader: FileReader = new FileReader();
 
-  //   // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-  //   reader.readAsDataURL(target.files[0]);
+    myReader.onloadend = (e) => {
+      this.imagePath = myReader.result;
+    };
 
-  //   // Le decimos que cuando este listo ejecute el código interno
-  //   reader.onload = function () {
-  //     let preview = document.getElementById('preview');
+    myReader.readAsDataURL(file);
+  }
 
-  //     let img = <HTMLImageElement> document.createElement('img');
+  async getCountries() {
+    const res: any = await this.countries.getCountries().toPromise();
+    this.listCountries = res.countries;
+  }
 
-  //     img.setAttribute("src", reader.result as string);
-  //     img.setAttribute("style", "border-radius:50%;width:8em;height:8em;margin-top:-125px;");
+  async initForm() {
+    this.setFormData(await this.getUserData());
+  }
 
-  //     //preview.innerHTML = '';
-  //     preview.append(img);
-  //   };
-  // }
-}
+  setFormData(user) {
+    this.imagePath = user.img;
 
-changeListener($event): void {
-  this.file = $event.target.files[0];
-  console.log(this.file);
-  this.nameFile = this.file['name'];
-  this.readThis($event.target);
-}
+    this.formEdit.get('nick').setValue(user.nick || '');
+    this.formEdit.get('email').setValue(user.email || '');
+    this.formEdit.get('gender').setValue(user.gender || '');
+    this.formEdit.get('birthday').setValue(user.birthday || '');
+    this.formEdit.get('country').setValue(user.country || '');
+    this.formEdit.get('biography').setValue(user.biography || '');
 
-readThis(inputValue: any): void {
-  const file: File = inputValue.files[0];
-  const myReader: FileReader = new FileReader();
+    this.formEdit.get('facebook').setValue(user.socialNetwork[0].substr(13) || '');
+    this.formEdit.get('github').setValue(user.socialNetwork[1].substr(11) || '');
+    this.formEdit.get('linkedin').setValue(user.socialNetwork[2].substr(16) || '');
+    this.formEdit.get('twitter').setValue(user.socialNetwork[3].substr(12) || '');
+  }
 
-  myReader.onloadend = (e) => {
-    this.imagePath = myReader.result;
-  };
-  
-  myReader.readAsDataURL(file);
-}
+  getUserData() {
+    const user = this.userService
+      .getUser()
+      .toPromise()
+      .then((res: any) => res.userFound);
+    return user;
+  }
 
-async getCountries(){
-  const res: any = await this.countries.getCountries().toPromise();
-  this.listCountries = res;
-}
+  async sendData() {
+    const {
+      facebook,
+      github,
+      linkedin,
+      twitter,
+      ...formData
+    } = this.formEdit.value;
 
-initForm(){
-  this.formEdit.get('nick').setValue('123');
-}
+    const socialNetwork = [];
+    const temp = [
+      `facebook.com/${facebook}`, 
+      `github.com/${github}`, 
+      `linkedin.com/in/${linkedin}`, 
+      `twitter.com/${twitter}`
+    ];
 
-
-
-
-
-
-// mostrarPassword()
-// {
-//   var cambio = document.getElementById("passwordInput") as HTMLInputElement;
-//   if(cambio.type == "password"){
-//     cambio.type = "text";
-//     $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-//   }
-//   else
-//   {
-//     cambio.type = "password";
-//     $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-//   }
-// };
-
-// mostrasPasswordRepeat()
-// {
-//   var cambio = document.getElementById("passwordRepeatInput") as HTMLInputElement;
-//   if(cambio.type == "password"){
-//     cambio.type = "text";
-//     $('#iconShow').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-//   }
-//   else
-//   {
-//     cambio.type = "password";
-//     $('#iconShow').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-//   }
-// };
-
+    temp.forEach( element => {
+      if(element.substr(element.length - 1) !== '/'){
+        socialNetwork.push(element);
+      }
+    });
+   
+    
+    const data = {...formData, socialNetwork , img: this.file}
+   
+    await this.userService.putUser(data).toPromise()
+        .then( (res: any) => {
+          localStorage.setItem('user', JSON.stringify(res.userSaved));
+          this.userService.setUserSubect(res.userSaved);
+          
+        }).catch( err => console.log(err));
+  }
 }

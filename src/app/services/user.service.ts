@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
@@ -10,12 +10,15 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
 
+
+  private userSubject = new  BehaviorSubject<any>(this.getInitValue());
   private url = environment.baseUrl;
   option;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+  }
 
-  getHeader() {
+  private getHeader() {
     const tk = localStorage.getItem('token');
     this.option = {
       headers: new HttpHeaders({ 'access-token': `${tk}` })
@@ -64,17 +67,34 @@ export class UserService {
     const body = new FormData();
 
     body.append('nick', value.nick);
-    body.append('img', value.nick);
-    body.append('public_id', value.nick);
-    body.append('gender', value.nick);
-    body.append('birthday', value.nick);
-    body.append('country', value.nick);
-    body.append('biography', value.nick);
-    body.append('socialNetwork', value.nick);
+    body.append('img', value.img);
+    body.append('gender', value.gender);
+    body.append('birthday', value.birthday);
+    body.append('country', value.country);
+    body.append('biography', value.biography);
+    value.socialNetwork.forEach(element => {
+      body.append('socialNetwork', element);
+    });
 
     return this.http.put(`${ this.url }/user`, body , this.option)
   }
 
+  getUser(){
+    this.getHeader();
+    return this.http.get(`${this.url}/user`, this.option)
+  }
+
+  getUserSubject(){
+    return this.userSubject;
+  }
+
+  setUserSubect(data){
+    this.userSubject.next(data);
+  }
+
+  private getInitValue(){
+    return JSON.parse(localStorage.getItem('user'));
+  }
 
 
 }
