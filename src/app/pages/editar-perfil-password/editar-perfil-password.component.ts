@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from 'src/app/services/validators.service';
 
-//Podemoms usar jQuery, ahora
-declare var jQuery:any;
-declare var $:any;
-
 @Component({
   selector: 'app-editar-perfil-password',
   templateUrl: './editar-perfil-password.component.html',
@@ -40,26 +36,30 @@ export class EditarPerfilPasswordComponent implements OnInit {
     var cambio = document.getElementById("passwordInput") as HTMLInputElement;
     if(cambio.type == "password"){
       cambio.type = "text";
-      $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+      document.getElementById('iconShow').removeAttribute('class');
+      document.getElementById('iconShow').setAttribute('class','fa fa-eye')
     }
     else
     {
       cambio.type = "password";
-      $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+      document.getElementById('iconShow').removeAttribute('class');
+      document.getElementById('iconShow').setAttribute('class','fa fa-eye-slash');
     }
   };
 
-  mostrasPasswordRepeat()
+  showPasswordRepeat()
   {
     var cambio = document.getElementById("passwordRepeatInput") as HTMLInputElement;
     if(cambio.type == "password"){
       cambio.type = "text";
-      $('#iconShow').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+      document.getElementById('iconShowRepeat').removeAttribute('class');
+      document.getElementById('iconShowRepeat').setAttribute('class','fa fa-eye')
     }
     else
     {
       cambio.type = "password";
-      $('#iconShow').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+      document.getElementById('iconShowRepeat').removeAttribute('class');
+      document.getElementById('iconShowRepeat').setAttribute('class','fa fa-eye-slash');
     }
   };
 
