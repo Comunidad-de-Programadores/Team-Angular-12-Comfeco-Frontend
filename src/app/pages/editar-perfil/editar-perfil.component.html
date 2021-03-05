@@ -1,8 +1,3 @@
-<p>editar-perfil works!</p>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-
 <div class="container">
     <main>
       <div class="py-5 text-center">
@@ -17,19 +12,13 @@
               <img *ngIf="imagePath" [src]="imagePath">
               <input type="file" id="file"  #fileInput (change)="changeListener($event)" style="display:none;"/>
               
-                  <!-- <span class="fa-stack fa-2x">
-                  <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
-                  <i class="fa fa-circle fa-stack-1x top medium"></i>
-                  <i class="fa fa-arrow-circle-up fa-stack-1x top"></i>
-              </span>
-              <span class="desc">Pulse aquí para añadir tú foto de perfil</span> -->
           </div>
         </div>
 
         <br><br>
 
         <div class="col">
-          <form class="needs-validation" novalidate [formGroup]="formEdit">
+          <form class="needs-validation" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
@@ -73,7 +62,7 @@
                         class="form-control" id="countryInput" placeholder="Sin especificar" required>
                 
                   <option *ngFor="let country of listCountries">  
-                    {{country.name}}
+                    {{country.name_es}}
                   </option>
                 </select>
                 <div class="invalid-feedback">
@@ -81,37 +70,6 @@
                 </div>
               </div>
 
-              <!-- <div class="col-6 mt-3"><br>
-                <label for="passwordInput" class="form-label float-left">Contraseña <span class="text-muted">*</span></label>
-                <div class="input-group">
-                <input type="password" class="form-control" id="passwordInput" placeholder="">
-                <div class="input-group-append">
-                  <button id="show_password" class="btn btn-primary" type="button">
-                    <span class="fa fa-eye-slash icon">
-                    </span>
-                  </button>
-                </div>
-              </div>
-                <div class="invalid-feedback">
-                    Please enter your shipping address.
-                  </div>
-              </div> -->
-
-              <!-- <div class="col-6 mt-3"><br>
-                <label for="passwordRepeatInput" class="form-label float-left">Repetir Contraseña <span class="text-muted">*</span></label>
-                <div class="input-group">
-                  <input type="password" class="form-control" id="passwordRepeatInput" placeholder="">
-                  <div class="input-group-append">
-                    <button id="show_passwordRepeat" class="btn btn-primary" type="button">
-                      <span id="iconShow" class="fa fa-eye-slash icon">
-                      </span>
-                    </button>
-                  </div>
-                  </div>
-                  <div class="invalid-feedback">
-                    Please enter your shipping address.
-                </div>
-                </div> -->
 
                 <div class="col-2 form-inline mt-5">
                     <img src="../assets/img/social-icons/facebook-icon.png" class="social-icon mr-3"/>

@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header-home',
   templateUrl: './header-home.component.html',
   styleUrls: ['./header-home.component.css']
 })
-export class HeaderHomeComponent implements OnInit {
+export class HeaderHomeComponent implements OnInit, OnDestroy {
 
   headerLinks = [
     {
@@ -32,12 +34,23 @@ export class HeaderHomeComponent implements OnInit {
   ]
 
   userData;
+  subscription: Subscription;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private userService: UserService) {
     this.userData = JSON.parse(localStorage.getItem('user'));
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
+    this.subscription = this.userService.getUserSubject().subscribe(
+      (res)=> {
+        this.userData.nick = res.nick;
+        this.userData.img = res.img;
+      }
+    )
   }
 
   logoutClick(): void {
