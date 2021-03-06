@@ -30,11 +30,17 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     linkedin: new FormControl('', [Validators.required]),
     twitter: new FormControl('', [Validators.required]),
   });
-
+  formChangePassword = new FormGroup({
+    newPassword: new FormControl('', [Validators.required]),
+    confirmNewPassword: new FormControl('', [Validators.required]),
+  });
+  wordFilterCountry: string = '';
+  wordFilterStatus = false;
+  listFilterCountry = [];
   constructor(
     private countries: CountryService,
     private userService: UserService
-  ) {}
+  ) { }
 
 
   ngOnDestroy(): void {
@@ -45,7 +51,7 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     this.getCountries();
     this.initForm();
     this.subscription = this.userService.getUserSubject().subscribe(
-      (res)=>{
+      (res) => {
         this.setFormData(res)
       }
     )
@@ -71,7 +77,77 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
   async getCountries() {
     const res: any = await this.countries.getCountries().toPromise();
     this.listCountries = res.countries;
+    this.listCountries.forEach(
+      (word) => {
+        this.listFilterCountry.push(this.normalizeWord(word.name_es));
+      }
+    );
+    this.listCountries = [...this.listFilterCountry]
+    console.log(this.listCountries);
+
   }
+  filterCountry(event: string) {
+    console.log(event);
+    this.wordFilterCountry = event;
+    console.log(this.wordFilterCountry.length);
+
+    this.listFilterCountry = this.listCountries.filter((e) => {
+      if (e.normal.indexOf(event.toLocaleLowerCase()) !== -1) {
+        // console.log(e.name_es);
+        return true;
+      }
+      return false
+    });
+  }
+
+  selectCountry(country_name) {
+    this.formEdit.get('country').setValue(country_name);
+    this.wordFilterCountry = '';
+  }
+
+  normalizeWord(word: string) {
+    const letters = [{
+      search: 'áäàãâ',
+      replace: 'a'
+    }, {
+      search: 'éëèê',
+      replace: 'e'
+    }, {
+      search: 'íïìî',
+      replace: 'i'
+    }, {
+      search: 'óöòõô',
+      replace: 'o'
+    }, {
+      search: 'úüùû',
+      replace: 'u'
+    }, {
+      search: 'ñ',
+      replace: 'n'
+    }, {
+      search: 'ç',
+      replace: 'c'
+    }];
+    let normal;
+
+    // Convertimos la palabra a minusculas
+    word = word.toLowerCase();
+    normal = word;
+
+    // Por cada "letra"
+    letters.forEach(letter => {
+      const re = new RegExp('[' + letter.search + ']', 'g');
+      // Reemplazamos el caracter acentuado
+      normal = normal.replace(re, letter.replace);
+    });
+
+    // Devolvemos un objeto con la palabra original y la normalizada
+    return {
+      original: word,
+      normal: normal
+    };
+  }
+
 
   async initForm() {
     this.setFormData(await this.getUserData());
@@ -87,10 +163,10 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     this.formEdit.get('country').setValue(user.country || '');
     this.formEdit.get('biography').setValue(user.biography || '');
 
-    this.formEdit.get('facebook').setValue(user.socialNetwork[0].substr(13) || '');
-    this.formEdit.get('github').setValue(user.socialNetwork[1].substr(11) || '');
-    this.formEdit.get('linkedin').setValue(user.socialNetwork[2].substr(16) || '');
-    this.formEdit.get('twitter').setValue(user.socialNetwork[3].substr(12) || '');
+    this.formEdit.get('facebook').setValue(user.socialNetwork[0] ? user.socialNetwork[0].substr(13) : '');
+    this.formEdit.get('github').setValue(user.socialNetwork[1] ? user.socialNetwork[1].substr(11) : '');
+    this.formEdit.get('linkedin').setValue(user.socialNetwork[2] ? user.socialNetwork[2].substr(16) : '');
+    this.formEdit.get('twitter').setValue(user.socialNetwork[3] ? user.socialNetwork[3].substr(12) : '');
   }
 
   getUserData() {
@@ -112,26 +188,30 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
 
     const socialNetwork = [];
     const temp = [
-      `facebook.com/${facebook}`, 
-      `github.com/${github}`, 
-      `linkedin.com/in/${linkedin}`, 
+      `facebook.com/${facebook}`,
+      `github.com/${github}`,
+      `linkedin.com/in/${linkedin}`,
       `twitter.com/${twitter}`
     ];
 
-    temp.forEach( element => {
-      if(element.substr(element.length - 1) !== '/'){
+    temp.forEach(element => {
+      if (element.substr(element.length - 1) !== '/') {
         socialNetwork.push(element);
       }
     });
-   
-    
-    const data = {...formData, socialNetwork , img: this.file}
-   
+
+
+    const data = { ...formData, socialNetwork, img: this.file }
+
     await this.userService.putUser(data).toPromise()
-        .then( (res: any) => {
-          localStorage.setItem('user', JSON.stringify(res.userSaved));
-          this.userService.setUserSubect(res.userSaved);
-          
-        }).catch( err => console.log(err));
+      .then((res: any) => {
+        localStorage.setItem('user', JSON.stringify(res.userSaved));
+        this.userService.setUserSubect(res.userSaved);
+
+      }).catch(err => console.log(err));
+  }
+
+  changeNewPassword() {
+
   }
 }

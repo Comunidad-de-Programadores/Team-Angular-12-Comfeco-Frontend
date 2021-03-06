@@ -1,12 +1,12 @@
-<div class="container-fluid py-3">
+<div class="container-fluid py-3 px-0">
 
-    <div class="row">
+    <div class="row_custom">
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="mb-4">
             <div class="card profile-background shadow btn" [ngClass]="(activeView == 'profile') ? 'active' : 'border-left-primary'" (click)="changeMenu('profile')">
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
+                    <div class="row no-gutters align-items-center justify-content-center">
+                        <div class="col mr-2 text-option">
                             <div class="font-weight-bold text-uppercase">
                                 Mi perfil</div>
                         </div>
@@ -15,17 +15,20 @@
                         </div>
                     </div>
                 </div>
-           </div>
-            <div *ngIf="activeView === 'profile'" class="row bg-primary animate__animated animate__fadeInLeft animate__faster" style="height: 4px;">
+            </div>
+            <div *ngIf="activeView === 'profile'" class="row bg-primary animate__animated animate__fadeInLeft animate__faster" style="height: 4px;
+            width: 100%;
+            margin: auto;
+        ">
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="mb-4">
             <div class="card shadow badge-background btn" [ngClass]="(activeView == 'badges') ? 'active' : 'border-left-success'" (click)="changeMenu('badges')">
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-uppercase">
+                    <div class="row no-gutters align-items-center justify-content-center">
+                        <div class="col mr-2 text-option">
+                            <div class="font-weight-bold text-uppercase ">
                                 Insignias</div>
                         </div>
                         <div class="col-auto">
@@ -34,15 +37,18 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="activeView === 'badges'" class="row bg-success animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;"></div>
+            <div *ngIf="activeView === 'badges'" class="row bg-success animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;
+            width: 100%;
+            margin: auto;
+        "></div>
         </div>
-        
-        <div class="col-xl-3 col-md-6 mb-4">
+
+        <div class="mb-4">
             <div class="card shadow groups-background btn" [ngClass]="(activeView == 'groups') ? 'active' : 'border-left-info'" (click)="changeMenu('groups')">
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-uppercase">
+                    <div class="row no-gutters align-items-center justify-content-center">
+                        <div class="col mr-2 text-option">
+                            <div class="font-weight-bold text-uppercase ">
                                 Grupos</div>
                         </div>
                         <div class="col-auto">
@@ -51,15 +57,18 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="activeView === 'groups'" class="row bg-info animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;"></div>
+            <div *ngIf="activeView === 'groups'" class="row bg-info animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;
+            width: 100%;
+            margin: auto;
+        "></div>
         </div>
-        
-        <div class="col-xl-3 col-md-6 mb-4">
+
+        <div class="mb-4">
             <div class="card shadow events-background btn" [ngClass]="(activeView == 'events') ? 'active' : 'border-left-warning'" (click)="changeMenu('events')">
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="font-weight-bold text-uppercase">
+                    <div class="row no-gutters align-items-center justify-content-center">
+                        <div class="col mr-2 text-option">
+                            <div class="font-weight-bold text-uppercase ">
                                 Eventos</div>
                         </div>
                         <div class="col-auto">
@@ -68,10 +77,16 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="activeView === 'events'" class="row bg-warning animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;"></div>
+            <div *ngIf="activeView === 'events'" class="row bg-warning animate__animated animate__fadeInLeft animate__faster mt-1" style="height: 4px;
+            width: 100%;
+            margin: auto;
+        "></div>
         </div>
     </div>
-    
+    <h4 *ngIf="activeView == 'profile'" class="text-option-inverse">Mi perfil</h4>
+    <h4 *ngIf="activeView == 'badges'" class="text-option-inverse">Insignias</h4>
+    <h4 *ngIf="activeView == 'events'" class="text-option-inverse">Grupos</h4>
+    <h4 *ngIf="activeView == 'groups'" class="text-option-inverse">Eventos</h4>
 </div>
 
 <div class="container-fluid bg-white p-2" [ngClass]="{'profile':'border border-primary', 'badges':'border border-success', 'groups':'border border-info', 'events':'border border-warning'}[activeView]">
@@ -88,6 +103,8 @@
         <div *ngSwitchCase="'events'">
             <app-events></app-events>
         </div>
-        <div *ngSwitchDefault><app-profile></app-profile></div>
+        <div *ngSwitchDefault>
+            <app-profile></app-profile>
+        </div>
     </div>
 </div>

@@ -1,128 +1,133 @@
 <div class="container">
     <main>
-      <div class="py-5 text-center">
+        <div class="py-5 text-center">
 
-        <h4 class="mb-3">Editar perfil</h4>
+            <h4 class="mb-3">Editar perfil</h4>
 
-        <div>
-          <div id="preview" class="drag-drop">
-            <a class="btn-primary btn-circle text-white" (click)="fileInput.click()">
-              <i class="fa fa-plus "></i>
-            </a>
-              <img *ngIf="imagePath" [src]="imagePath">
-              <input type="file" id="file"  #fileInput (change)="changeListener($event)" style="display:none;"/>
-              
-          </div>
-        </div>
+            <div>
+                <div id="preview" class="drag-drop">
+                    <a class="btn-primary btn-circle text-white" (click)="fileInput.click()">
+                        <i class="fa fa-plus "></i>
+                    </a>
+                    <img *ngIf="imagePath" [src]="imagePath">
+                    <input type="file" id="file" #fileInput (change)="changeListener($event)" style="display:none;" />
 
-        <br><br>
-
-        <div class="col">
-          <form class="needs-validation" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
-                <input  formControlName="nick"
-                        type="text" class="form-control" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-              </div>
-  
-              <div class="col-sm-6">
-                <label for="emailInput" class="form-label float-left">Correo <span class="text-muted">*</span></label>
-                <input  formControlName="email"
-                        type="email" class="form-control" id="emailInput" placeholder="tucorreo@ejemplo.com" required>
-                    <div class="invalid-feedback">
-                        Please enter a valid email address for shipping updates.
-                    </div>
-              </div>
-              
-              <div class="col-4 mt-2"><br>
-                <label for="generoInput" class="form-label float-left">Genero</label>
-                  <input  formControlName="gender"
-                          type="text" class="form-control" id="generoInput" placeholder="Sin especificar" required>
-                    <div class="invalid-feedback">
-                        Your username is required.
-                    </div>
-              </div>
-  
-              <div class="col-4 mt-2"><br>
-                <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted">*</span></label>
-                <input  formControlName="birthday"
-                        type="date" class="form-control" id="dateBirthInput" placeholder="">
-                <div class="invalid-feedback">
-                  Please enter a valid email address for shipping updates.
                 </div>
-              </div>
-  
-              <div class="col-4 mt-2"><br>
-                <label for="countryInput" class="form-label float-left" >País <span class="text-muted">*</span></label>
-                <select  formControlName="country"
-                        class="form-control" id="countryInput" placeholder="Sin especificar" required>
+            </div>
+
+            <br><br>
+
+            <div class="col">
+                <form class="user" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
+                    <div class="row g-3">
+                        <div class="col-sm-12 col-md-6 mb-3">
+                            <label for="nickInput" class="form-label float-left">Nick <span class="text-muted">*</span></label>
+                            <input formControlName="nick" type="text" class="form-control form-control-user" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 mb-3">
+                            <label for="emailInput" class="form-label float-left">Correo <span class="text-muted">*</span></label>
+                            <input formControlName="email" type="email" class="form-control form-control-user" id="emailInput" placeholder="tucorreo@ejemplo.com" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 mb-3">
+                            <label for="generoInput" class="form-label float-left">Genero</label>
+                            <input formControlName="gender" type="text" class="form-control form-control-user" id="generoInput" placeholder="Sin especificar" required>
+                            <div class="invalid-feedback">
+                                Your username is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 mb-3">
+                            <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted">*</span></label>
+                            <input formControlName="birthday" type="date" class="form-control form-control-user" id="dateBirthInput" placeholder="">
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 mb-3 relative">
+                            <label for="countryInput" class="form-label float-left">País <span class="text-muted">*</span></label>
+                            <input style="text-transform: capitalize;" formControlName="country" type="text" class="form-control form-control-user" (ngModelChange)="filterCountry($event)" id="countryInput" placeholder="Selecionar pais">
+                            <div class="container_list shadow-sm" *ngIf="wordFilterCountry.length>0">
+                                <p *ngFor="let country of listFilterCountry" (click)="selectCountry(country.original)"> {{country.original}}</p>
+                            </div>
+
+                            <!-- <select formControlName="country" class="form-control form-control-user" id="countryInput" placeholder="Sin especificar" required>
                 
                   <option *ngFor="let country of listCountries">  
                     {{country.name_es}}
                   </option>
-                </select>
-                <div class="invalid-feedback">
-                  Please enter your shipping address.
-                </div>
-              </div>
+                </select> -->
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-2  form-inline mb-3">
+                            <img src="../assets/img/social-icons/facebook-icon.png" class="social-icon mr-3" />
+                            <label for="facebookInput" class="form-label">facebook.com/</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mb-3">
+                            <input formControlName="facebook" type="text" class="form-control form-control-user especifyInput" id="facebookInput" placeholder="(vacío)">
+                        </div>
+
+                        <div class="col-md-2 col-sm-12 form-inline mb-3">
+                            <img src="../assets/img/social-icons/github-icon.png" class="social-icon mr-3" />
+                            <label for="githubInput" class="form-label">github.com/</label>
+                        </div>
+                        <div class="col-md-4 col-sm-12 mb-3 ">
+                            <input formControlName="github" type="text" class="form-control form-control-user especifyInput" id="githubInput" placeholder="(vacío)">
+                        </div>
+
+                        <div class="col-md-2 col-sm-12 form-inline mb-3">
+                            <img src="../assets/img/social-icons/linkedin-icon.png" class="social-icon mr-3" />
+                            <label for="linkedinInput" class="form-label">linkedin.com/in/</label>
+                        </div>
+                        <div class="col-md-4 col-sm-12 mb-3">
+                            <input formControlName="linkedin" type="text" class="form-control  form-control-user especifyInput" id="linkedinInput" placeholder="(vacío)">
+                        </div>
+
+                        <div class="col-md-2 col-sm-12 form-inline mb-3">
+                            <img src="../assets/img/social-icons/twitter-icon.png" class="social-icon mr-3" />
+                            <label for="twitterInput" class="form-label">twitter.com/</label>
+                        </div>
+                        <div class="col-md-4 col-sm-12 mb-3">
+                            <input formControlName="twitter" type="text" class="form-control form-control-user especifyInput" id="twitterInput" placeholder="(vacío)">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="biografiaInput" class="form-label float-left">Biografía</label>
+                            <textarea formControlName="biography" rows="3" class="form-control  form-control-user" id="biografiaInput" placeholder=""></textarea>
+                        </div>
+                    </div>
 
 
-                <div class="col-2 form-inline mt-5">
-                    <img src="../assets/img/social-icons/facebook-icon.png" class="social-icon mr-3"/>
-                    <label for="facebookInput" class="form-label">facebook.com/</label>
-                </div>
-                <div class="col-4 mt-5">
-                    <input  formControlName="facebook"
-                            type="text" class="form-control especifyInput" id="facebookInput" placeholder="(vacío)">
-                </div>
+                    <button class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+                </form>
 
-                <div class="col-2 form-inline mt-5">
-                    <img src="../assets/img/social-icons/github-icon.png" class="social-icon mr-3"/>
-                    <label for="githubInput" class="form-label">github.com/</label>
-                </div>
-                <div class="col-4 mt-5">
-                    <input  formControlName="github"
-                            type="text" class="form-control especifyInput" id="githubInput" placeholder="(vacío)">
-                </div>
-
-                <div class="col-2 form-inline mt-5">
-                    <img src="../assets/img/social-icons/linkedin-icon.png" class="social-icon mr-3"/>
-                    <label for="linkedinInput" class="form-label">linkedin.com/in/</label>
-                </div>
-                <div class="col-4 mt-5">
-                    <input 
-                            formControlName="linkedin"
-                            type="text" class="form-control especifyInput" id="linkedinInput" placeholder="(vacío)">
-                </div>
-
-                <div class="col-2 form-inline mt-5">
-                    <img src="../assets/img/social-icons/twitter-icon.png" class="social-icon mr-3"/>
-                    <label for="twitterInput" class="form-label">twitter.com/</label>
-                </div>
-                <div class="col-4 mt-5">
-                  <input  formControlName="twitter"
-                            type="text" class="form-control especifyInput" id="twitterInput" placeholder="(vacío)">
-                </div>
-
-                <div class="col-12 mt-3"><br>
-                    <label for="biografiaInput" class="form-label float-left">Biografía</label>
-                    <textarea  formControlName="biography"
-                               rows="3" class="form-control" id="biografiaInput" placeholder=""></textarea>
-                </div>
             </div>
-  
-            <hr class="my-4">
-            <button class="w-12 btn btn-primary btn-lg float-right" type="submit">Guardar cambios</button>
-          </form>
         </div>
-      </div>
+        <hr class="my-4">
+        <div class="py-5 text-center">
+            <h4 class="mb-3">Editar Contraseña</h4>
+            <form class="user" [formGroup]="formChangePassword" (ngSubmit)="changeNewPassword()">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6  mb-3">
+                        <input formControlName="newPassword" type="password" class="form-control form-control-user especifyInput" id="newPassword" placeholder="Nueva contraseña">
+
+                    </div>
+                    <div class="col-sm-12 col-md-6  mb-3">
+                        <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user especifyInput" id="confirmNewPassword" placeholder="Confirmar contraseña">
+                    </div>
+                </div>
+                <button class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+            </form>
+        </div>
     </main>
 
 </div>
-<br><br><br><br>
-  
-  
