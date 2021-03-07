@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { CountryService } from 'src/app/services/country.service';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { ValidatorsService } from 'src/app/services/validators.service';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -32,16 +33,18 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     twitter: new FormControl('', [Validators.required]),
   });
   formChangePassword = new FormGroup({
-    newPassword: new FormControl('', [Validators.required]),
-    confirmNewPassword: new FormControl('', [Validators.required]),
+    newPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
+    confirmNewPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
   });
+
   wordFilterCountry: string = '';
   wordFilterStatus = false;
   listFilterCountry = [];
   constructor(
     private countries: CountryService,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private validador: ValidatorsService
   ) { }
 
 
@@ -228,4 +231,21 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     this.formChangePassword.reset();
     
   }
+
+  checkValid(campo: string) {
+    return this.formEdit.get(campo).invalid && this.formEdit.get(campo).touched;
+  }
+
+
+
+  checkValidPassword(campo: string) {
+    return this.formChangePassword.get(campo).invalid && this.formChangePassword.get(campo).touched;
+  }
+
+  samePassword() {
+    const password1 = this.formChangePassword.get('newPassword').value;
+    const password2 = this.formChangePassword.get('confirmNewPassword').value;
+
+    return (password1 === password2) ? false : true;
+  } 
 }
