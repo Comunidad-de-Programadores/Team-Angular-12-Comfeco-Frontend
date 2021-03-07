@@ -130,25 +130,28 @@
             <form class="user" [formGroup]="formChangePassword" (ngSubmit)="changeNewPassword()">
                 <div class="row">
                     <div class="col-sm-12 col-md-6  mb-3">
-                        <input formControlName="newPassword" type="password" class="form-control form-control-user especifyInput" id="newPassword" placeholder="Nueva contraseña">
+                        <input formControlName="newPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')"  id="newPassword" placeholder="Nueva contraseña">
                         <div *ngIf="checkValidPassword('newPassword')">
                             <small *ngIf="formChangePassword.controls.newPassword.errors.required" class="text-danger validationTypeDanger">
                                 Don't write s password.
                             </small>
                             <small *ngIf="formChangePassword.controls.newPassword.errors.minlength" class="text-danger validationTypePDanger">
-                                Don't minime size.
+                                Don't minimum size.
                             </small>
-                            <small *ngIf="samePassword()" class="text-danger validationTypeDanger"  class="text-danger validationTypePDanger">
+                            <small *ngIf="samePassword()" class="text-danger validationTypeDanger" class="text-danger validationTypePDanger">
                                 The passwords aren't equals.
                             </small>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6  mb-3">
-                        <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user especifyInput" id="confirmNewPassword" placeholder="Confirmar contraseña">
+                        <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" id="confirmNewPassword" placeholder="Confirmar contraseña">
                         <div *ngIf="checkValidPassword('confirmNewPassword')">
                             <small *ngIf="formChangePassword.controls.confirmNewPassword.errors.required" class="text-danger validationTypeDanger">
                                 Don't write s password.
                             </small>
+                            <small *ngIf="formChangePassword.controls.confirmNewPassword.errors.minlength" class="text-danger validationTypePDanger">
+                                Don't minimum size.
+                            </small>                           
                         </div>                        
                     </div>
                 </div>

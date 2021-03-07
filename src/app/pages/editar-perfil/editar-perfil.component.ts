@@ -222,6 +222,8 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     return this.formEdit.get(campo).invalid && this.formEdit.get(campo).touched;
   }
 
+
+
   checkValidPassword(campo: string) {
     return this.formChangePassword.get(campo).invalid && this.formChangePassword.get(campo).touched;
   }
