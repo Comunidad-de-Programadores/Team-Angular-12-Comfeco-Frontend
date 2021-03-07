@@ -7,7 +7,19 @@
     width: 100%;
 }
 
+.validationTypeDanger{
+    left:2%;
+    position:absolute;
+    display:inline;
+    padding:2px;
+}
 
+.validationTypePDanger{
+    left:2%;
+    position:relative;
+    padding:2px;
+    float:left;
+}
 /* Estilo del área del input[file] */
 
 .drag-drop {
