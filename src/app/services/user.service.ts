@@ -62,6 +62,14 @@ export class UserService {
     );
   }
 
+  editPassword(newpassword: string){
+    this.getHeader();
+    const body = new FormData();
+
+    body.append('newpassword', newpassword)
+    return this.http.put(`${this.url}/user/changePassword`, body, this.option);
+  }
+
   putUser(value){
     this.getHeader();
     const body = new FormData();

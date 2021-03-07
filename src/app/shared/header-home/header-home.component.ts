@@ -55,6 +55,7 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
 
   logoutClick(): void {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     this.router.navigateByUrl('/');
   }
 

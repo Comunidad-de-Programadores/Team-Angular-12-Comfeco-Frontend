@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CountryService } from 'src/app/services/country.service';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -39,7 +40,8 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
   listFilterCountry = [];
   constructor(
     private countries: CountryService,
-    private userService: UserService
+    private userService: UserService,
+    private toastr: ToastrService
   ) { }
 
 
@@ -211,7 +213,19 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
       }).catch(err => console.log(err));
   }
 
-  changeNewPassword() {
+  async changeNewPassword() {
+    const formData = this.formChangePassword.value;
+    const res: any = await this.userService.editPassword(formData.newPassword).toPromise()
+    console.log(res);
 
+
+    if(res.ok){
+      this.toastr.success('Contraseña actualizada con éxito');
+    } else {
+      this.toastr.error('Error al actualizar la contraseña');
+    }
+
+    this.formChangePassword.reset();
+    
   }
 }

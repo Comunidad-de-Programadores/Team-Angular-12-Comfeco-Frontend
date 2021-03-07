@@ -38,9 +38,9 @@ export class RecoverPasswordComponent implements OnInit, OnDestroy {
 
   updatePassword() {
     this.loading = true;
-    const newPassord = this.form.value.newpassword;
+    const newPassword = this.form.value.newpassword;
 
-    this.userSubscription = this.user.changePassword(this.token, newPassord).subscribe((res: any) => {
+    this.userSubscription = this.user.changePassword(this.token, newPassword).subscribe((res: any) => {
       this.toastr.success('Contraseña actualizada correctamente');
       this.router.navigate(['login']);
       this.loading = false;
