@@ -11,7 +11,7 @@
                 <p class="card-text">Front Developer / UI/UX</p>
                 <p class="card-text"> {{userData.biography || '' }} </p>
             </div>
-            <div class="card-footer text-muted">
+            <div *ngIf="userData.socialNetwork" class="card-footer text-muted">
                 <div class="d-flex justify-content-around">
                     <a [href]="'https://www.'+userData.socialNetwork[3]" target="_blank"><i class="fab fa-twitter social-networks"></i></a>
                     <a [href]="'https://www.'+userData.socialNetwork[0]" target="_blank"><i class="fab fa-facebook social-networks"></i></a>

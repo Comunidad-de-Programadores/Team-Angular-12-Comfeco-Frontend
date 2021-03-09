@@ -11,7 +11,7 @@ import { ValidatorsService } from 'src/app/services/validators.service';
   templateUrl: './editar-perfil.component.html',
   styleUrls: ['./editar-perfil.component.css'],
 })
-export class EditarPerfilComponent implements OnInit, OnDestroy {
+export class EditarPerfilComponent implements OnInit {
   file: File;
   nameFile: string;
   imagePath: string | ArrayBuffer;
@@ -33,8 +33,8 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     twitter: new FormControl('', [Validators.required]),
   });
   formChangePassword = new FormGroup({
-    newPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
-    confirmNewPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
+    newPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    confirmNewPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
   wordFilterCountry: string = '';
@@ -47,19 +47,14 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     private validador: ValidatorsService
   ) { }
 
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   ngOnInit(): void {
     this.getCountries();
     this.initForm();
-    this.subscription = this.userService.getUserSubject().subscribe(
-      (res) => {
-        this.setFormData(res)
-      }
-    )
+    // this.subscription = this.userService.getUserSubject().subscribe(
+    //   (res) => {
+    //     this.setFormData(res)
+    //   }
+    // )
   }
 
   changeListener($event): void {
@@ -94,8 +89,6 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
   filterCountry(event: string) {
     console.log(event);
     this.wordFilterCountry = event;
-    console.log(this.wordFilterCountry.length);
-
     this.listFilterCountry = this.listCountries.filter((e) => {
       if (e.normal.indexOf(event.toLocaleLowerCase()) !== -1) {
         // console.log(e.name_es);
@@ -167,11 +160,13 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     this.formEdit.get('birthday').setValue(user.birthday || '');
     this.formEdit.get('country').setValue(user.country || '');
     this.formEdit.get('biography').setValue(user.biography || '');
+    if (user.socialNetwork) {
+      this.formEdit.get('facebook').setValue(user.socialNetwork[0] ? user.socialNetwork[0].substr(13) : '');
+      this.formEdit.get('github').setValue(user.socialNetwork[1] ? user.socialNetwork[1].substr(11) : '');
+      this.formEdit.get('linkedin').setValue(user.socialNetwork[2] ? user.socialNetwork[2].substr(16) : '');
+      this.formEdit.get('twitter').setValue(user.socialNetwork[3] ? user.socialNetwork[3].substr(12) : '');
+    }
 
-    this.formEdit.get('facebook').setValue(user.socialNetwork[0] ? user.socialNetwork[0].substr(13) : '');
-    this.formEdit.get('github').setValue(user.socialNetwork[1] ? user.socialNetwork[1].substr(11) : '');
-    this.formEdit.get('linkedin').setValue(user.socialNetwork[2] ? user.socialNetwork[2].substr(16) : '');
-    this.formEdit.get('twitter').setValue(user.socialNetwork[3] ? user.socialNetwork[3].substr(12) : '');
   }
 
   getUserData() {
@@ -222,14 +217,14 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     console.log(res);
 
 
-    if(res.ok){
+    if (res.ok) {
       this.toastr.success('Contraseña actualizada con éxito');
     } else {
       this.toastr.error('Error al actualizar la contraseña');
     }
 
     this.formChangePassword.reset();
-    
+
   }
 
   checkValid(campo: string) {
@@ -247,5 +242,5 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     const password2 = this.formChangePassword.get('confirmNewPassword').value;
 
     return (password1 === password2) ? false : true;
-  } 
+  }
 }
