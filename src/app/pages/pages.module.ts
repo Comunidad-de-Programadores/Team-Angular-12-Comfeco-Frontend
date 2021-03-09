@@ -16,7 +16,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [PagesComponent, HomeComponent, ProfileComponent, EditarPerfilComponent, BadgesComponent, GroupsComponent, EventsComponent, MainProfileComponent],
+  declarations: [
+    PagesComponent,
+    HomeComponent,
+    ProfileComponent,
+    EditarPerfilComponent,
+    BadgesComponent,
+    GroupsComponent,
+    EventsComponent,
+    MainProfileComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
