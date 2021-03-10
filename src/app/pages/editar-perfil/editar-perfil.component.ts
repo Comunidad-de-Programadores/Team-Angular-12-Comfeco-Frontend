@@ -12,6 +12,7 @@ import { ValidatorsService } from 'src/app/services/validators.service';
   styleUrls: ['./editar-perfil.component.css'],
 })
 export class EditarPerfilComponent implements OnInit {
+  loading = false;
   file: File;
   nameFile: string;
   imagePath: string | ArrayBuffer;
@@ -50,11 +51,6 @@ export class EditarPerfilComponent implements OnInit {
   ngOnInit(): void {
     this.getCountries();
     this.initForm();
-    // this.subscription = this.userService.getUserSubject().subscribe(
-    //   (res) => {
-    //     this.setFormData(res)
-    //   }
-    // )
   }
 
   changeListener($event): void {
@@ -151,7 +147,7 @@ export class EditarPerfilComponent implements OnInit {
     this.setFormData(await this.getUserData());
   }
 
-  setFormData(user) {
+  private setFormData(user) {
     this.imagePath = user.img;
 
     this.formEdit.get('nick').setValue(user.nick || '');
@@ -169,15 +165,12 @@ export class EditarPerfilComponent implements OnInit {
 
   }
 
-  getUserData() {
-    const user = this.userService
-      .getUser()
-      .toPromise()
-      .then((res: any) => res.userFound);
-    return user;
+  async getUserData() {
+    const res: any = await this.userService.getUser().toPromise();
+    return res.userFound;
   }
 
-  async sendData() {
+  private prepareData(){
     const {
       facebook,
       github,
@@ -200,26 +193,41 @@ export class EditarPerfilComponent implements OnInit {
       }
     });
 
-
     const data = { ...formData, socialNetwork, img: this.file }
 
-    await this.userService.putUser(data).toPromise()
-      .then((res: any) => {
-        localStorage.setItem('user', JSON.stringify(res.userSaved));
-        this.userService.setUserSubect(res.userSaved);
+    return data;
+  }
 
-      }).catch(err => console.log(err));
+  async sendData() {
+    this.loading = true;
+
+    const data = this.prepareData();
+
+    const res: any = await this.userService.putUser(data).toPromise();
+
+    if(res.ok){
+      localStorage.setItem('user', JSON.stringify(res.userSaved));
+      this.userService.setUserSubect(res.userSaved);
+      this.loading = false;
+      this.toastr.success('Cambios guardados');
+    } else{
+      console.log(res);
+      
+      this.loading = false;
+      this.toastr.error('Error al guardar cambios');
+    }
   }
 
   async changeNewPassword() {
+    this.loading = true;
     const formData = this.formChangePassword.value;
     const res: any = await this.userService.editPassword(formData.newPassword).toPromise()
-    console.log(res);
-
 
     if (res.ok) {
+      this.loading = false;
       this.toastr.success('Contraseña actualizada con éxito');
     } else {
+      this.loading = false;
       this.toastr.error('Error al actualizar la contraseña');
     }
 
@@ -230,8 +238,6 @@ export class EditarPerfilComponent implements OnInit {
   checkValid(campo: string) {
     return this.formEdit.get(campo).invalid && this.formEdit.get(campo).touched;
   }
-
-
 
   checkValidPassword(campo: string) {
     return this.formChangePassword.get(campo).invalid && this.formChangePassword.get(campo).touched;

@@ -1,7 +1,6 @@
 <div class="container">
     <main>
         <div class="py-5 text-center">
-
             <h4 class="mb-3">Editar perfil</h4>
 
             <div>
@@ -153,6 +152,9 @@
                 </div>
                 <button class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
             </form>
+        </div>
+        <div  *ngIf="loading" class="text-center loading">
+            <app-loading></app-loading>
         </div>
     </main>
 </div>
