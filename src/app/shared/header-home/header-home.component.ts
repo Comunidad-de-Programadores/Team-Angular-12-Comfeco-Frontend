@@ -35,6 +35,7 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
   ]
 
   userData: User;
+  userGuest = false;
   subscription: Subscription;
 
   constructor(private router: Router,
@@ -60,6 +61,7 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
     console.log(this.userData);
 
     if (!this.userData) {
+      this.userGuest = true;
       this.userData = {
         nick: 'Guest',
         img: 'https://www.flaticon.com/premium-icon/icons/svg/2731/2731814.svg',
