@@ -1,8 +1,8 @@
-main{
+main {
     position: relative;
 }
 
-.loading{
+.loading {
     top: 0;
     min-width: 100%;
     min-height: 100%;
@@ -23,19 +23,21 @@ main{
     width: 100%;
 }
 
-.validationTypeDanger{
-    left:2%;
-    position:absolute;
-    display:inline;
-    padding:2px;
+.validationTypeDanger {
+    left: 2%;
+    position: absolute;
+    display: inline;
+    padding: 2px;
 }
 
-.validationTypePDanger{
-    left:2%;
-    position:relative;
-    padding:2px;
-    float:left;
+.validationTypePDanger {
+    left: 2%;
+    position: relative;
+    padding: 2px;
+    float: left;
 }
+
+
 /* Estilo del área del input[file] */
 
 .drag-drop {
@@ -101,6 +103,10 @@ input[type="file"] {
 .container_list p:hover {
     background: #bac8f3;
     color: white;
+}
+
+textarea {
+    border-radius: 1.5em !important;
 }
 
 
