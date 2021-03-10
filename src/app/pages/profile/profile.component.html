@@ -13,10 +13,12 @@
             </div>
             <div *ngIf="userData.socialNetwork" class="card-footer text-muted">
                 <div class="d-flex justify-content-around">
-                    <a [href]="'https://www.'+userData.socialNetwork[3]" target="_blank"><i class="fab fa-twitter social-networks"></i></a>
-                    <a [href]="'https://www.'+userData.socialNetwork[0]" target="_blank"><i class="fab fa-facebook social-networks"></i></a>
-                    <a [href]="'https://www.'+userData.socialNetwork[1]" target="_blank"><i class="fab fa-github social-networks"></i></a>
-                    <a [href]="'https://www.'+userData.socialNetwork[2]" target="_blank"><i class="fab fa-linkedin social-networks"></i></a>
+                    <a  *ngFor="let net of socialNetworks"
+                        [href]="net.link"
+                        target="_blank">
+                        <i  [class]="net.icon"
+                            class="social-networks"></i>
+                    </a>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ import { SwiperOptions } from 'swiper';
 export class ProfileComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   userData: any = {};
+  socialNetworks;
   listMedals = [
     { name: 'Camper', img: 'assets/img/medals/medal.svg' },
     { name: 'Lector', img: 'assets/img/medals/medal-2.svg' },
@@ -57,11 +58,48 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.userService
-      .getUserSubject()
-      .subscribe((res) => {
+    this.subscription = this.userService.getUserSubject().subscribe();
+      this.setSocialNetworks();
+  }
 
-      });
+  setSocialNetworks(){
+    var socialNetworks = [];
+    const temp =  this.userData.socialNetwork;
+
+    temp?.forEach((element: string) => {
+      switch(element.substr(0, 2)){
+        case 'fa':
+            const facebook = {
+              icon: 'fab fa-facebook',
+              link: `https://www.${element}`
+            }
+            socialNetworks.push(facebook);
+          break;
+        case 'li':
+          const linkedin = {
+            icon: 'fab fa-linkedin',
+            link: `https://www.${element}`
+          }
+          socialNetworks.push(linkedin);
+          break;
+        case 'tw':
+          const twitter = {
+            icon: 'fab fa-twitter',
+            link: `https://www.${element}`
+          }
+          socialNetworks.push(twitter);
+          break;
+        case 'gi':
+          const github = {
+            icon: 'fab fa-github',
+            link: `https://www.${element}`
+          }
+          socialNetworks.push(github);
+          break;
+      }
+    });
+
+    this.socialNetworks = socialNetworks;
   }
 
 }

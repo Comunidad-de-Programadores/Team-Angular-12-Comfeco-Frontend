@@ -152,13 +152,23 @@ export class EditarPerfilComponent implements OnInit {
     this.formEdit.get('birthday').setValue(user.birthday || '');
     this.formEdit.get('country').setValue(user.country || '');
     this.formEdit.get('biography').setValue(user.biography || '');
-    if (user.socialNetwork) {
-      this.formEdit.get('facebook').setValue(user.socialNetwork[0] ? user.socialNetwork[0].substr(13) : '');
-      this.formEdit.get('github').setValue(user.socialNetwork[1] ? user.socialNetwork[1].substr(11) : '');
-      this.formEdit.get('linkedin').setValue(user.socialNetwork[2] ? user.socialNetwork[2].substr(16) : '');
-      this.formEdit.get('twitter').setValue(user.socialNetwork[3] ? user.socialNetwork[3].substr(12) : '');
-    }
 
+
+    user.socialNetwork.forEach((net: string) => {
+      switch(net.substr(0, 2)){
+        case 'fa':
+          this.formEdit.get('facebook').setValue(net.substr(13));
+          break;
+        case 'li':
+          this.formEdit.get('linkedin').setValue(net.substr(16));
+          break;
+        case 'tw':
+          this.formEdit.get('twitter').setValue(net.substr(12));
+          break;
+        case 'gi':
+          this.formEdit.get('github').setValue(net.substr(11));
+          break;
+    }});
   }
 
   async getUserData() {
@@ -208,7 +218,7 @@ export class EditarPerfilComponent implements OnInit {
       this.formEdit.reset();
       this.initForm();
       this.loading = false;
-      this.toastr.success('Cambios guardados');
+      this.toastr.success('Cambios guardados');     
     } else{
       this.loading = false;
       this.toastr.error('Error al guardar cambios');
