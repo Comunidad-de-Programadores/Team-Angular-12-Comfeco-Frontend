@@ -33,6 +33,7 @@ export class EditarPerfilComponent implements OnInit {
     linkedin: new FormControl('', []),
     twitter: new FormControl('', []),
   });
+
   formChangePassword = new FormGroup({
     newPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmNewPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -54,6 +55,7 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   changeListener($event): void {
+    this.formEdit.markAsDirty();
     this.file = $event.target.files[0];
     this.nameFile = this.file['name'];
     this.readThis($event.target);
