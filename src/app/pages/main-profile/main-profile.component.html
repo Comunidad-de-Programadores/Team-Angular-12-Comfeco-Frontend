@@ -89,7 +89,7 @@
     <h4 *ngIf="activeView == 'groups'" class="text-option-inverse">Eventos</h4>
 </div>
 
-<div class="container-fluid bg-white p-2" [ngClass]="{'profile':'border border-primary', 'badges':'border border-success', 'groups':'border border-info', 'events':'border border-warning'}[activeView]">
+<div class="container-fluid bg-white p-2 shadow-sm mb-5" [ngClass]="{'profile':'border border-primary', 'badges':'border border-success', 'groups':'border border-info', 'events':'border border-warning'}[activeView]">
     <div [ngSwitch]="activeView">
         <div *ngSwitchCase="'profile'">
             <app-profile></app-profile>

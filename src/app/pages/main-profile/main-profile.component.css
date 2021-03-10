@@ -57,6 +57,10 @@
     text-transform: uppercase;
 }
 
+.container-fluid {
+    max-width: 1300px;
+}
+
 @media ( max-width: 375px) {
     .text-option {
         display: none;

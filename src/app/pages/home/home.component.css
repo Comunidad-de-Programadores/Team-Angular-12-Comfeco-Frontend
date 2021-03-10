@@ -127,6 +127,7 @@
     grid-template-areas: 'texto texto' ' slider1 slider1' 'slider2 slider2' 'comunidades1 comunidades1' 'comunidades2 comunidades2' 'temporizador temporizador ';
     row-gap: 1em;
     column-gap: 1em;
+    max-width: 1300px;
 }
 
 .slider2 swiper {
