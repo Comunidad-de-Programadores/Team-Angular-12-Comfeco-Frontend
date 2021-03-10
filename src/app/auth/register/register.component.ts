@@ -60,7 +60,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       const user: User = {
         nick: this.form.value.nick,
         email: this.form.value.email,
-        password: this.form.value.password
+        password: this.form.value.password,
+        img: ''
       };
 
       this.loading = true;

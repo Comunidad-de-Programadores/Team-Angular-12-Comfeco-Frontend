@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-header-home',
@@ -33,30 +34,44 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
     }
   ]
 
-  userData;
+  userData: User;
   subscription: Subscription;
 
   constructor(private router: Router,
-              private userService: UserService) {
-    this.userData = JSON.parse(localStorage.getItem('user'));
+    private userService: UserService) {
+
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
+
   ngOnInit(): void {
+    this.getInfoUser();
     this.subscription = this.userService.getUserSubject().subscribe(
-      (res)=> {
+      (res) => {
         this.userData.nick = res.nick;
         this.userData.img = res.img;
       }
     )
   }
+  getInfoUser() {
+    this.userData = JSON.parse(localStorage.getItem('user'));
+    console.log(this.userData);
 
+    if (!this.userData) {
+      this.userData = {
+        nick: 'Guest',
+        img: 'https://www.flaticon.com/premium-icon/icons/svg/2731/2731814.svg',
+        email: '',
+        password: ''
+      }
+    }
+  }
   logoutClick(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/auth/login');
   }
 
 }
