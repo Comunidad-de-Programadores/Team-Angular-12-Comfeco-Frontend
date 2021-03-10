@@ -15,7 +15,7 @@
     position: absolute;
     right: 0;
     width: 40px;
-    height: 40px;
+    height: 30px;
 }
 
 .options a{
@@ -29,6 +29,13 @@
 }
 
 
+@media (max-width: 440px) { 
+    .options{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+ }
+
 @media (max-width: 576px) { 
     .card{
         width: 100% !important;
@@ -41,7 +48,6 @@
 
 @media (max-width: 768px) {
     .card{
-
         width: 80%;
     }
 }
