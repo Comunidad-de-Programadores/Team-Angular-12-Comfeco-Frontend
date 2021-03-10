@@ -1,1 +1,25 @@
-<p>events works!</p>
+<div class="wrapper">
+    
+    <div class="card mx-auto" *ngFor="let item of [1,1,1,1,1,1,1,1,1]; let id = index;">
+        <a class="btn btn-primary share">
+         <i class="fa fa-share-alt"></i>
+        </a>
+        <img class="card-img-top" src="../assets/img/angular_banner.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Baby steps en Angular</h5>
+          <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nesciunt. Provident porro soluta est repellendus nihil. Vitae, quia rerum in reiciendis accusamus officiis.</p>
+          
+          <div class="options">
+            <a href="#">
+              Más información
+            </a>
+            <a *ngIf="!onEvent" class="btn btn-primary btn-user" (click)="clickJoin(id)">
+              Participar
+            </a>
+            <a *ngIf="onEvent" class="btn btn-secondary btn-user" (click)="clickLeave(id)">
+              Salir
+            </a>
+          </div>
+        </div>
+    </div>
+</div>
