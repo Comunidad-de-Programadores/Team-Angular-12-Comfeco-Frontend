@@ -25,7 +25,7 @@ import { PagesModule } from './pages/pages.module';
     PoliticasModule,
     BrowserAnimationsModule,
     PagesModule,
-    ToastrModule.forRoot({positionClass: 'toast-top-right'}),
+    ToastrModule.forRoot({positionClass: 'toast-top-right',  timeOut: 1000}),
     HttpClientModule
   ],
   providers: [],

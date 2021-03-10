@@ -21,17 +21,17 @@ export class EditarPerfilComponent implements OnInit {
 
   formEdit = new FormGroup({
     nick: new FormControl('', [Validators.required]),
-    email: new FormControl('', [
+    email: new FormControl({value: '', disabled: true}, [
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
     ]),
-    gender: new FormControl('', [Validators.required]),
-    birthday: new FormControl('', [Validators.required]),
-    country: new FormControl('', [Validators.required]),
-    biography: new FormControl('', [Validators.required]),
-    facebook: new FormControl('', [Validators.required]),
-    github: new FormControl('', [Validators.required]),
-    linkedin: new FormControl('', [Validators.required]),
-    twitter: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.pattern('(Otro|otro|m|M|f|F)$')]),
+    birthday: new FormControl('', []),
+    country: new FormControl('', []),
+    biography: new FormControl('', []),
+    facebook: new FormControl('', []),
+    github: new FormControl('', []),
+    linkedin: new FormControl('', []),
+    twitter: new FormControl('', []),
   });
   formChangePassword = new FormGroup({
     newPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -78,16 +78,13 @@ export class EditarPerfilComponent implements OnInit {
         this.listFilterCountry.push(this.normalizeWord(word.name_es));
       }
     );
-    this.listCountries = [...this.listFilterCountry]
-    console.log(this.listCountries);
-
+    this.listCountries = [...this.listFilterCountry];
   }
+
   filterCountry(event: string) {
-    console.log(event);
     this.wordFilterCountry = event;
     this.listFilterCountry = this.listCountries.filter((e) => {
-      if (e.normal.indexOf(event.toLocaleLowerCase()) !== -1) {
-        // console.log(e.name_es);
+      if (e.normal.indexOf(event?.toLocaleLowerCase()) !== -1) {
         return true;
       }
       return false
@@ -142,7 +139,6 @@ export class EditarPerfilComponent implements OnInit {
     };
   }
 
-
   async initForm() {
     this.setFormData(await this.getUserData());
   }
@@ -179,6 +175,7 @@ export class EditarPerfilComponent implements OnInit {
       ...formData
     } = this.formEdit.value;
 
+    
     const socialNetwork = [];
     const temp = [
       `facebook.com/${facebook}`,
@@ -208,11 +205,11 @@ export class EditarPerfilComponent implements OnInit {
     if(res.ok){
       localStorage.setItem('user', JSON.stringify(res.userSaved));
       this.userService.setUserSubect(res.userSaved);
+      this.formEdit.reset();
+      this.initForm();
       this.loading = false;
       this.toastr.success('Cambios guardados');
     } else{
-      console.log(res);
-      
       this.loading = false;
       this.toastr.error('Error al guardar cambios');
     }
@@ -235,18 +232,17 @@ export class EditarPerfilComponent implements OnInit {
 
   }
 
-  checkValid(campo: string) {
-    return this.formEdit.get(campo).invalid && this.formEdit.get(campo).touched;
+  checkValid(field: string) {
+    return this.formEdit.get(field).invalid && this.formEdit.get(field).touched;
   }
 
-  checkValidPassword(campo: string) {
-    return this.formChangePassword.get(campo).invalid && this.formChangePassword.get(campo).touched;
+  checkValidPassword(field: string) {
+    return this.formChangePassword.get(field).invalid && this.formChangePassword.get(field).touched;
   }
 
   samePassword() {
     const password1 = this.formChangePassword.get('newPassword').value;
     const password2 = this.formChangePassword.get('confirmNewPassword').value;
-
     return (password1 === password2) ? false : true;
   }
 }

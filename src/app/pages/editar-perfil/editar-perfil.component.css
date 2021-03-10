@@ -104,56 +104,6 @@ input[type="file"] {
 }
 
 
-/* Estilo del área del input[file] con :hover */
-
-
-/* 
-.drag-drop:hover, input[type="file"]:hover {
-    background-color: #3276b1;
-    cursor: pointer;
-} */
-
-
-/* .drag-drop:hover span.desc {
-    color: #fff;
-} 
-
-.drag-drop:hover .pulsating {
-    animation: pulse1 1s linear infinite;
-    animation-direction: alternate ;
-    -webkit-animation: pulse1 1s linear infinite;
-    -webkit-animation-direction: alternate ;
-} */
-
-
-/* Composición del icono de Upload con FontAwesome */
-
-.fa-stack {
-    margin-top: .5em;
-}
-
-.fa-stack .top {
-    color: white;
-}
-
-.fa-stack .medium {
-    color: black;
-    text-shadow: 0 0 .25em #666;
-}
-
-.fa-stack .bottom {
-    color: rgba(225, 225, 225, .75);
-}
-
-.form-inline label {
-    margin: 0;
-}
-
-textarea {
-    border-radius: 2em !important;
-}
-
-
 /* Keyframing de la animación */
 
 @keyframes pulse1 {
