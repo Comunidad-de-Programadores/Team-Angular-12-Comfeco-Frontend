@@ -67,37 +67,42 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const temp =  this.userData.socialNetwork;
 
     temp?.forEach((element: string) => {
-      switch(element.substr(0, 2)){
-        case 'fa':
-            const facebook = {
-              icon: 'fab fa-facebook',
+      if(element != null){        
+        switch(element.substr(0, 2)){
+          case 'fa':
+              const facebook = {
+                icon: 'fab fa-facebook',
+                link: `https://www.${element}`
+              }
+              socialNetworks.push(facebook);
+            break;
+          case 'li':
+            const linkedin = {
+              icon: 'fab fa-linkedin',
               link: `https://www.${element}`
             }
-            socialNetworks.push(facebook);
-          break;
-        case 'li':
-          const linkedin = {
-            icon: 'fab fa-linkedin',
-            link: `https://www.${element}`
-          }
-          socialNetworks.push(linkedin);
-          break;
-        case 'tw':
-          const twitter = {
-            icon: 'fab fa-twitter',
-            link: `https://www.${element}`
-          }
-          socialNetworks.push(twitter);
-          break;
-        case 'gi':
-          const github = {
-            icon: 'fab fa-github',
-            link: `https://www.${element}`
-          }
-          socialNetworks.push(github);
-          break;
+            socialNetworks.push(linkedin);
+            break;
+          case 'tw':
+            const twitter = {
+              icon: 'fab fa-twitter',
+              link: `https://www.${element}`
+            }
+            socialNetworks.push(twitter);
+            break;
+          case 'gi':
+            const github = {
+              icon: 'fab fa-github',
+              link: `https://www.${element}`
+            }
+            socialNetworks.push(github);
+            break;
+        }
       }
-    });
+      }
+    
+    
+    );
 
     this.socialNetworks = socialNetworks;
   }

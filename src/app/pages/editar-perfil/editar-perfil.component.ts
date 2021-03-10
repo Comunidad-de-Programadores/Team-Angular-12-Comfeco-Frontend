@@ -154,21 +154,24 @@ export class EditarPerfilComponent implements OnInit {
     this.formEdit.get('biography').setValue(user.biography || '');
 
 
-    user.socialNetwork.forEach((net: string) => {
-      switch(net.substr(0, 2)){
-        case 'fa':
-          this.formEdit.get('facebook').setValue(net.substr(13));
-          break;
-        case 'li':
-          this.formEdit.get('linkedin').setValue(net.substr(16));
-          break;
-        case 'tw':
-          this.formEdit.get('twitter').setValue(net.substr(12));
-          break;
-        case 'gi':
-          this.formEdit.get('github').setValue(net.substr(11));
-          break;
-    }});
+    user.socialNetwork.forEach((net: any) => {
+      if(net !== null){
+        switch(net.substr(0, 2)){
+          case 'fa':
+            this.formEdit.get('facebook').setValue(net.substr(13));
+            break;
+          case 'li':
+            this.formEdit.get('linkedin').setValue(net.substr(16));
+            break;
+          case 'tw':
+            this.formEdit.get('twitter').setValue(net.substr(12));
+            break;
+          case 'gi':
+            this.formEdit.get('github').setValue(net.substr(11));
+            break;
+      }}
+      }
+    );
   }
 
   async getUserData() {
@@ -185,14 +188,22 @@ export class EditarPerfilComponent implements OnInit {
       ...formData
     } = this.formEdit.value;
 
+    const temp = [];
     
+    if(facebook != null){
+      temp.push(`facebook.com/${facebook}`)
+    }
+    if(github != null){
+      temp.push(`github.com/${github}`)
+    }
+    if(linkedin != null){
+      temp.push(`linkedin.com/in/${linkedin}`)
+    }
+    if(twitter != null){
+      temp.push(`twitter.com/${twitter}`)
+    }
+
     const socialNetwork = [];
-    const temp = [
-      `facebook.com/${facebook}`,
-      `github.com/${github}`,
-      `linkedin.com/in/${linkedin}`,
-      `twitter.com/${twitter}`
-    ];
 
     temp.forEach(element => {
       if (element.substr(element.length - 1) !== '/') {
@@ -218,7 +229,7 @@ export class EditarPerfilComponent implements OnInit {
       this.formEdit.reset();
       this.initForm();
       this.loading = false;
-      this.toastr.success('Cambios guardados');     
+      this.toastr.success('Cambios guardados');
     } else{
       this.loading = false;
       this.toastr.error('Error al guardar cambios');
