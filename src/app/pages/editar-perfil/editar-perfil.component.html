@@ -19,7 +19,7 @@
             <div class="col">
                 <form  autocomplete="off" class="user" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
                     <div class="row g-3">
-                        <div class="col-sm-12 col-md-6 mb-4">
+                        <div class="col-sm-12 col-md-4 mb-4">
                             <label for="nickInput" class="form-label float-left">Nick <span class="text-muted"></span></label>
                             <input formControlName="nick" type="text" class="form-control form-control-user" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" [class.is-invalid]="checkValid('nick')" required>
                             <div *ngIf="checkValid('nick')">
@@ -28,7 +28,7 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 mb-4">
+                        <div class="col-sm-12 col-md-4 mb-4">
                             <label for="emailInput" class="form-label float-left">Correo <span class="text-muted"></span></label>
                             <input formControlName="email" type="email" class="form-control form-control-user" id="emailInput" placeholder="tucorreo@ejemplo.com" [class.is-invalid]="checkValid('email')" required>
                             <div *ngIf="checkValid('email')">
@@ -37,9 +37,30 @@
                                 </small>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-4 mb-4">
+                            <label for="knowlegdeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
+                            <input formControlName="knowlegdeArea" type="text" class="form-control form-control-user" id="knowlegdeArea" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('nick')" required readonly>
+                            <div class="customizeSelect">                
+                                <ul class="" name="select">
+                                    <li value="value1">Frontend</li>
+                                    <li value="value2" selected>Backend</li>
+                                    <li value="value3">DevOps</li>
+                                    <li value="value3">Video Games Developers</li>
+                                    <li value="value3">UI/UX</li>
+                                    <li value="value3">Database Developer</li>
+                                    <li value="value3">Cloud Computing</li>
+                                </ul>
+                            </div>
+                            <div *ngIf="checkValid('email')">
+                                <small *ngIf="formEdit.controls.email.errors.required" class="text-danger validationTypeDanger">
+                                    Email inválido
+                                </small>
+                            </div>
+                        </div>
+
 
                         <div class="col-sm-12 col-md-4 mb-5">
-                            <label for="generoInput" class="form-label float-left">Género</label>
+                            <label for="generoInput" class="form-label float-left">Género <span class="text-muted">*</span></label>
                             <input formControlName="gender" 
                                    type="text" 
                                    class="form-control form-control-user" 
