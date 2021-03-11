@@ -17,7 +17,7 @@
             <br><br>
 
             <div class="col">
-                <form  autocomplete="off" class="user" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
+                <form autocomplete="off" class="user" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
                     <div class="row g-3">
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="nickInput" class="form-label float-left">Nick <span class="text-muted"></span></label>
@@ -40,7 +40,7 @@
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="knowlegdeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
                             <input formControlName="knowlegdeArea" type="text" class="form-control form-control-user" id="knowlegdeArea" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('nick')" required readonly>
-                            <div class="customizeSelect">                
+                            <div class="customizeSelect">
                                 <ul class="" name="select">
                                     <li value="value1">Frontend</li>
                                     <li value="value2" selected>Backend</li>
@@ -61,17 +61,12 @@
 
                         <div class="col-sm-12 col-md-4 mb-5">
                             <label for="generoInput" class="form-label float-left">Género <span class="text-muted">*</span></label>
-                            <input formControlName="gender" 
-                                   type="text" 
-                                   class="form-control form-control-user" 
-                                   style="text-transform: capitalize;"
-                                   id="generoInput" 
-                                   placeholder="Tú genero">
-                                   <div *ngIf="checkValid('gender')">
-                                    <small class="text-danger validationTypeDanger">
+                            <input formControlName="gender" type="text" class="form-control form-control-user" style="text-transform: capitalize;" id="generoInput" placeholder="Tú genero">
+                            <div *ngIf="checkValid('gender')">
+                                <small class="text-danger validationTypeDanger">
                                         El campo acepta "M", "F", u "Otro"
                                     </small>
-                                </div>
+                            </div>
                         </div>
 
                         <div class="col-sm-12 col-md-4 mb-5">
@@ -86,11 +81,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-5 relative">
                             <label for="countryInput" class="form-label float-left">País <span class="text-muted"></span></label>
-                            <input style="text-transform: capitalize;" 
-                                   formControlName="country" type="text" 
-                                   class="form-control form-control-user" 
-                                   (ngModelChange)="filterCountry($event)" 
-                                   id="countryInput" placeholder="Selecionar pais" [class.is-invalid]="checkValid('country')">
+                            <input style="text-transform: capitalize;" formControlName="country" type="text" class="form-control form-control-user" (ngModelChange)="filterCountry($event)" id="countryInput" placeholder="Selecionar pais" [class.is-invalid]="checkValid('country')">
                             <div class="container_list shadow-sm" *ngIf="wordFilterCountry?.length>0 && formEdit.get('country').dirty">
                                 <p *ngFor="let country of listFilterCountry" (click)="selectCountry(country.original)"> {{country.original}}</p>
                             </div>
@@ -139,9 +130,7 @@
                     </div>
 
 
-                    <button [disabled]="formEdit.pristine || formEdit.invalid"
-                            class="w-12 btn btn-primary btn-md float-right" 
-                            type="submit">Guardar cambios</button>
+                    <button [disabled]="formEdit.pristine || formEdit.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
                 </form>
 
             </div>
@@ -177,12 +166,10 @@
                         </div>
                     </div>
                 </div>
-                <button [disabled]="formChangePassword.invalid"
-                        class="w-12 btn btn-primary btn-md float-right" 
-                        type="submit">Guardar cambios</button>
+                <button [disabled]="formChangePassword.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
             </form>
         </div>
-        <div  *ngIf="loading" class="text-center loading">
+        <div *ngIf="loading" class="text-center loading">
             <app-loading></app-loading>
         </div>
     </main>
