@@ -1,56 +1,14 @@
-<div class="container-fluid">
-    <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 mt-4 shadow-sm border-success">
-            <div class="card-header border-success">
-                <img src="../../../assets/img/medals/medal-2.svg" alt="">
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">Sociable</h1>
-                <h3 class="card-title pricing-card-title">Descripcion</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <hr class="border-success">
-                <h2 class="card-title pricing-card-title">¿Como ganarla?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed nostrum fugit, iure natus minima laborum distinctio esse neque?</p>
-            </div>
+<div class="wrapper">
+    <div class="card mb-4 mt-4 text-center shadow-sm" *ngFor="let ins of insignia">
+        <div class="card-header border-success">
+            <img [src]="ins.img" alt="Insignias">
         </div>
-        <div class="card mb-4 mt-4 shadow-sm border-success">
-            <div class="card-header border-success">
-                <img src="../../../assets/img/medals/medal-2.svg" alt="">
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">Sociable</h1>
-                <h3 class="card-title pricing-card-title">Descripcion</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <hr class="border-success">
-                <h2 class="card-title pricing-card-title">¿Como ganarla?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed nostrum fugit, iure natus minima laborum distinctio esse neque?</p>
-            </div>
-        </div>
-        <div class="card mb-4 mt-4 shadow-sm border-success">
-            <div class="card-header border-success">
-                <img src="../../../assets/img/medals/medal-2.svg" alt="">
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">Sociable</h1>
-                <h3 class="card-title pricing-card-title">Descripcion</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <hr class="border-success">
-                <h2 class="card-title pricing-card-title">¿Como ganarla?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed nostrum fugit, iure natus minima laborum distinctio esse neque?</p>
-            </div>
-        </div>
-        <div class="card mb-4 mt-4 shadow-sm border-success">
-            <div class="card-header border-success">
-                <img src="../../../assets/img/medals/medal-2.svg" alt="">
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">Sociable</h1>
-                <h3 class="card-title pricing-card-title">Descripcion</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <hr class="border-success">
-                <h2 class="card-title pricing-card-title">¿Como ganarla?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed nostrum fugit, iure natus minima laborum distinctio esse neque?</p>
-            </div>
+        <div class="card-body">
+            <h2 class="card-title pricing-card-title text-gray-600">{{ins.name}}</h2>
+            <p class="text-gray-700">{{ins.description}}</p>
+            <hr class="border-success separator">
+            <h2 class="card-title pricing-card-title">¿Como ganarla?</h2>
+            <p class="text-gray-700">{{ins.howtoWin}}</p>
         </div>
     </div>
 </div>
