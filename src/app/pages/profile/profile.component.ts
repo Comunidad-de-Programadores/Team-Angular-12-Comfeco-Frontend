@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   userData: any = {};
   socialNetworks;
+  badgesUser: any;
   listMedals = [
     { name: 'Camper', img: 'assets/img/medals/medal.svg' },
     { name: 'Lector', img: 'assets/img/medals/medal-2.svg' },
@@ -59,7 +60,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.userService.getUserSubject().subscribe();
-      this.setSocialNetworks();
+    this.setSocialNetworks();
+    this.getBadges();
   }
 
   setSocialNetworks(){
@@ -67,7 +69,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const temp =  this.userData.socialNetwork;
 
     temp?.forEach((element: string) => {
-      if(element != null){        
+      if(element != null){
         switch(element.substr(0, 2)){
           case 'fa':
               const facebook = {
@@ -100,11 +102,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
       }
       }
-    
-    
+
+
     );
 
     this.socialNetworks = socialNetworks;
+  }
+
+  async getBadges(){
+    const resp: any = await this.userService.getBadges().toPromise();
+    console.log(resp);
+    this.badgesUser = resp.badges;
   }
 
 }
