@@ -31,7 +31,7 @@
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="emailInput" class="form-label float-left">Correo <span class="text-muted"></span></label>
                             <input formControlName="email" type="email" class="form-control form-control-user" id="emailInput" placeholder="tucorreo@ejemplo.com" [class.is-invalid]="checkValid('email')" required>
-                            <div *ngIf="checkValid('email')">
+                            <div *ngIf="checkValid('email')">                          
                                 <small *ngIf="formEdit.controls.email.errors.required" class="text-danger validationTypeDanger">
                                     Email inválido
                                 </small>
@@ -39,25 +39,18 @@
                         </div>
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="knowlegdeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
-                            <input formControlName="knowlegdeArea" type="text" class="form-control form-control-user" id="knowlegdeArea" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('nick')" required readonly>
-                            <div class="customizeSelect">
-                                <ul class="" name="select">
-                                    <li value="value1">Frontend</li>
-                                    <li value="value2" selected>Backend</li>
-                                    <li value="value3">DevOps</li>
-                                    <li value="value3">Video Games Developers</li>
-                                    <li value="value3">UI/UX</li>
-                                    <li value="value3">Database Developer</li>
-                                    <li value="value3">Cloud Computing</li>
-                                </ul>
-                            </div>
-                            <div *ngIf="checkValid('email')">
-                                <small *ngIf="formEdit.controls.email.errors.required" class="text-danger validationTypeDanger">
-                                    Email inválido
+                           <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowlegdeArea" type="text" class="form-control form-control-user" id="knowlegdeAreaInput" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('knowlegdeArea')" required/>
+                           <!-- <div class="customizeSelect" id="customizeSelect"> -->
+                            <div class="container_list shadow-sm" id="customizeSelectUl">  
+                                <p *ngFor="let item of listRols" (click)="selectRol(item)">{{ item }} </p>
+                            </div> 
+                            <!-- </div> -->
+                            <div *ngIf="checkValid('knowlegdeArea')">
+                                <small *ngIf="formEdit.controls.knowlegdeArea.errors.required" class="text-danger validationTypeDanger">
+                                   Don't selected rol.
                                 </small>
                             </div>
                         </div>
-
 
                         <div class="col-sm-12 col-md-4 mb-5">
                             <label for="generoInput" class="form-label float-left">Género <span class="text-muted">*</span></label>
@@ -65,7 +58,7 @@
                             <div *ngIf="checkValid('gender')">
                                 <small class="text-danger validationTypeDanger">
                                         El campo acepta "M", "F", u "Otro"
-                                    </small>
+                                </small>
                             </div>
                         </div>
 
@@ -173,4 +166,5 @@
             <app-loading></app-loading>
         </div>
     </main>
+    <br/><br/>
 </div>

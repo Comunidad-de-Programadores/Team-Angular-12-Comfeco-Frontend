@@ -18,18 +18,20 @@ main {
     margin: 2em;
     padding: .5em;
     width: 12em;
-    margin-top: -50px;
+    margin-top: 0px;
     margin-left:-20px;
-    position:absolute;
-    z-index:200;
-    padding: 1.5rem 1rem;width: 100%;font-size: 0.8rem;
-  }
+    position: absolute;
+    z-index:400;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    font-size: 0.8rem;
+    background-color:red;
+    
+}
 
-  .customizeSelect > ul { background-color:white;display: none; list-style: none;}
-  .customizeSelect:hover > ul {display: block; border-top: 1px solid 
-  white;margin-top:27px;}
-  .customizeSelect:hover > ul > li { padding: 5px; border-bottom: 1px solid white;}
-  .customizeSelect:hover > ul > li:hover { background: white;}
+.customizeSelectUl {
+    display: none;
+}
 
 .social-icon {
     width: 24px;

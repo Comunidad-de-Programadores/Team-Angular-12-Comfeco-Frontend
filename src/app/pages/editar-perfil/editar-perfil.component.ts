@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CountryService } from 'src/app/services/country.service';
@@ -12,6 +12,16 @@ import { ValidatorsService } from 'src/app/services/validators.service';
   styleUrls: ['./editar-perfil.component.css'],
 })
 export class EditarPerfilComponent implements OnInit {
+  listRols = [
+    'Frontend',
+    'Backend',
+    'DevOps',
+    'Video Games Developers',
+    'UI/UX',
+    'Database Developer',
+    'Cloud Computing'
+  ];
+  inputRol: string = "";
   loading = false;
   file: File;
   nameFile: string;
@@ -21,11 +31,11 @@ export class EditarPerfilComponent implements OnInit {
 
   formEdit = new FormGroup({
     nick: new FormControl('', [Validators.required]),
-    email: new FormControl({value: '', disabled: true}, [
+    email: new FormControl({ value: '', disabled: true }, [
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
     ]),
     gender: new FormControl('', [Validators.pattern('(Otro|otro|m|M|f|F)$')]),
-    knowledgeArea: new FormControl('', []),
+    knowlegdeArea: new FormControl('', [Validators.required]),
     birthday: new FormControl('', []),
     country: new FormControl('', []),
     biography: new FormControl('', [Validators.maxLength(140)]),
@@ -47,13 +57,35 @@ export class EditarPerfilComponent implements OnInit {
     private countries: CountryService,
     private userService: UserService,
     private toastr: ToastrService,
-    private validador: ValidatorsService
+    private validador: ValidatorsService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
     this.getCountries();
     this.initForm();
+
+    this.renderer.listen((<HTMLInputElement>document.getElementById("knowlegdeAreaInput")), "input", () => {
+      (<HTMLInputElement>document.getElementById('knowlegdeAreaInput')).value = "";
+    });
+
+    (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
+
+    this.renderer.listen((<HTMLInputElement>document.getElementById("knowlegdeAreaInput")), "click", () => {
+      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;      
+      (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:block !important");
+    });    
   }
+
+  selectRol(selectRol: string) {
+      this.formEdit.patchValue({
+        knowlegdeArea: selectRol
+      });
+    //(<HTMLInputElement>document.getElementById("knowlegdeAreaInput")).value = selectRol;
+    (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
+    (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
+  }
+
 
   changeListener($event): void {
     this.formEdit.markAsDirty();
@@ -158,8 +190,8 @@ export class EditarPerfilComponent implements OnInit {
 
 
     user.socialNetwork.forEach((net: any) => {
-      if(net !== null){
-        switch(net.substr(0, 2)){
+      if (net !== null) {
+        switch (net.substr(0, 2)) {
           case 'fa':
             this.formEdit.get('facebook').setValue(net.substr(13));
             break;
@@ -172,9 +204,9 @@ export class EditarPerfilComponent implements OnInit {
           case 'gi':
             this.formEdit.get('github').setValue(net.substr(11));
             break;
-      }}
+        }
       }
-    );
+    });
   }
 
   async getUserData() {
@@ -182,7 +214,7 @@ export class EditarPerfilComponent implements OnInit {
     return res.userFound;
   }
 
-  private prepareData(){
+  private prepareData() {
     const {
       facebook,
       github,
@@ -192,17 +224,17 @@ export class EditarPerfilComponent implements OnInit {
     } = this.formEdit.value;
 
     const temp = [];
-    
-    if(facebook != null){
+
+    if (facebook != null) {
       temp.push(`facebook.com/${facebook}`)
     }
-    if(github != null){
+    if (github != null) {
       temp.push(`github.com/${github}`)
     }
-    if(linkedin != null){
+    if (linkedin != null) {
       temp.push(`linkedin.com/in/${linkedin}`)
     }
-    if(twitter != null){
+    if (twitter != null) {
       temp.push(`twitter.com/${twitter}`)
     }
 
@@ -226,14 +258,14 @@ export class EditarPerfilComponent implements OnInit {
 
     const res: any = await this.userService.putUser(data).toPromise();
 
-    if(res.ok){
+    if (res.ok) {
       localStorage.setItem('user', JSON.stringify(res.userSaved));
       this.userService.setUserSubect(res.userSaved);
       this.formEdit.reset();
       this.initForm();
       this.loading = false;
       this.toastr.success('Cambios guardados');
-    } else{
+    } else {
       this.loading = false;
       this.toastr.error('Error al guardar cambios');
     }
@@ -253,7 +285,6 @@ export class EditarPerfilComponent implements OnInit {
     }
 
     this.formChangePassword.reset();
-
   }
 
   checkValid(field: string) {
