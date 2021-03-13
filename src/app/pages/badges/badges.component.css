@@ -9,6 +9,7 @@
 .card {
     max-width: 90% !important;
     border-radius: 10px;
+    border-color: rgb(202, 200, 200);
 }
 
 .card>div {

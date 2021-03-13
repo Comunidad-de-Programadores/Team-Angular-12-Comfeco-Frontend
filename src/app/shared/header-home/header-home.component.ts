@@ -58,7 +58,7 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
   }
   getInfoUser() {
     this.userData = JSON.parse(localStorage.getItem('user'));
-    console.log(this.userData);
+    // console.log(this.userData);
 
     if (!this.userData) {
       this.userGuest = true;

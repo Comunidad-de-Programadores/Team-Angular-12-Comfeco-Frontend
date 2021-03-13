@@ -81,7 +81,6 @@ export class EditarPerfilComponent implements OnInit {
       this.formEdit.patchValue({
         knowlegdeArea: selectRol
       });
-    //(<HTMLInputElement>document.getElementById("knowlegdeAreaInput")).value = selectRol;
     (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
   }

@@ -1,1 +1,145 @@
-<p>groups works!</p>
+<div class="animate__animated animate__fadeIn">
+    <h3 class="text-center bg-info text-white rounded">Grupos</h3>
+    <div class="row mt-4">
+        <div class="col-md-12 col-lg-3 mb-4 order-2 order-sm-1">
+            <div class="card shadow">
+
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-info">
+                    <h6 class="m-0 font-weight-bold text-white">Mis grupos</h6>
+                    <div class="dropdown no-arrow">
+                        <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false"> Ir al
+                            grupo </a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-1 mt-1 shadow p-4">
+                        <div class="row mb-2">
+                            <div
+                                class="col bg-secondary text-white d-flex flex-row align-items-center justify-content-between">
+                                Team Angular - 12 <img class="programming-language img-fluid text-right rounded-circle"
+                                    src="https://icons-for-free.com/iconfiles/png/512/command+develop+javascript+language+programming+software+icon-1320165727225308896.png"
+                                    alt="Programming language">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row d-flex flex-row align-items-center justify-content-between">
+                                <img class="group-members bg-info img-fluid text-right rounded-circle"
+                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                    alt="Miembro del grupo">
+                                <div class="col">
+                                    <strong>LuisGMJ</strong>
+                                    <div>Medio</div>
+                                </div>
+                                Integrante
+                            </div>
+                            <hr>
+                            <div class="row d-flex flex-row align-items-center justify-content-between">
+                                <img class="group-members bg-info img-fluid text-right rounded-circle"
+                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                    alt="Miembro del grupo">
+                                <div class="col">
+                                    <strong>Karlos</strong>
+                                    <div>Medio</div>
+                                </div>
+                                Lider
+                            </div>
+                            <hr>
+                            <div class="row d-flex flex-row align-items-center justify-content-between">
+                                <img class="group-members bg-info img-fluid text-right rounded-circle"
+                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                    alt="Miembro del grupo">
+                                <div class="col">
+                                    <strong>kevin27</strong>
+                                    <div>Avanzado</div>
+                                </div>
+                                Integrante
+                            </div>
+                            <hr>
+                            <div class="row d-flex flex-row align-items-center justify-content-between">
+                                <img class="group-members bg-info img-fluid text-right rounded-circle"
+                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                    alt="Miembro del grupo">
+                                <div class="col">
+                                    <strong>Criss Vargas</strong>
+                                    <div>Novato</div>
+                                </div>
+                                Integrante
+                            </div>
+                            <hr>
+                            <div class="row d-flex flex-row align-items-center justify-content-between">
+                                <img class="group-members bg-info img-fluid text-right rounded-circle"
+                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+                                    alt="Miembro del grupo">
+                                <div class="col">
+                                    <strong>waspv2</strong>
+                                    <div>Novato</div>
+                                </div>
+                                Integrante
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-9 mb-4 order-1 order-sm-2">
+            <div class="row">
+                <div class="col-md-4">
+                    <select class="custom-select">
+                        <option selected>Filtrar por lenguaje</option>
+                        <option>JavaScript</option>
+                        <option>TypeScrip</option>
+                        <option>Java</option>
+                        <option>C#</option>
+                        <option>PHP</option>
+                        <option>Python</option>
+                    </select>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar grupo" aria-label="Buscar grupo">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3" *ngFor="let item of [1,1,1,1,1,1]; let id = index;">
+                    
+                    <div class="card mb-4">
+                        <a class="btn btn-sm btn-primary share">
+                         <i class="fa fa-share-alt"></i>
+                        </a>
+                        <img class="card-img-top" src="https://i.ytimg.com/vi/wwHh4kJWtzk/maxresdefault.jpg" alt="Card image">
+                        <div class="card-body">
+                          <span class="badge badge-info">Typescript</span>
+                          <h6 class="card-title mt-3"><strong>Los Crypto</strong></h6>
+                          <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nesciunt. Provident porro soluta est repellendus nihil. Vitae, quia rerum in reiciendis accusamus officiis.</p>
+                          
+                          <div class="text-center"><button class="btn btn-info">Unirse</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" *ngFor="let item of [1,1,1,1,1,1]; let id = index;">
+                    
+                    <div class="card mb-4">
+                        <a class="btn btn-sm btn-primary share">
+                         <i class="fa fa-share-alt"></i>
+                        </a>
+                        <img class="card-img-top" src="https://www.comfenalcoquindio.com/files/editor/images/boletin/congreso-virtual-ingles.png" alt="Card image">
+                        <div class="card-body">
+                          <span class="badge badge-warning">JavaScript</span>
+                          <h6 class="card-title mt-3"><strong>Los Crypto</strong></h6>
+                          <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nesciunt. Provident porro soluta est repellendus nihil. Vitae, quia rerum in reiciendis accusamus officiis.</p>
+                          
+                          <div class="text-center"><button class="btn btn-info">Unirse</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

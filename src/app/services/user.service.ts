@@ -15,7 +15,7 @@ export class UserService {
   private url = environment.baseUrl;
   option;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
   private getHeader() {
@@ -45,7 +45,7 @@ export class UserService {
       })
     );
   }
-  
+
   sendEmail(email: string) {
     return this.http.post(`${ this.url }/user/sendemail`, { email }).pipe(
       catchError(e => {
@@ -102,6 +102,11 @@ export class UserService {
 
   private getInitValue(){
     return JSON.parse(localStorage.getItem('user'));
+  }
+
+  getBadges(){
+    this.getHeader();
+    return this.http.get(`${this.url}/user/` + this.getInitValue()._id + '/insignias', this.option);
   }
 
 
