@@ -29,6 +29,11 @@ main {
     
 }
 
+.biographyCount {
+    position: relative;
+    float: right;
+}
+
 .customizeSelectUl {
     display: none;
 }
