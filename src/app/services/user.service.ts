@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
 
-  private userSubject = new  BehaviorSubject<any>(this.getInitValue());
+  private userSubject = new  Subject<any>();
   private url = environment.baseUrl;
   option;
 
@@ -80,6 +80,7 @@ export class UserService {
     body.append('birthday', value.birthday);
     body.append('country', value.country);
     body.append('biography', value.biography);
+    body.append('knowledgeArea', value.knowledgeArea);
     value.socialNetwork.forEach(element => {
       body.append('socialNetwork', element);
     });

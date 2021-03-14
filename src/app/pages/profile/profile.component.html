@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{userData.nick}}</h5>
-                <p class="card-text">Front Developer / UI/UX</p>
+                <p class="card-text"> {{userData.knowledgeArea || ''}} </p>
                 <p class="card-text"> {{userData.biography || '' }} </p>
             </div>
             <div *ngIf="userData.socialNetwork" class="card-footer text-muted">
