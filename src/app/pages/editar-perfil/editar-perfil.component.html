@@ -19,7 +19,7 @@
             <div class="col">
                 <form autocomplete="off" class="user" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
                     <div class="row g-3">
-                        
+
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="nickInput" class="form-label float-left">Nick <span class="text-muted"></span></label>
                             <input formControlName="nick" type="text" class="form-control form-control-user" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" [class.is-invalid]="checkValid('nick')" required>
@@ -33,7 +33,7 @@
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="emailInput" class="form-label float-left">Correo <span class="text-muted"></span></label>
                             <input formControlName="email" type="email" class="form-control form-control-user" id="emailInput" placeholder="tucorreo@ejemplo.com" [class.is-invalid]="checkValid('email')" required>
-                            <div *ngIf="checkValid('email')">                          
+                            <div *ngIf="checkValid('email')">
                                 <small *ngIf="formEdit.controls.email.errors.required" class="text-danger validationTypeDanger">
                                     Email inválido
                                 </small>
@@ -42,13 +42,14 @@
 
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="knowledgeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
-                           <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('knowledgeArea')" required/>
-                            <div class="container_list shadow-sm" id="customizeSelectUl">  
+                            <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('knowledgeArea')"
+                                required/>
+                            <div class="container_list shadow-sm" id="customizeSelectUl">
                                 <p *ngFor="let item of listRols" (click)="selectRol(item)">{{ item }} </p>
-                            </div> 
+                            </div>
                             <div *ngIf="checkValid('knowledgeArea')">
                                 <small *ngIf="formEdit.controls.knowledgeArea.errors.required" class="text-danger validationTypeDanger">
-                                   Don't selected rol.
+                                 No a selecionado un rol
                                 </small>
                             </div>
                         </div>
@@ -119,13 +120,13 @@
 
                         <div class="col-12 mb-3 mt-4">
                             <label for="biografiaInput" class="form-label float-left">Biografía</label>
-                            <textarea formControlName="biography" rows="3" name="biographyNGModel" class="form-control form-control-user" id="biografiaInput" placeholder="" [(ngModel)]="biographyNGModel" [class.is-invalid]="checkValid('biography')"></textarea>
-                            <span class="biographyCount">{{biographyNGModel?.length}}/140</span>
+                            <textarea formControlName="biography" rows="3" name="biographyNGModel" class="form-control form-control-user" id="biografiaInput" placeholder="" [class.is-invalid]="checkValid('biography')"></textarea>
+                            <span class="biographyCount">{{formEdit.value?.biography.length}}/140</span>
                             <div *ngIf="checkValid('biography')">
                                 <small *ngIf="formEdit.controls.biography.errors.maxlength" class="text-danger validationTypeDanger">
                                     Máximo 140 caractéres
                                 </small>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
 

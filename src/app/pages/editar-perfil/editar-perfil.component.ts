@@ -12,7 +12,6 @@ import { ValidatorsService } from 'src/app/services/validators.service';
   styleUrls: ['./editar-perfil.component.css'],
 })
 export class EditarPerfilComponent implements OnInit {
-  biographyNGModel: String = "";
   listRols = [
     'Frontend',
     'Backend',
@@ -65,7 +64,28 @@ export class EditarPerfilComponent implements OnInit {
   ngOnInit(): void {
     this.getCountries();
     this.initForm();
+    this.validarMaxString();
+    this.knowledgeAreaInputControler();
+  }
 
+  selectRol(selectRol: string) {
+    this.formEdit.patchValue({
+      knowledgeArea: selectRol
+    });
+    (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
+    (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
+    this.formEdit.markAsDirty();
+  }
+
+  validarMaxString() {
+    const containebiografiaInput = (<HTMLInputElement>document.getElementById('biografiaInput'));
+    this.renderer.listen((<HTMLInputElement>document.getElementById('biografiaInput')), 'input', () => {
+      if (containebiografiaInput.value.length >= 140)
+        containebiografiaInput.value = containebiografiaInput.value.slice(0, 140);
+    });
+  }
+
+  knowledgeAreaInputControler() {
     this.renderer.listen((<HTMLInputElement>document.getElementById("knowledgeAreaInput")), "input", () => {
       (<HTMLInputElement>document.getElementById('knowledgeAreaInput')).value = "";
     });
@@ -73,27 +93,10 @@ export class EditarPerfilComponent implements OnInit {
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
 
     this.renderer.listen((<HTMLInputElement>document.getElementById("knowledgeAreaInput")), "click", () => {
-      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;      
+      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
       (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:block !important");
-    });    
-
-    var containebiografiaInput = (<HTMLInputElement>document.getElementById('biografiaInput'));
-    this.renderer.listen((<HTMLInputElement>document.getElementById('biografiaInput')), 'input', () => {
-      if (containebiografiaInput.value.length >= 140) 
-      containebiografiaInput.value = containebiografiaInput.value.slice(0,140); 
-      });
+    });
   }
-
-  selectRol(selectRol: string) {
-      this.formEdit.patchValue({
-        knowledgeArea: selectRol
-      });
-    (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
-    (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
-    this.formEdit.markAsDirty();
-  }
-
-
 
   changeListener($event): void {
     this.formEdit.markAsDirty();
@@ -197,7 +200,7 @@ export class EditarPerfilComponent implements OnInit {
     this.formEdit.get('biography').setValue(user.biography || '');
     this.formEdit.get('knowledgeArea').setValue(user.knowledgeArea || '');
 
-    
+
 
 
     user.socialNetwork.forEach((net: any) => {
@@ -275,7 +278,7 @@ export class EditarPerfilComponent implements OnInit {
       this.formEdit.reset();
       this.initForm();
       this.loading = false;
-      this.toastr.success('Cambios guardados');   
+      this.toastr.success('Cambios guardados');
     } else {
       this.loading = false;
       this.toastr.error('Error al guardar cambios');
