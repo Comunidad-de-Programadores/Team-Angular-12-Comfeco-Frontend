@@ -10,11 +10,10 @@
                     </a>
                     <img *ngIf="imagePath" [src]="imagePath">
                     <input type="file" id="file" #fileInput (change)="changeListener($event)" style="display:none;" />
-
                 </div>
             </div>
 
-            <br><br>
+            <br/><br/>
 
             <div class="col">
                 <form autocomplete="off" class="user" novalidate [formGroup]="formEdit" (ngSubmit)="sendData()">
@@ -22,7 +21,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="nickInput" class="form-label float-left">Nick <span class="text-muted"></span></label>
-                            <input formControlName="nick" type="text" class="form-control form-control-user" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" [class.is-invalid]="checkValid('nick')" required>
+                            <input formControlName="nick" type="text" class="form-control form-control-user" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" [class.is-invalid]="checkValid('nick')" required/>
                             <div *ngIf="checkValid('nick')">
                                 <small *ngIf="formEdit.controls.nick.errors.required" class="text-danger validationTypeDanger">
                                     Nombre de usuario requerido
@@ -32,7 +31,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="emailInput" class="form-label float-left">Correo <span class="text-muted"></span></label>
-                            <input formControlName="email" type="email" class="form-control form-control-user" id="emailInput" placeholder="tucorreo@ejemplo.com" [class.is-invalid]="checkValid('email')" required>
+                            <input formControlName="email" type="email" class="form-control form-control-user" id="emailInput" placeholder="tucorreo@ejemplo.com" [class.is-invalid]="checkValid('email')" required/>
                             <div *ngIf="checkValid('email')">
                                 <small *ngIf="formEdit.controls.email.errors.required" class="text-danger validationTypeDanger">
                                     Email inválido
@@ -56,7 +55,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-5">
                             <label for="generoInput" class="form-label float-left">Género <span class="text-muted">*</span></label>
-                            <input formControlName="gender" type="text" class="form-control form-control-user" style="text-transform: capitalize;" id="generoInput" placeholder="Tú genero">
+                            <input formControlName="gender" type="text" class="form-control form-control-user" style="text-transform: capitalize;" id="generoInput" placeholder="Tú genero"/>
                             <div *ngIf="checkValid('gender')">
                                 <small class="text-danger validationTypeDanger">
                                         El campo acepta "M", "F", u "Otro"
@@ -66,7 +65,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-5">
                             <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted"></span></label>
-                            <input formControlName="birthday" type="date" class="form-control form-control-user" id="dateBirthInput" placeholder="" [class.is-invalid]="checkValid('birthday')">
+                            <input formControlName="birthday" type="date" class="form-control form-control-user" id="dateBirthInput" placeholder="" [class.is-invalid]="checkValid('birthday')"/>
                             <div *ngIf="checkValid('birthday')">
                                 <small *ngIf="formEdit.controls.birthday.errors.required" class="text-danger validationTypeDanger">
                                     Fecha vacía
@@ -76,7 +75,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-5 relative">
                             <label for="countryInput" class="form-label float-left">País <span class="text-muted"></span></label>
-                            <input style="text-transform: capitalize;" formControlName="country" type="text" class="form-control form-control-user" (ngModelChange)="filterCountry($event)" id="countryInput" placeholder="Selecionar pais" [class.is-invalid]="checkValid('country')">
+                            <input style="text-transform: capitalize;" formControlName="country" type="text" class="form-control form-control-user" (ngModelChange)="filterCountry($event)" id="countryInput" placeholder="Selecionar pais" [class.is-invalid]="checkValid('country')"/>
                             <div class="container_list shadow-sm" *ngIf="wordFilterCountry?.length>0 && formEdit.get('country').dirty">
                                 <p *ngFor="let country of listFilterCountry" (click)="selectCountry(country.original)"> {{country.original}}</p>
                             </div>
@@ -91,7 +90,7 @@
                             <label for="facebookInput" class="form-label">facebook.com/</label>
                         </div>
                         <div class="col-sm-12 col-md-4 mb-3">
-                            <input formControlName="facebook" type="text" class="form-control form-control-user especifyInput" id="facebookInput" placeholder="(vacío)">
+                            <input formControlName="facebook" type="text" class="form-control form-control-user especifyInput" id="facebookInput" placeholder="(vacío)"/>
                         </div>
 
                         <div class="col-md-2 col-sm-12 form-inline mb-3">
@@ -99,7 +98,7 @@
                             <label for="githubInput" class="form-label">github.com/</label>
                         </div>
                         <div class="col-md-4 col-sm-12 mb-3 ">
-                            <input formControlName="github" type="text" class="form-control form-control-user especifyInput" id="githubInput" placeholder="(vacío)">
+                            <input formControlName="github" type="text" class="form-control form-control-user especifyInput" id="githubInput" placeholder="(vacío)"/>
                         </div>
 
                         <div class="col-md-2 col-sm-12 form-inline mb-3">
@@ -107,7 +106,7 @@
                             <label for="linkedinInput" class="form-label">linkedin.com/in/</label>
                         </div>
                         <div class="col-md-4 col-sm-12 mb-3">
-                            <input formControlName="linkedin" type="text" class="form-control  form-control-user especifyInput" id="linkedinInput" placeholder="(vacío)">
+                            <input formControlName="linkedin" type="text" class="form-control  form-control-user especifyInput" id="linkedinInput" placeholder="(vacío)"/>
                         </div>
 
                         <div class="col-md-2 col-sm-12 form-inline mb-3">
@@ -115,7 +114,7 @@
                             <label for="twitterInput" class="form-label">twitter.com/</label>
                         </div>
                         <div class="col-md-4 col-sm-12 mb-3">
-                            <input formControlName="twitter" type="text" class="form-control form-control-user especifyInput" id="twitterInput" placeholder="(vacío)">
+                            <input formControlName="twitter" type="text" class="form-control form-control-user especifyInput" id="twitterInput" placeholder="(vacío)"/>
                         </div>
 
                         <div class="col-12 mb-3 mt-4">
@@ -141,7 +140,7 @@
             <form class="user" [formGroup]="formChangePassword" (ngSubmit)="changeNewPassword()">
                 <div class="row">
                     <div class="col-sm-12 col-md-6  mb-3">
-                        <input formControlName="newPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" id="newPassword" placeholder="Nueva contraseña">
+                        <input formControlName="newPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" id="newPassword" placeholder="Nueva contraseña"/>
                         <div *ngIf="checkValidPassword('newPassword')">
                             <small *ngIf="formChangePassword.controls.newPassword.errors.required" class="text-danger validationTypeDanger">
                                 La contraseña es requerida.
@@ -155,7 +154,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6  mb-3">
-                        <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword()" id="confirmNewPassword" placeholder="Confirmar contraseña">
+                        <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword()" id="confirmNewPassword" placeholder="Confirmar contraseña"/>
                         <div *ngIf="checkValidPassword('confirmNewPassword')">
                             <small *ngIf="formChangePassword.controls.confirmNewPassword.errors.required" class="text-danger validationTypeDanger">
                                 La contraseña es requerida.
@@ -167,6 +166,7 @@
                     </div>
                 </div>
                 <button [disabled]="formChangePassword.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+                <a href="/client/perfil" class="w-12 btn btn-primary btn-md float-right mr-4" type="submit">Volver a Mi Perfil</a>
             </form>
         </div>
         <div *ngIf="loading" class="text-center loading">
