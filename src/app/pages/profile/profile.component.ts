@@ -64,19 +64,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.getBadges();
   }
 
-  setSocialNetworks(){
+  setSocialNetworks() {
     var socialNetworks = [];
-    const temp =  this.userData.socialNetwork;
+    const temp = this.userData.socialNetwork;
 
     temp?.forEach((element: string) => {
-      if(element != null){
-        switch(element.substr(0, 2)){
+      if (element != null) {
+        switch (element.substr(0, 2)) {
           case 'fa':
-              const facebook = {
-                icon: 'fab fa-facebook',
-                link: `https://www.${element}`
-              }
-              socialNetworks.push(facebook);
+            const facebook = {
+              icon: 'fab fa-facebook',
+              link: `https://www.${element}`
+            }
+            socialNetworks.push(facebook);
             break;
           case 'li':
             const linkedin = {
@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             break;
         }
       }
-      }
+    }
 
 
     );
@@ -109,7 +109,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.socialNetworks = socialNetworks;
   }
 
-  async getBadges(){
+  async getBadges() {
     const resp: any = await this.userService.getBadges().toPromise();
     console.log(resp);
     this.badgesUser = resp.badges;

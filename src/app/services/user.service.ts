@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
 
-  private userSubject = new  BehaviorSubject<any>(this.getInitValue());
+  private userSubject = new BehaviorSubject<any>(this.getInitValue());
   private url = environment.baseUrl;
   option;
 
@@ -26,7 +26,7 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post(`${ this.url }/user/register`, user).pipe(
+    return this.http.post(`${this.url}/user/register`, user).pipe(
       catchError(e => {
         return throwError(e.error.error.errors);
       })
@@ -39,7 +39,7 @@ export class UserService {
       password
     };
 
-    return this.http.post(`${ this.url }/user/login`, credentials).pipe(
+    return this.http.post(`${this.url}/user/login`, credentials).pipe(
       catchError(e => {
         return throwError(e.error.mensaje);
       })
@@ -47,7 +47,7 @@ export class UserService {
   }
 
   sendEmail(email: string) {
-    return this.http.post(`${ this.url }/user/sendemail`, { email }).pipe(
+    return this.http.post(`${this.url}/user/sendemail`, { email }).pipe(
       catchError(e => {
         return throwError(e);
       })
@@ -55,14 +55,14 @@ export class UserService {
   }
 
   changePassword(token: string, newpassword: string) {
-    return this.http.post(`${ this.url }/user/changePassword`, { token, newpassword }).pipe(
+    return this.http.post(`${this.url}/user/changePassword`, { token, newpassword }).pipe(
       catchError(e => {
         return throwError(e);
       })
     );
   }
 
-  editPassword(newpassword: string){
+  editPassword(newpassword: string) {
     this.getHeader();
     const body = new FormData();
 
@@ -70,7 +70,7 @@ export class UserService {
     return this.http.put(`${this.url}/user/changePassword`, body, this.option);
   }
 
-  putUser(value){
+  putUser(value) {
     this.getHeader();
     const body = new FormData();
 
@@ -84,27 +84,27 @@ export class UserService {
       body.append('socialNetwork', element);
     });
 
-    return this.http.put(`${ this.url }/user`, body , this.option)
+    return this.http.put(`${this.url}/user`, body, this.option)
   }
 
-  getUser(){
+  getUser() {
     this.getHeader();
     return this.http.get(`${this.url}/user`, this.option)
   }
 
-  getUserSubject(){
+  getUserSubject() {
     return this.userSubject;
   }
 
-  setUserSubect(data){
+  setUserSubect(data) {
     this.userSubject.next(data);
   }
 
-  private getInitValue(){
+  private getInitValue() {
     return JSON.parse(localStorage.getItem('user'));
   }
 
-  getBadges(){
+  getBadges() {
     this.getHeader();
     return this.http.get(`${this.url}/user/` + this.getInitValue()._id + '/insignias', this.option);
   }

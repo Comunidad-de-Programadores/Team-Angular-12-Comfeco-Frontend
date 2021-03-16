@@ -4,8 +4,6 @@ import { ComunidadesComponent } from './comunidades/comunidades.component';
 import { SharedModule } from '../shared/shared.module';
 import { TimerComponent } from './timer/timer.component';
 
-
-
 @NgModule({
   declarations: [ComunidadesComponent, TimerComponent],
   imports: [

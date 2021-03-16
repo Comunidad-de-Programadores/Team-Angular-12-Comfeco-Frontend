@@ -3,7 +3,6 @@
     <a class="navbar-brand">
         <img src="../assets/img/comfeco-logo.png" height="30" alt="Logotipo">
     </a>
-
     <div class="d-none d-md-block">
         <div class="navbar-nav pl-3">
             <a *ngFor="let link of headerLinks" class="nav-item nav-link" routerLinkActive="active" [routerLink]="link.routerLink" [routerLinkActiveOptions]=" {exact:true} ">
@@ -11,9 +10,6 @@
             </a>
         </div>
     </div>
-
-
-
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown no-arrow d-md-none">
@@ -34,9 +30,6 @@
                 <i class="fas fa-bell fa-fw"></i>
             </a>
         </li>
-
-
-
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,8 +52,6 @@
                 </a>
             </div>
         </li>
-
     </ul>
-
 </nav>
 <!-- End of Topbar -->

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ForgotComponent } from './forgot.component';
 
 describe('ForgotComponent', () => {
@@ -8,9 +7,9 @@ describe('ForgotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgotComponent ]
+      declarations: [ForgotComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

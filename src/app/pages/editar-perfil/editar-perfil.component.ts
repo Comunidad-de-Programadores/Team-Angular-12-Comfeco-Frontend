@@ -73,21 +73,21 @@ export class EditarPerfilComponent implements OnInit {
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
 
     this.renderer.listen((<HTMLInputElement>document.getElementById("knowlegdeAreaInput")), "click", () => {
-      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;      
+      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
       (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:block !important");
-    });    
+    });
 
     var containebiografiaInput = (<HTMLInputElement>document.getElementById('biografiaInput'));
     this.renderer.listen((<HTMLInputElement>document.getElementById('biografiaInput')), 'input', () => {
-      if (containebiografiaInput.value.length >= 140) 
-      containebiografiaInput.value = containebiografiaInput.value.slice(0,140); 
-      });
+      if (containebiografiaInput.value.length >= 140)
+        containebiografiaInput.value = containebiografiaInput.value.slice(0, 140);
+    });
   }
 
   selectRol(selectRol: string) {
-      this.formEdit.patchValue({
-        knowlegdeArea: selectRol
-      });
+    this.formEdit.patchValue({
+      knowlegdeArea: selectRol
+    });
     (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
   }

@@ -31,11 +31,11 @@ export class ForgotComponent implements OnInit, OnDestroy {
     });
   }
 
-  inputValid(input: string){
+  inputValid(input: string) {
     return this.form.get(input).invalid && this.form.get(input).touched;
   }
 
-  sendData(){
+  sendData() {
     this.sendEmailSubscription = this.user.sendEmail(this.form.value.email).subscribe((res: any) => {
       this.toast.success('Se ha enviado el correo a: ' + this.form.value.email);
 

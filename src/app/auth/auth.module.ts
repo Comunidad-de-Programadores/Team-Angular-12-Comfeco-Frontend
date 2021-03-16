@@ -9,8 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { AuthComponent } from './auth.component';
 
-
-
 @NgModule({
   declarations: [
     LoginComponent,

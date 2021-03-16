@@ -12,13 +12,13 @@ export const routes: Routes = [
         component: AuthComponent,
         children: [
             { path: '', component: LoginComponent },
-            { path: 'login', component: LoginComponent},
-            { path: 'recuperar', component: ForgotComponent},
-            { path: 'registro', component: RegisterComponent},
+            { path: 'login', component: LoginComponent },
+            { path: 'recuperar', component: ForgotComponent },
+            { path: 'registro', component: RegisterComponent },
             { path: 'cambiar-contraseña', component: RecoverPasswordComponent },
-            { path: '', redirectTo: 'auth' , pathMatch: 'full'},
+            { path: '', redirectTo: 'auth', pathMatch: 'full' },
         ]
-      }
+    }
 ]
 
 @NgModule({

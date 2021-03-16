@@ -7,162 +7,162 @@
 } */
 
 .comunidades1 {
-    grid-area: comunidades1;
-    justify-self: center;
-    align-self: center;
+  grid-area: comunidades1;
+  justify-self: center;
+  align-self: center;
 }
 
 .comunidades2 {
-    grid-area: comunidades2;
-    justify-self: center;
-    align-self: center;
+  grid-area: comunidades2;
+  justify-self: center;
+  align-self: center;
 }
 
 .texto-emotivo {
-    max-width: 768px;
-    align-self: center;
-    justify-self: center;
-    grid-area: texto;
+  max-width: 768px;
+  align-self: center;
+  justify-self: center;
+  grid-area: texto;
 }
 
 .texto-emotivo p:last-child {
-    font-style: italic;
-    max-width: 500px;
-    margin: auto;
+  font-style: italic;
+  max-width: 500px;
+  margin: auto;
 }
 
 .card-custom {
-    border-radius: 1em;
-    overflow: hidden;
-    position: relative;
-    height: 300px;
+  border-radius: 1em;
+  overflow: hidden;
+  position: relative;
+  height: 300px;
 }
 
 .card-info {
-    position: absolute;
-    background: #000000ba;
-    bottom: 0;
-    width: 100%;
-    display: flex;
+  position: absolute;
+  background: #000000ba;
+  bottom: 0;
+  width: 100%;
+  display: flex;
 }
 
 .card-info img {
-    width: 35px;
-    margin: 0 1em;
-    position: absolute;
-    bottom: 3em;
-    right: 0em;
+  width: 35px;
+  margin: 0 1em;
+  position: absolute;
+  bottom: 3em;
+  right: 0em;
 }
 
 .card-info p {
-    width: 100%;
-    margin: 0.5em 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  margin: 0.5em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-custom .profile {
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 .slider2 {
-    grid-area: slider2;
-    align-self: center;
-    justify-self: center;
+  grid-area: slider2;
+  align-self: center;
+  justify-self: center;
 }
 
 .slider1 {
-    grid-area: slider1;
-    align-self: center;
+  grid-area: slider1;
+  align-self: center;
 }
 
 .slider1 swiper {
-    height: 350px;
+  height: 350px;
 }
 
 .slider1 h5 {
-    text-align: center;
-    margin: 0.5em 0;
+  text-align: center;
+  margin: 0.5em 0;
 }
 
 .slider2 swiper {
-    height: 150px;
+  height: 150px;
 }
 
 .temporizador {
-    grid-area: temporizador;
+  grid-area: temporizador;
 }
 
 .swiper-wrapper {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .sponsorsImg {
-    width: 100%;
+  width: 100%;
 }
 
 .card-circle {
-    width: 100px;
-    border-radius: 50%;
-    margin: auto;
-    overflow: hidden;
+  width: 100px;
+  border-radius: 50%;
+  margin: auto;
+  overflow: hidden;
 }
 
 .swiper-button-next {
-    top: 35%;
+  top: 35%;
 }
 
 .swiper-button-prev {
-    top: 35%;
+  top: 35%;
 }
 
 .container-fluid {
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 300px 1fr 200px 1fr 1fr;
-    grid-template-areas: 'texto texto' ' slider1 slider1' 'slider2 slider2' 'comunidades1 comunidades1' 'comunidades2 comunidades2' 'temporizador temporizador ';
-    row-gap: 1em;
-    column-gap: 1em;
-    max-width: 1300px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 300px 1fr 200px 1fr 1fr;
+  grid-template-areas: "texto texto" " slider1 slider1" "slider2 slider2" "comunidades1 comunidades1" "comunidades2 comunidades2" "temporizador temporizador ";
+  row-gap: 1em;
+  column-gap: 1em;
+  max-width: 1300px;
 }
 
 .slider2 swiper {
-    width: 300px;
+  width: 300px;
 }
 
 .card-info {
-    height: 64px;
+  height: 64px;
 }
 
 @media (min-width: 425px) {
-    .slider2 swiper {
-        width: 400px;
-    }
+  .slider2 swiper {
+    width: 400px;
+  }
 }
 
 @media (min-width: 768px) {
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 200px 1fr 200px 1fr 260px;
-        grid-template-areas: 'texto texto' ' slider1 slider1' 'slider2 slider2' 'comunidades1 comunidades2' 'temporizador temporizador ';
-        row-gap: 1em;
-    }
-    .slider2 swiper {
-        width: 700px;
-    }
+  .container-fluid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 1fr 200px 1fr 260px;
+    grid-template-areas: "texto texto" " slider1 slider1" "slider2 slider2" "comunidades1 comunidades2" "temporizador temporizador ";
+    row-gap: 1em;
+  }
+  .slider2 swiper {
+    width: 700px;
+  }
 }
 
 @media (min-width: 1440px) {
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 1fr minmax(400px, 600px) 1fr;
-        grid-template-rows: 200px 1fr 200px 260px;
-        grid-template-areas: 'texto texto texto' 'comunidades1 slider1 comunidades2' 'slider2 slider2 slider2' 'temporizador temporizador temporizador';
-        row-gap: 1em;
-    }
+  .container-fluid {
+    display: grid;
+    grid-template-columns: 1fr minmax(400px, 600px) 1fr;
+    grid-template-rows: 200px 1fr 200px 260px;
+    grid-template-areas: "texto texto texto" "comunidades1 slider1 comunidades2" "slider2 slider2 slider2" "temporizador temporizador temporizador";
+    row-gap: 1em;
+  }
 }
