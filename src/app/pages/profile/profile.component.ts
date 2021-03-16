@@ -11,12 +11,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  preg: boolean;
   subscription: Subscription;
   loading = false;
   userEvents = [];
   userData: any = {};
   socialNetworks;
-  badgesUser: any;
+  badgesUser = [];
   listMedals = [
     { name: 'Camper', img: 'assets/img/medals/medal.svg' },
     { name: 'Lector', img: 'assets/img/medals/medal-2.svg' },
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   config: SwiperOptions = {
     slidesPerView: 4,
     autoplay: true,
+    centeredSlides: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -118,36 +120,41 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   async getBadges() {
     const resp: any = await this.userService.getBadges().toPromise();
-    console.log(resp);
-    this.badgesUser = resp.badges;
+    this.badgesUser = resp.misInsignias;
+    if (this.badgesUser.length >= 1) {
+      this.preg = true;
+    }else{
+      this.preg = false;
+    }
+    console.log(this.preg);
   }
 
   private async getUserEvents(){
     var res: any = await this.userService.getUser().toPromise();
     const uid = res.userFound._id;
 
-    res = await (await this.eventsService.getUserEvents(uid)).toPromise();    
+    res = await (await this.eventsService.getUserEvents(uid)).toPromise();
     this.userEvents = res.listEvent;
     console.log(this.userEvents);
-    
+
   }
 
   async clickLeave(eventId: string){
     this.loading = true;
- 
+
     try{
       const res: any = await this.eventsService.leaveEvent(eventId).toPromise();
-  
+
       if (res.ok) {
         this.loading = false;
-        this.toastr.success(res.mensaje);   
+        this.toastr.success(res.mensaje);
       } else {
         this.loading = false;
         this.toastr.error(res.mensaje);
-      }    
+      }
     }catch(error){
       this.loading = false;
-      this.toastr.error(error.error.mensaje);     
+      this.toastr.error(error.error.mensaje);
     }
 
     this.getUserEvents();

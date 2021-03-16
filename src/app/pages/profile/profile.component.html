@@ -13,11 +13,8 @@
             </div>
             <div *ngIf="userData.socialNetwork" class="card-footer text-muted">
                 <div class="d-flex justify-content-around">
-                    <a  *ngFor="let net of socialNetworks"
-                        [href]="net.link"
-                        target="_blank">
-                        <i  [class]="net.icon"
-                            class="social-networks"></i>
+                    <a *ngFor="let net of socialNetworks" [href]="net.link" target="_blank">
+                        <i [class]="net.icon" class="social-networks"></i>
                     </a>
                 </div>
             </div>
@@ -28,15 +25,19 @@
             <div class="card-header header-badges">
                 <h5 class="text-center">Insignias</h5>
                 <swiper [config]="config">
-
                     <div class="swiper-wrapper">
-
-                        <div class="swiper-slide" *ngFor="let medal of listMedals">
-                            <div class="card-circle shadow">
-                                <img class="medal-img" [src]="medal.img" [alt]="medal.name" [title]="medal.name">
+                        <div class="swiper-slide" *ngFor="let badge of badgesUser">
+                            <div class="card-circle shadow justify-content-center">
+                                <ng-container *ngIf="preg; then myBadge; else NotBadge">
+                                </ng-container>
+                                <ng-template #myBadge>
+                                    <img class="medal-img" [src]="badge.img" [alt]="badge.name" [title]="badge.name">
+                                </ng-template>
+                                <ng-template #NotBadge>
+                                    <p class="text-gray-300">No tienes insiginias</p>
+                                </ng-template>
                             </div>
                         </div>
-
                     </div>
                     <div class="swiper-pagination"></div>
                     <!-- Add Arrows -->
@@ -128,32 +129,32 @@
             <div class="card-body">
                 <h5 class="card-title">Eventos a los que te uniste</h5>
                 <hr>
-                <div  *ngIf="userEvents.length > 0">
+                <div *ngIf="userEvents.length > 0">
                     <div class="item-activity shadow-sm" *ngFor="let event  of userEvents">
                         <p>{{event.name}}</p>
-                        <a  data-toggle="modal" data-target="#leaveModal" class="btn btn-secondary btn-user">
+                        <a data-toggle="modal" data-target="#leaveModal" class="btn btn-secondary btn-user">
                             Salir
                           </a>
-              
-                          <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+
+                        <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="label">¿Estás seguro?</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="label">¿Estás seguro?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Al abandonar un evento no podrás volver a unirte.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clickLeave(event._id)">Abandonar evento</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                  Al abandonar un evento no podrás volver a unirte.
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                  <button type="button" class="btn btn-danger"data-dismiss="modal" (click)="clickLeave(event._id)">Abandonar evento</button>
-                                </div>
-                              </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div *ngIf="userEvents.length <= 0">
@@ -165,7 +166,7 @@
             </div>
             <div *ngIf="loading" class="text-center loading">
                 <app-loading></app-loading>
-              </div>
+            </div>
         </div>
     </div>
 </div>

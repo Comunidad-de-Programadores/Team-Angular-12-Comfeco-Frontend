@@ -1,5 +1,5 @@
 <div class="animate__animated animate__fadeIn">
-    <h3 class="text-center bg-info text-white rounded">Grupos</h3>
+    <h3 class="text-center bg-info text-white rounded p-1">Grupos</h3>
     <div class="row mt-4">
         <div class="col-md-12 col-lg-3 mb-4 order-2 order-sm-1">
             <div class="card shadow">
@@ -14,91 +14,73 @@
                 <div class="card-body">
                     <div *ngIf="hasGroup" class="mb-1 mt-1 shadow p-4">
                         <div class="row mb-2">
-                            <div
-                                class="col bg-secondary text-white d-flex flex-row align-items-center justify-content-between">
-                                {{myGroup.name | uppercase}} 
-                                <img class="programming-language img-fluid text-right rounded-circle"
-                                    [src]="myGroup.img"
-                                    alt="Programming language">
+                            <div class="col bg-secondary text-white d-flex flex-row align-items-center justify-content-between">
+                                {{myGroup.name | uppercase}}
+                                <img class="programming-language img-fluid text-right rounded-circle" [src]="myGroup.img" alt="Programming language">
                             </div>
                         </div>
                         <div *ngFor="let member of myGroup.integrantes">
                             <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <img class="group-members bg-info img-fluid text-right rounded-circle"
-                                    [src]="member.img"
-                                    [alt]="member.nick">
+                                <img class="group-members bg-info img-fluid text-right rounded-circle" [src]="member.img" [alt]="member.nick">
                                 <div class="col">
                                     <strong>{{member.nick | uppercase}}</strong>
                                     <div>Medio</div>
                                 </div>
-<<<<<<< HEAD
-                                Integrante
+                                <<<<<<< HEAD Integrante </div>
+                                    <hr>
+                                    <div class="row d-flex flex-row align-items-center justify-content-between">
+                                        <img class="group-members bg-info img-fluid text-right rounded-circle" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="Miembro del grupo">
+                                        <div class="col">
+                                            <strong>Karlos</strong>
+                                            <div>Medio</div>
+                                        </div>
+                                        Líder
+                                    </div>
+                                    <hr>
+                                    <div class="row d-flex flex-row align-items-center justify-content-between">
+                                        <img class="group-members bg-info img-fluid text-right rounded-circle" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="Miembro del grupo">
+                                        <div class="col">
+                                            <strong>kevin27</strong>
+                                            <div>Avanzado</div>
+                                        </div>
+                                        Integrante
+                                    </div>
+                                    <hr>
+                                    <div class="row d-flex flex-row align-items-center justify-content-between">
+                                        <img class="group-members bg-info img-fluid text-right rounded-circle" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="Miembro del grupo">
+                                        <div class="col">
+                                            <strong>Criss Vargas</strong>
+                                            <div>Novato</div>
+                                        </div>
+                                        Integrante
+                                    </div>
+                                    <hr>
+                                    <div class="row d-flex flex-row align-items-center justify-content-between">
+                                        <img class="group-members bg-info img-fluid text-right rounded-circle" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="Miembro del grupo">
+                                        <div class="col">
+                                            <strong>waspv2</strong>
+                                            <div>Novato</div>
+                                        </div>
+                                        Integrante ======= {{member.miInfoGroup.type === 0 ? 'Integrante' : 'Líder'}} >>>>>>> 742a9315036a229995e5d87755951cd3d33c7661
+                                    </div>
+                                    <hr>
                             </div>
-                            <hr>
                             <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <img class="group-members bg-info img-fluid text-right rounded-circle"
-                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-                                    alt="Miembro del grupo">
-                                <div class="col">
-                                    <strong>Karlos</strong>
-                                    <div>Medio</div>
-                                </div>
-                                Líder
+                                <button type="button" class="btn btn-primary btn-sm">Ir al chat</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="leaveGroup()">Abandonar</button>
                             </div>
-                            <hr>
-                            <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <img class="group-members bg-info img-fluid text-right rounded-circle"
-                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-                                    alt="Miembro del grupo">
-                                <div class="col">
-                                    <strong>kevin27</strong>
-                                    <div>Avanzado</div>
-                                </div>
-                                Integrante
-                            </div>
-                            <hr>
-                            <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <img class="group-members bg-info img-fluid text-right rounded-circle"
-                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-                                    alt="Miembro del grupo">
-                                <div class="col">
-                                    <strong>Criss Vargas</strong>
-                                    <div>Novato</div>
-                                </div>
-                                Integrante
-                            </div>
-                            <hr>
-                            <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <img class="group-members bg-info img-fluid text-right rounded-circle"
-                                    src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
-                                    alt="Miembro del grupo">
-                                <div class="col">
-                                    <strong>waspv2</strong>
-                                    <div>Novato</div>
-                                </div>
-                                Integrante
-=======
-                                {{member.miInfoGroup.type === 0 ? 'Integrante' : 'Líder'}}
->>>>>>> 742a9315036a229995e5d87755951cd3d33c7661
-                            </div>
-                            <hr>
                         </div>
-                        <div class="row d-flex flex-row align-items-center justify-content-between">
-                            <button type="button" class="btn btn-primary btn-sm">Ir al chat</button>
-                            <button type="button" class="btn btn-danger btn-sm" (click)="leaveGroup()">Abandonar</button>
+                        <div *ngIf="!hasGroup" class="mb-1 mt-1 text-center shadow p-4">
+                            <p>No te has unido a un grupo</p>
                         </div>
                     </div>
-                    <div *ngIf="!hasGroup" class="mb-1 mt-1 text-center shadow p-4">
-                        <p>No te has unido a un grupo</p>
-                    </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-        <div class="col mb-4 order-1 order-sm-2">
-            <div class="row">
-                <div class="col-md-4">
-                    <select class="custom-select">
+            <div class="col mb-4 order-1 order-sm-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select class="custom-select">
                         <option selected>Filtrar por lenguaje</option>
                         <option>JavaScript</option>
                         <option>TypeScrip</option>
@@ -107,31 +89,32 @@
                         <option>PHP</option>
                         <option>Python</option>
                     </select>
-                </div>
-                <div class="col-md-8">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar grupo" aria-label="Buscar grupo">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Buscar grupo" aria-label="Buscar grupo">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3" *ngFor="let group of listGroups; let id = index;">
-                    
-                    <div class="card mb-4">
-                        <a class="btn btn-sm btn-primary share">
-                         <i class="fa fa-share-alt"></i>
-                        </a>
-                        <img class="card-img-top" [src]="group.img" [alt]="group.name">
-                        <div class="card-body">
-                          <span class="badge badge-info">{{group.programming_language_id}}</span>
-                          <h6 class="card-title mt-3"><strong>{{group.name | uppercase}}</strong></h6>
-                          <p class="card-text text-justify">{{group.description}}</p>
-                          
-                          <div class="text-center">
-                              <button type="button" class="btn btn-info" (click)="joinGroup(group.id)">Unirse</button>
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let group of listGroups; let id = index;">
+
+                        <div class="card mb-4">
+                            <a class="btn btn-sm btn-primary share">
+                                <i class="fa fa-share-alt"></i>
+                            </a>
+                            <img class="card-img-top" [src]="group.img" [alt]="group.name">
+                            <div class="card-body">
+                                <span class="badge badge-info">{{group.programming_language_id}}</span>
+                                <h6 class="card-title mt-3"><strong>{{group.name | uppercase}}</strong></h6>
+                                <p class="card-text text-justify">{{group.description}}</p>
+
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-info" (click)="joinGroup(group.id)">Unirse</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,4 +122,3 @@
             </div>
         </div>
     </div>
-</div>
