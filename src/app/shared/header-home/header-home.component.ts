@@ -58,7 +58,6 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
   }
   getInfoUser() {
     this.userData = JSON.parse(localStorage.getItem('user'));
-    // console.log(this.userData);
 
     if (!this.userData) {
       this.userGuest = true;
@@ -70,6 +69,7 @@ export class HeaderHomeComponent implements OnInit, OnDestroy {
       }
     }
   }
+  
   logoutClick(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');

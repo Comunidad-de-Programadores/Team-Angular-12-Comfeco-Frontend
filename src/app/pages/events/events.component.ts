@@ -50,7 +50,6 @@ export class EventsComponent implements OnInit {
     this.loading = true;
  
     try{
-
       const res: any = await this.events.leaveEvent(eventId).toPromise();
   
       if (res.ok) {
@@ -66,9 +65,8 @@ export class EventsComponent implements OnInit {
     }
   }
 
-
   hasJoined(event:any){
-    return false;
+    return true;
   }
 
   private async getEvents(){

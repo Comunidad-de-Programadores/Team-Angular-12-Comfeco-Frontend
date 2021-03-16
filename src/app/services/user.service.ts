@@ -109,6 +109,4 @@ export class UserService {
     this.getHeader();
     return this.http.get(`${this.url}/user/` + this.getInitValue()._id + '/insignias', this.option);
   }
-
-
 }
