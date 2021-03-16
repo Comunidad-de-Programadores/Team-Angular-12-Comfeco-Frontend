@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { EventsService } from 'src/app/services/events.service';
 import { UserService } from 'src/app/services/user.service';
 import { SwiperOptions } from 'swiper';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +12,8 @@ import { SwiperOptions } from 'swiper';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   subscription: Subscription;
+  loading = false;
+  userEvents = [];
   userData: any = {};
   socialNetworks;
   badgesUser: any;
@@ -51,7 +55,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private eventsService: EventsService,
+              private toastr: ToastrService) {
     this.userData = JSON.parse(localStorage.getItem('user'));
   }
   ngOnDestroy(): void {
@@ -62,21 +68,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.subscription = this.userService.getUserSubject().subscribe();
     this.setSocialNetworks();
     this.getBadges();
+    this.getUserEvents();
   }
 
-  setSocialNetworks(){
+  setSocialNetworks() {
     var socialNetworks = [];
-    const temp =  this.userData.socialNetwork;
+    const temp = this.userData.socialNetwork;
 
     temp?.forEach((element: string) => {
-      if(element != null){
-        switch(element.substr(0, 2)){
+      if (element != null) {
+        switch (element.substr(0, 2)) {
           case 'fa':
-              const facebook = {
-                icon: 'fab fa-facebook',
-                link: `https://www.${element}`
-              }
-              socialNetworks.push(facebook);
+            const facebook = {
+              icon: 'fab fa-facebook',
+              link: `https://www.${element}`
+            }
+            socialNetworks.push(facebook);
             break;
           case 'li':
             const linkedin = {
@@ -101,7 +108,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             break;
         }
       }
-      }
+    }
 
 
     );
@@ -109,10 +116,42 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.socialNetworks = socialNetworks;
   }
 
-  async getBadges(){
+  async getBadges() {
     const resp: any = await this.userService.getBadges().toPromise();
     console.log(resp);
     this.badgesUser = resp.badges;
   }
+
+  private async getUserEvents(){
+    var res: any = await this.userService.getUser().toPromise();
+    const uid = res.userFound._id;
+
+    res = await (await this.eventsService.getUserEvents(uid)).toPromise();    
+    this.userEvents = res.listEvent;
+    console.log(this.userEvents);
+    
+  }
+
+  async clickLeave(eventId: string){
+    this.loading = true;
+ 
+    try{
+      const res: any = await this.eventsService.leaveEvent(eventId).toPromise();
+  
+      if (res.ok) {
+        this.loading = false;
+        this.toastr.success(res.mensaje);   
+      } else {
+        this.loading = false;
+        this.toastr.error(res.mensaje);
+      }    
+    }catch(error){
+      this.loading = false;
+      this.toastr.error(error.error.mensaje);     
+    }
+
+    this.getUserEvents();
+  }
+
 
 }

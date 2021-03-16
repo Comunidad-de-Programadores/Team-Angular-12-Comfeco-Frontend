@@ -6,8 +6,6 @@ import { LoadingComponent } from './loading/loading.component';
 import { HeaderHomeComponent } from './header-home/header-home.component';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -19,7 +17,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule
   ],
-  exports:[
+  exports: [
     HeaderComponent,
     FooterComponent,
     LoadingComponent,

@@ -6,9 +6,18 @@
     padding-right: 10px;
 }
 
+.wrapper .card {
+    height: 430px;
+}
+
 .card{
     width: 85%;
     margin-bottom: 50px;
+}
+
+.card-text{
+    height: 70px;
+    margin-bottom: 5em;
 }
 
 .share{
@@ -23,11 +32,23 @@
 }
 
 .options{
-    margin-top: 20px;
+    margin-top: 60px;
     display: flex;
     justify-content: space-between;
 }
 
+
+.loading {
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(225, 225, 225, 0.60);
+    z-index: 10;
+}
 
 @media (max-width: 440px) { 
     .options{
@@ -50,6 +71,9 @@
     .card{
         width: 80%;
     }
+    .wrapper .card {
+        height: 450px !important;
+    }
 }
 
 
@@ -61,6 +85,10 @@
     .card{
             grid-column: 2;
             width: 400px;
+    }
+
+    .wrapper .card {
+        height: 480px;
     }
 }
 

@@ -8,7 +8,7 @@ export class CountryService {
 
   constructor(private http: HttpClient) { }
 
-  getCountries(){
+  getCountries() {
     return this.http.get('../../assets/json/paises.json');
   }
 }

@@ -28,11 +28,13 @@ export class TimerComponent implements OnInit {
   ngOnInit(): void {
     this.count();
   }
+
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     this.timerObs.unsubscribe();
   }
+  
   count() {
     this.timerObs = interval(this.MILLISECONDS_OF_A_SECOND).subscribe(
       resp => {

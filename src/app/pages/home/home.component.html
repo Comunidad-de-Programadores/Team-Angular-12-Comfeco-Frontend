@@ -9,37 +9,29 @@
     <div *ngIf="listCreators.length !==0" class="slider1">
         <h5>Ellos ya creen en esta iniciativa</h5>
         <swiper [config]="config">
-
             <div class="swiper-wrapper">
-
                 <div class="swiper-slide" *ngFor="let item of listCreators">
                     <div class="card-custom shadow">
                         <img class="profile" [src]="item.img" alt="">
-
                         <div class="card-info">
                             <p>{{item.name}}</p>
                             <img class="tech" [src]="item.technologyImg" alt="">
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="swiper-pagination"></div>
-
         </swiper>
     </div>
     <div class="slider2">
         <h6>Sponsors</h6>
         <swiper [config]="config2">
-
             <div class="swiper-wrapper">
-
                 <div class="swiper-slide" *ngFor="let item of listSponsors">
                     <div class="card-circle shadow">
                         <img class="sponsorsImg" [src]="item.img" alt="">
                     </div>
                 </div>
-
             </div>
             <div class="swiper-pagination"></div>
             <!-- Add Arrows -->
@@ -52,18 +44,11 @@
     </div>
 </div>
 
-
-
-
-<!-- <div class="row">
-
-
-
+<!--
+<div class="row">
     <div class="col-sm-12 col-md-4">
-
         <app-comunidades></app-comunidades>
     </div>
-
     <div class="col-sm-12 col-md-4 mt-4">
         <div class="text-center">
             <h2 class="text-gray-400">Bienvenidos a Community Fest and Code</h2>
@@ -72,11 +57,9 @@
         </div>
         <app-sliders></app-sliders>
     </div>
-
     <div class="col-sm-12 col-md-4">
-
     </div>
     <div class="col-sm-12 col-md-4">
-
     </div>
-</div> -->
+</div>
+-->

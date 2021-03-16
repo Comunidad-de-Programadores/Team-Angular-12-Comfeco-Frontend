@@ -1,65 +1,98 @@
 #user-image {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 60px;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 60px;
 }
 
 .social-networks {
-    font-size: 1.5em;
-    margin: 5px;
+  font-size: 1.5em;
+  margin: 5px;
 }
 
 .medal-img {
-    width: 3rem;
-    height: auto;
-    background-color: white;
-    border-radius: 22%;
-    padding: 5px;
+  width: 3rem;
+  height: auto;
+  background-color: white;
+  border-radius: 22%;
+  padding: 5px;
 }
 
 .header-profile,
 .header-badges,
 .header-events {
-    background-color: #4e73df;
-    color: white;
+  background-color: #4e73df;
+  color: white;
 }
 
 .btn-edit-profile {
-    color: white;
+  color: white;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: white;
+  color: white;
 }
 
 .icon-check {
-    color: green;
+  color: green;
+}
+.icon-sad {
+  color: gray;
 }
 
 .img-event {
-    width: 70%;
-    height: auto;
+  width: 70%;
+  height: auto;
 }
 
 .item-activity {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    padding: 0.5em;
-    border-radius: 0.5em;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding: 0.5em;
+  border-radius: 0.5em;
 }
 
 .item-activity p {
-    justify-self: center;
-    align-self: center;
-    margin: 0;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
 }
 
 .comunidades .card-body {
-    overflow: scroll;
-    max-height: 500px;
+  overflow: scroll;
+  max-height: 500px;
 }
 
 .card-header img {
-    object-fit: cover;
+  object-fit: cover;
+}
+
+.joined {
+  margin-top: -170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .joined {
+    margin-top: 0px !important;
+  }
+}
+@media (max-width: 1089px) {
+  .joined {
+    margin-top: -120px;
+  }
+}
+
+.loading {
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(225, 225, 225, 0.6);
+  z-index: 10;
 }

@@ -6,8 +6,6 @@ import { PoliticsComponent } from './politics.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
-
-
 @NgModule({
   declarations: [PoliticasComponent, TerminosComponent, PoliticsComponent],
   imports: [

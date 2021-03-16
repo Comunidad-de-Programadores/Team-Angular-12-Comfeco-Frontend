@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]],
       rememberCheckbox: [false]
     });
-
   }
 
   loginClick(): void {
