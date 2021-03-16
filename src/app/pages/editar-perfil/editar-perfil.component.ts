@@ -36,7 +36,7 @@ export class EditarPerfilComponent implements OnInit {
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
     ]),
     gender: new FormControl('', [Validators.pattern('(Otro|otro|m|M|f|F)$')]),
-    knowledgeArea: new FormControl('', [Validators.required]),
+    knowledgeArea: new FormControl('', []),
     birthday: new FormControl('', []),
     country: new FormControl('', []),
     biography: new FormControl('', [Validators.maxLength(140)]),

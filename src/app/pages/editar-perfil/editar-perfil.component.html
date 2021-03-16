@@ -40,16 +40,11 @@
                         </div>
 
                         <div class="col-sm-12 col-md-4 mb-4">
-                            <label for="knowledgeArea" class="form-label float-left">Área de conocimiento <span class="text-muted">*</span></label>
-                            <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('knowledgeArea')"
+                            <label for="knowledgeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
+                            <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value=""
                                 required/>
                             <div class="container_list shadow-sm" id="customizeSelectUl">
                                 <p *ngFor="let item of listRols" (click)="selectRol(item)">{{ item }} </p>
-                            </div>
-                            <div *ngIf="checkValid('knowledgeArea')">
-                                <small *ngIf="formEdit.controls.knowledgeArea.errors.required" class="text-danger validationTypeDanger">
-                                 No a selecionado un rol
-                                </small>
                             </div>
                         </div>
 
@@ -58,7 +53,7 @@
                             <input formControlName="gender" type="text" class="form-control form-control-user" style="text-transform: capitalize;" id="generoInput" placeholder="Tú genero"/>
                             <div *ngIf="checkValid('gender')">
                                 <small class="text-danger validationTypeDanger">
-                                        El campo acepta "M", "F", u "Otro"
+                                    El campo acepta "M", "F", u "Otro"
                                 </small>
                             </div>
                         </div>
@@ -66,11 +61,6 @@
                         <div class="col-sm-12 col-md-4 mb-5">
                             <label for="dateBirthInput" class="form-label float-left">Fecha de nacimiento <span class="text-muted"></span></label>
                             <input formControlName="birthday" type="date" class="form-control form-control-user" id="dateBirthInput" placeholder="" [class.is-invalid]="checkValid('birthday')"/>
-                            <div *ngIf="checkValid('birthday')">
-                                <small *ngIf="formEdit.controls.birthday.errors.required" class="text-danger validationTypeDanger">
-                                    Fecha vacía
-                                </small>
-                            </div>
                         </div>
 
                         <div class="col-sm-12 col-md-4 mb-5 relative">
@@ -79,12 +69,8 @@
                             <div class="container_list shadow-sm" *ngIf="wordFilterCountry?.length>0 && formEdit.get('country').dirty">
                                 <p *ngFor="let country of listFilterCountry" (click)="selectCountry(country.original)"> {{country.original}}</p>
                             </div>
-                            <div *ngIf="checkValid('country')">
-                                <small *ngIf="formEdit.controls.country.errors.required" class="text-danger validationTypeDanger">
-                                    Escriba un país
-                                </small>
-                            </div>
                         </div>
+
                         <div class="col-sm-12 col-md-2  form-inline mb-3">
                             <img src="../assets/img/social-icons/linkedin-icon.png" class="social-icon mr-3" />
                             <label for="facebookInput" class="form-label">facebook.com/</label>
