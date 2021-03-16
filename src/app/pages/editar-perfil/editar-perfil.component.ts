@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CountryService } from 'src/app/services/country.service';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
@@ -28,6 +28,7 @@ export class EditarPerfilComponent implements OnInit {
   imagePath: string | ArrayBuffer;
   listCountries = [];
   subscription: Subscription;
+  isDirty$: Observable<boolean>;
 
   formEdit = new FormGroup({
     nick: new FormControl('', [Validators.required]),
@@ -317,5 +318,16 @@ export class EditarPerfilComponent implements OnInit {
     const password1 = this.formChangePassword.get('newPassword').value;
     const password2 = this.formChangePassword.get('confirmNewPassword').value;
     return (password1 === password2) ? false : true;
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  public onPageUnload($event: BeforeUnloadEvent) {
+    if (this.hasUnsavedChanges()) {
+      $event.returnValue = true;
+    }
+  }
+
+  private hasUnsavedChanges(){
+    return this.formEdit.dirty || this.formChangePassword.dirty;
   }
 }

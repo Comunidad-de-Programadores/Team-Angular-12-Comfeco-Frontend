@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
 
-  private userSubject = new  Subject<any>();
+  private userSubject = new Subject<any>();
   private url = environment.baseUrl;
   option;
 
@@ -109,6 +109,4 @@ export class UserService {
     this.getHeader();
     return this.http.get(`${this.url}/user/` + this.getInitValue()._id + '/insignias', this.option);
   }
-
-
 }

@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="col-sm-12 col-md-4 mb-4">
-                            <label for="knowledgeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
+                            <label for="knowledgeArea" class="form-label float-left">Área de conocimiento <span class="text-muted">*</span></label>
                             <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value="" [class.is-invalid]="checkValid('knowledgeArea')"
                                 required/>
                             <div class="container_list shadow-sm" id="customizeSelectUl">
@@ -120,7 +120,7 @@
                         <div class="col-12 mb-3 mt-4">
                             <label for="biografiaInput" class="form-label float-left">Biografía</label>
                             <textarea formControlName="biography" rows="3" name="biographyNGModel" class="form-control form-control-user" id="biografiaInput" placeholder="" [class.is-invalid]="checkValid('biography')"></textarea>
-                            <span class="biographyCount">{{formEdit.value?.biography.length}}/140</span>
+                            <span class="biographyCount">{{formEdit.value.biography?.length}}/140</span>
                             <div *ngIf="checkValid('biography')">
                                 <small *ngIf="formEdit.controls.biography.errors.maxlength" class="text-danger validationTypeDanger">
                                     Máximo 140 caractéres
