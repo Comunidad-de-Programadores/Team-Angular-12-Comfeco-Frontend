@@ -36,7 +36,7 @@ export class EditarPerfilComponent implements OnInit {
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
     ]),
     gender: new FormControl('', [Validators.pattern('(Otro|otro|m|M|f|F)$')]),
-    knowlegdeArea: new FormControl('', [Validators.required]),
+    knowledgeArea: new FormControl('', [Validators.required]),
     birthday: new FormControl('', []),
     country: new FormControl('', []),
     biography: new FormControl('', [Validators.maxLength(140)]),
@@ -66,14 +66,14 @@ export class EditarPerfilComponent implements OnInit {
     this.getCountries();
     this.initForm();
 
-    this.renderer.listen((<HTMLInputElement>document.getElementById("knowlegdeAreaInput")), "input", () => {
-      (<HTMLInputElement>document.getElementById('knowlegdeAreaInput')).value = "";
+    this.renderer.listen((<HTMLInputElement>document.getElementById("knowledgeAreaInput")), "input", () => {
+      (<HTMLInputElement>document.getElementById('knowledgeAreaInput')).value = "";
     });
 
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
 
-    this.renderer.listen((<HTMLInputElement>document.getElementById("knowlegdeAreaInput")), "click", () => {
-      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
+    this.renderer.listen((<HTMLInputElement>document.getElementById("knowledgeAreaInput")), "click", () => {
+      (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;      
       (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:block !important");
     });
 
@@ -85,14 +85,13 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   selectRol(selectRol: string) {
-    this.formEdit.patchValue({
-      knowlegdeArea: selectRol
-    });
+      this.formEdit.patchValue({
+        knowledgeArea: selectRol
+      });
     (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
+    this.formEdit.markAsDirty();
   }
-
-
 
   changeListener($event): void {
     this.formEdit.markAsDirty();
@@ -194,6 +193,9 @@ export class EditarPerfilComponent implements OnInit {
     this.formEdit.get('birthday').setValue(user.birthday || '');
     this.formEdit.get('country').setValue(user.country || '');
     this.formEdit.get('biography').setValue(user.biography || '');
+    this.formEdit.get('knowledgeArea').setValue(user.knowledgeArea || '');
+
+    
 
 
     user.socialNetwork.forEach((net: any) => {
@@ -271,7 +273,7 @@ export class EditarPerfilComponent implements OnInit {
       this.formEdit.reset();
       this.initForm();
       this.loading = false;
-      this.toastr.success('Cambios guardados');
+      this.toastr.success('Cambios guardados');   
     } else {
       this.loading = false;
       this.toastr.error('Error al guardar cambios');

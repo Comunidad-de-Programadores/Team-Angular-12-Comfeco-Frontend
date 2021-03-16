@@ -36,6 +36,9 @@
 .icon-check {
   color: green;
 }
+.icon-sad {
+  color: gray;
+}
 
 .img-event {
   width: 70%;
@@ -62,4 +65,34 @@
 
 .card-header img {
   object-fit: cover;
+}
+
+.joined {
+  margin-top: -170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .joined {
+    margin-top: 0px !important;
+  }
+}
+@media (max-width: 1089px) {
+  .joined {
+    margin-top: -120px;
+  }
+}
+
+.loading {
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(225, 225, 225, 0.6);
+  z-index: 10;
 }
