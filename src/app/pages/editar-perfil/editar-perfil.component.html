@@ -41,8 +41,7 @@
 
                         <div class="col-sm-12 col-md-4 mb-4">
                             <label for="knowledgeArea" class="form-label float-left">Área de conocimiento <span class="text-muted"></span></label>
-                            <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value=""
-                                required/>
+                            <input style="text-transform: capitalize;" [(ngModel)]="inputRol" name="inputRol" formControlName="knowledgeArea" type="text" class="form-control form-control-user" id="knowledgeAreaInput" placeholder="Selecciona un rol." value=""/>
                             <div class="container_list shadow-sm" id="customizeSelectUl">
                                 <p *ngFor="let item of listRols" (click)="selectRol(item)">{{ item }} </p>
                             </div>

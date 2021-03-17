@@ -267,6 +267,12 @@ export class EditarPerfilComponent implements OnInit {
   async sendData() {
     this.loading = true;
 
+    if(this.formEdit.invalid){
+      this.formEdit.markAllAsTouched();     
+      this.loading = false;
+      return;
+    }
+
     const data = this.prepareData();
 
     const res: any = await this.userService.putUser(data).toPromise();
