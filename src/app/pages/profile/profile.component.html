@@ -25,12 +25,12 @@
             <div class="card-header header-badges">
                 <h5 class="text-center">Insignias</h5>
                 <swiper [config]="config">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper containerCards">
                         <ng-container *ngIf="preg; then myBadge; else notBadge">
                         </ng-container>
                         <ng-template #myBadge>
                             <div class="swiper-slide" *ngFor="let badge of badgesUser">
-                                <div class="card-circle shadow justify-content-center">
+                                <div class="card-circle justify-content-center shadowCustommize">
                                     <img class="medal-img" [src]="badge.img" [alt]="badge.name" [title]="badge.name">
                                 </div>
                             </div>
