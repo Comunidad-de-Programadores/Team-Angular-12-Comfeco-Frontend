@@ -26,18 +26,22 @@
                 <h5 class="text-center">Insignias</h5>
                 <swiper [config]="config">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide containerCards" *ngFor="let badge of badgesUser">
-                            <div class="card-circle justify-content-center shadowCustommize">
-                                <ng-container *ngIf="preg; then myBadge; else NotBadge">
-                                </ng-container>
-                                <ng-template #myBadge>
+                        <ng-container *ngIf="preg; then myBadge; else notBadge">
+                        </ng-container>
+                        <ng-template #myBadge>
+                            <div class="swiper-slide" *ngFor="let badge of badgesUser">
+                                <div class="card-circle shadow justify-content-center">
                                     <img class="medal-img" [src]="badge.img" [alt]="badge.name" [title]="badge.name">
-                                </ng-template>
-                                <ng-template #NotBadge>
-                                    <p class="text-gray-300">No tienes insiginias</p>
-                                </ng-template>
+                                </div>
                             </div>
-                        </div>
+                        </ng-template>
+                        <ng-template #notBadge>
+                            <div class="swiper-slide">
+                                <div class="card-circle shadow justify-content-center">
+                                    <p class="text-gray-300">No tienes insiginias</p>
+                                </div>
+                            </div>
+                        </ng-template>
                     </div>
                     <div class="swiper-pagination"></div>
                     <!-- Add Arrows -->
