@@ -12,83 +12,96 @@
                     </div>
                 </div>
 
-                <div class="card-body">
-                    <div *ngIf="hasGroup" class="mb-1 mt-1 shadow p-4">
-                        <div class="row mb-2">
-                            <div
-                                class="col bg-secondary text-white d-flex flex-row align-items-center justify-content-between">
-                                {{myGroup.name | uppercase}} 
-                                <img class="programming-language img-fluid text-right rounded-circle"
-                                    [src]="myGroup.img"
-                                    alt="Programming language">
-                            </div>
-                        </div>
-                        <div *ngFor="let member of myGroup.integrantes">
-                            <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <img class="group-members bg-info img-fluid text-right rounded-circle"
-                                    [src]="member.img"
-                                    [alt]="member.nick">
-                                <div class="col">
-                                    <strong>{{member.nick | uppercase}}</strong>
-                                    <div>Medio</div>
+                <ng-container *ngIf="!loadingMembers; else elseMembers">
+                    <div class="card-body">
+                        <div *ngIf="hasGroup" class="mb-1 mt-1 shadow p-4">
+                            <div class="row mb-2">
+                                <div
+                                    class="col bg-secondary text-white d-flex flex-row align-items-center justify-content-between">
+                                    {{myGroup.name | uppercase}} 
+                                    <img class="programming-language img-fluid text-right rounded-circle"
+                                        [src]="myGroup.img"
+                                        alt="Programming language">
                                 </div>
-                                {{member.miInfoGroup.type === 0 ? 'Integrante' : 'Líder'}}
                             </div>
-                            <hr>
+                            <div *ngFor="let member of myGroup.integrantes">
+                                <div class="row d-flex flex-row align-items-center justify-content-between">
+                                    <img class="group-members bg-info img-fluid text-right rounded-circle"
+                                        [src]="member.img"
+                                        [alt]="member.nick">
+                                    <div class="col">
+                                        <strong>{{member.nick | uppercase}}</strong>
+                                        <div>Medio</div>
+                                    </div>
+                                    {{member.miInfoGroup.type === 0 ? 'Integrante' : 'Líder'}}
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row d-flex flex-row align-items-center justify-content-between">
+                                <button type="button" class="btn btn-primary btn-sm">Ir al chat</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="leaveGroup()">Abandonar</button>
+                            </div>
                         </div>
-                        <div class="row d-flex flex-row align-items-center justify-content-between">
-                            <button type="button" class="btn btn-primary btn-sm">Ir al chat</button>
-                            <button type="button" class="btn btn-danger btn-sm" (click)="leaveGroup()">Abandonar</button>
+                        <div *ngIf="!hasGroup" class="mb-1 mt-1 text-center shadow p-4">
+                            <p>No te has unido a un grupo</p>
                         </div>
                     </div>
-                    <div *ngIf="!hasGroup" class="mb-1 mt-1 text-center shadow p-4">
-                        <p>No te has unido a un grupo</p>
-                    </div>
-                </div>
-
+                </ng-container>
+                <ng-template #elseMembers>
+                    <app-loading *ngIf="loadingMembers"></app-loading>
+                </ng-template>
             </div>
         </div>
         <div class="col mb-4 order-1 order-sm-2">
             <div class="row">
                 <div class="col-md-4">
-                    <select class="custom-select">
-                        <option selected>Filtrar por lenguaje</option>
-                        <option>JavaScript</option>
-                        <option>TypeScript</option>
-                        <option>Java</option>
-                        <option>C#</option>
-                        <option>PHP</option>
-                        <option>Python</option>
+                    <select (change)="changeLanguage($event)" class="custom-select">
+                        <option selected disabled>Filtrar por lenguaje</option>
+                        <option [value]="language.id" *ngFor="let language of languages">{{language.name}}</option>
                     </select>
                 </div>
                 <div class="col-md-8">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar grupo" aria-label="Buscar grupo">
-                        <div class="input-group-append">
+                        <input type="text" #searchTerm class="form-control" placeholder="Buscar grupo" aria-label="Buscar grupo">
+                        <div class="input-group-append" (click)="searchGroups(searchTerm.value)">
                             <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3" *ngFor="let group of listGroups; let id = index;">
-                    
-                    <div class="card mb-4">
-                        <a class="btn btn-sm btn-primary share">
-                         <i class="fa fa-share-alt"></i>
-                        </a>
-                        <img class="card-img-top" [src]="group.img" [alt]="group.name">
-                        <div class="card-body">
-                          <span class="badge badge-info">{{group.programming_language_id}}</span>
-                          <h6 class="card-title mt-3"><strong>{{group.name | uppercase}}</strong></h6>
-                          <p class="card-text text-justify">{{group.description}}</p>
-                          
-                          <div class="text-center">
-                              <button type="button" class="btn btn-info" (click)="joinGroup(group.id)">Unirse</button>
+                <ng-container *ngIf="!loadingGroups; else elseGroups">
+                    <ng-container *ngIf="listGroups.length > 0; else elseListGroups">
+                        <div class="col-md-3" *ngFor="let group of listGroups; let id = index;">
+                            
+                            <div class="card mb-4">
+                                <a class="btn btn-sm btn-primary share">
+                                 <i class="fa fa-share-alt"></i>
+                                </a>
+                                <img class="card-img-top" [src]="group.img" [alt]="group.name">
+                                <div class="card-body">
+                                  <span class="badge badge-info">{{group.language}}</span>
+                                  <h6 class="card-title mt-3"><strong>{{group.name | uppercase}}</strong></h6>
+                                  <p class="card-text text-justify">{{group.description}}</p>
+                                  
+                                  <div class="text-center">
+                                      <button type="button" class="btn btn-info" (click)="joinGroup(group.id)">Unirse</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </ng-container>
+                    <ng-template #elseListGroups>
+                        <div class="col text-center">
+                            <p>No se encontraron grupos.</p>
+                        </div>
+                    </ng-template>
+                </ng-container>
+                <ng-template #elseGroups>
+                    <div class="col">
+                        <app-loading></app-loading>
                     </div>
-                </div>
+                </ng-template>
             </div>
         </div>
     </div>
