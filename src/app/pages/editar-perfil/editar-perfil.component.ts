@@ -32,9 +32,7 @@ export class EditarPerfilComponent implements OnInit {
 
   formEdit = new FormGroup({
     nick: new FormControl('', [Validators.required]),
-    email: new FormControl({ value: '', disabled: true }, [
-      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
-    ]),
+    email: new FormControl({ value: '', disabled: true }, []),
     gender: new FormControl('', [Validators.pattern('(Otro|otro|m|M|f|F)$')]),
     knowledgeArea: new FormControl('', []),
     birthday: new FormControl('', []),

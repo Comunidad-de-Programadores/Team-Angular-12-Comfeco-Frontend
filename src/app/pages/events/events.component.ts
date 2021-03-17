@@ -14,6 +14,7 @@ export class EventsComponent implements OnInit {
   public loading = false;
   public eventsList = [];
   public userEvents = [];
+  private selectedEventId: string;
 
 
   constructor(private events: EventsService,
@@ -27,6 +28,7 @@ export class EventsComponent implements OnInit {
 
   async clickJoin(eventId: string){
     this.loading = true;
+
     try {
 
       const res: any = await this.events.joinEvent(eventId).toPromise();
@@ -49,23 +51,7 @@ export class EventsComponent implements OnInit {
   
   async clickLeave(eventId: string){
     this.loading = true;
- 
-    try{
-      const res: any = await this.events.leaveEvent(eventId).toPromise();
-  
-      if (res.ok) {
-        this.loading = false;
-        this.toastr.success(res.mensaje);   
-      } else {
-        this.loading = false;
-        this.toastr.error(res.mensaje);
-      }    
-    }catch(error){
-      this.loading = false;
-      this.toastr.error(error.error.mensaje);     
-    }
-
-    this.getEvents();
+    this.selectedEventId = eventId;
   }
 
   hasJoined(event:any){
@@ -91,6 +77,25 @@ export class EventsComponent implements OnInit {
     this.userEvents = res.listEvent;
     console.log(this.userEvents);
     
+  }
+
+  async leaveEvent(){
+    try{
+      const res: any = await this.events.leaveEvent(this.selectedEventId).toPromise();
+  
+      if (res.ok) {
+        this.loading = false;
+        this.toastr.success(res.mensaje);   
+      } else {
+        this.loading = false;
+        this.toastr.error(res.mensaje);
+      }    
+    }catch(error){
+      this.loading = false;
+      this.toastr.error(error.error.mensaje);     
+    }
+
+    this.getEvents();
   }
 
 

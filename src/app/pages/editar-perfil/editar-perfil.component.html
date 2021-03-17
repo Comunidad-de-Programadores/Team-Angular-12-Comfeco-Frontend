@@ -115,7 +115,7 @@
                         </div>
                     </div>
 
-                    <button [disabled]="formEdit.pristine || formEdit.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+                    <button [disabled]="!formEdit.dirty || formEdit.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
                 </form>
 
             </div>
