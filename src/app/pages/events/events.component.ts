@@ -44,6 +44,7 @@ export class EventsComponent implements OnInit {
       this.toastr.error(error.error.mensaje);
     }
   
+    this.getEvents();
   }
   
   async clickLeave(eventId: string){
@@ -63,10 +64,12 @@ export class EventsComponent implements OnInit {
       this.loading = false;
       this.toastr.error(error.error.mensaje);     
     }
+
+    this.getEvents();
   }
 
   hasJoined(event:any){
-    return true;
+    return event.join;
   }
 
   private async getEvents(){
