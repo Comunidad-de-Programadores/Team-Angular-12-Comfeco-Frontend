@@ -2,13 +2,13 @@
     <h3 class="text-center bg-warning text-white rounded p-1">Eventos</h3>
     <div class="wrapper">
         <div class="card mx-auto shadow" *ngFor="let event of eventsList; let id = index;">
-            <a class="btn btn-sm btn-warning share">
+            <a class="btn btn-sm btn-warning share socialRed">
                 <i class="fa fa-share-alt"></i>
             </a>
-            <img class="card-img-top" [src]="event.img" alt="Card image cap">
+            <img class="card-img-top cardCostumize" [src]="event.img" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title"> {{event.name}} </h5>
-                <p class="card-text text-justify"> {{event.description}} </p>
+                <h5 class="card-title cardTile"> {{event.name}} </h5>
+                <p class="card-text text-justify cardDescriptionCustomize"> {{event.description}} </p>
     
                 <div class="options">
                     <a href="">
@@ -20,9 +20,7 @@
                     <a data-toggle="modal" data-target="#leaveModal" (click)="clickLeave(event._id)" *ngIf="hasJoined(event)" class="btn btn-secondary btn-user">
                   Salir
                 </a>
-    
 
-    
                 </div>
             </div>
             <div *ngIf="loading" class="text-center loading">

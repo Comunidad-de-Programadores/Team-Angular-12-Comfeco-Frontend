@@ -37,9 +37,9 @@
                                 </div>
                                 <hr>
                             </div>
-                            <div class="row d-flex flex-row align-items-center justify-content-between">
-                                <button type="button" class="btn btn-primary btn-sm">Ir al chat</button>
-                                <button type="button" class="btn btn-danger btn-sm" (click)="leaveGroup()">Abandonar</button>
+                            <div class="row d-flex flex-row align-items-center justify-content-between options">
+                                <a class="btn btn-primary btn-sm">Ir al chat</a>
+                                <a class="btn btn-danger btn-sm" (click)="leaveGroup()">Abandonar</a>
                             </div>
                         </div>
                         <div *ngIf="!hasGroup" class="mb-1 mt-1 text-center shadow p-4">
@@ -64,7 +64,7 @@
                     <div class="input-group mb-3">
                         <input type="text" #searchTerm class="form-control" placeholder="Buscar grupo" aria-label="Buscar grupo">
                         <div class="input-group-append" (click)="searchGroups(searchTerm.value)">
-                            <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <span class="btn btn-info cursorPointer"><i class="fa fa-search" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
                         <div class="col-md-3" *ngFor="let group of listGroups; let id = index;">
                             
                             <div class="card mb-4">
-                                <a class="btn btn-sm btn-primary share">
-                                 <i class="fa fa-share-alt"></i>
+                                <a class="btn btn-sm btn-primary share socialRed">
+                                    <i class="fa fa-share-alt"></i>
                                 </a>
                                 <img class="card-img-top cardCostumize" [src]="group.img" [alt]="group.name">
                                 <div class="card-body">
@@ -84,8 +84,8 @@
                                   <h6 class="card-title mt-3 cardTile"><strong>{{group.name | uppercase}}</strong></h6>
                                   <p class="card-text text-justify cardDescriptionCustomize">{{group.description}}</p>
                                   
-                                  <div class="text-center">
-                                      <button type="button" class="btn btn-info" (click)="joinGroup(group.id)">Unirse</button>
+                                  <div class="text-center options">
+                                      <a class="btn btn-info" (click)="joinGroup(group.id)">Unirse</a>
                                     </div>
                                 </div>
                             </div>

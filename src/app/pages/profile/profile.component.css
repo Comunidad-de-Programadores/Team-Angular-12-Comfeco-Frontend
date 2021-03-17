@@ -74,6 +74,29 @@
   justify-content: center;
 }
 
+.card-bodyCustomize {
+  scrollbar-color: rgb(78, 115, 223) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+}
+
+.card-bodyCustomize::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-bodyCustomize::-webkit-scrollbar-track {
+  background: white;
+}
+
+.card-bodyCustomize::-webkit-scrollbar-thumb {
+  background-color:rgb(78, 115, 223);
+  border: 0px solid orange;
+}
+
+.socialRed {
+  width:48px;
+  height: 32px;;
+}
+
 @media (max-width: 991px) {
   .joined {
     margin-top: 0px !important;
@@ -83,6 +106,19 @@
   .joined {
     margin-top: -120px;
   }
+}
+
+.containerCards {
+  width: 146.75px;
+  height:65px;
+}
+
+.shadowCustommize {
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  box-shadow: 0px 0px 8px black;
+  margin-top:10px;
 }
 
 .loading {

@@ -130,6 +130,10 @@ textarea {
   border-radius: 1.5em !important;
 }
 
+.options a, button {
+  border-radius: 10rem;
+}
+
 /* Keyframing de la animación */
 
 @keyframes pulse1 {

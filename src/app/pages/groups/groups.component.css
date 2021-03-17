@@ -24,5 +24,34 @@
 
 .cardDescriptionCustomize {
   width: 100%;
-  height: 90px;
+  height: 100px;
+  scrollbar-color: rgb(78, 115, 223) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+  overflow-y: auto;
+}
+
+.cardDescriptionCustomize::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cardDescriptionCustomize::-webkit-scrollbar-track {
+  background: white;
+}
+
+.cardDescriptionCustomize::-webkit-scrollbar-thumb {
+  background-color:rgb(78, 115, 223);
+  border: 0px solid orange;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.socialRed {
+  width:48px;
+  height: 32px;;
+}
+
+.options a {
+  border-radius: 10rem;
 }

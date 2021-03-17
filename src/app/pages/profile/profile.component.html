@@ -26,8 +26,8 @@
                 <h5 class="text-center">Insignias</h5>
                 <swiper [config]="config">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" *ngFor="let badge of badgesUser">
-                            <div class="card-circle shadow justify-content-center">
+                        <div class="swiper-slide containerCards" *ngFor="let badge of badgesUser">
+                            <div class="card-circle justify-content-center shadowCustommize">
                                 <ng-container *ngIf="preg; then myBadge; else NotBadge">
                                 </ng-container>
                                 <ng-template #myBadge>
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="card-body">
+            <div class="card-body card-bodyCustomize">
                 <div class="mb-2 shadow p-4">
                     <div class="row mb-2 text-center">
                         <div class="col">

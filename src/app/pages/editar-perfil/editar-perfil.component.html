@@ -151,7 +151,9 @@
                     </div>
                 </div>
                 <button [disabled]="formChangePassword.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
-                <a href="/client/perfil" class="w-12 btn btn-primary btn-md float-right mr-4">Volver a Mi Perfil</a>
+                <div class="options">
+                    <a href="/client/perfil" class="w-12 btn btn-primary btn-md float-right mr-4">Volver a Mi Perfil</a>
+                </div>
             </form>
         </div>
         <div *ngIf="loading" class="text-center loading">
