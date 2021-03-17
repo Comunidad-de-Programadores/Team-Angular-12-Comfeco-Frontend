@@ -29,4 +29,5 @@ export const routes: Routes = [
         RouterModule
     ],
 })
+
 export class AuthRoutingModule { }
