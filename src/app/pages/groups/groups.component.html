@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <select (change)="changeLanguage($event)" class="custom-select">
-                        <option selected disabled>Filtrar por lenguaje</option>
+                        <option selected value="">Filtrar por lenguaje</option>
                         <option [value]="language.id" *ngFor="let language of languages">{{language.name}}</option>
                     </select>
                 </div>
@@ -74,19 +74,18 @@
                     <ng-container *ngIf="listGroups.length > 0; else elseListGroups">
                         <div class="col-md-3" *ngFor="let group of listGroups; let id = index;">
                             
-                            <div class="card mb-4">
+                            <div class="card h-100 mb-4">
                                 <a class="btn btn-sm btn-primary share socialRed">
                                     <i class="fa fa-share-alt"></i>
                                 </a>
-                                <img class="card-img-top cardCostumize" [src]="group.img" [alt]="group.name">
+                                <img class="card-img-top cardCustomize" [src]="group.img" [alt]="group.name">
                                 <div class="card-body">
-                                  <span class="badge badge-info">{{group.language}}</span>
+                                  <span class="badge badge-info" [ngStyle]="{'background-color': group.color}">{{group.language}}</span>
                                   <h6 class="card-title mt-3 cardTile"><strong>{{group.name | uppercase}}</strong></h6>
-                                  <p class="card-text text-justify cardDescriptionCustomize">{{group.description}}</p>
-                                  
-                                  <div class="text-center options">
-                                      <a class="btn btn-info" (click)="joinGroup(group.id)">Unirse</a>
-                                    </div>
+                                  <p class="card-text text-justify">{{group.description}}</p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a class="btn btn-info" (click)="joinGroup(group.id)">Unirse</a>
                                 </div>
                             </div>
                         </div>

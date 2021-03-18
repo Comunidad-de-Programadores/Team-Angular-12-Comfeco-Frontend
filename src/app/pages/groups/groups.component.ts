@@ -20,27 +20,33 @@ export class GroupsComponent implements OnInit {
   term = '';
   languages = [{
     name: 'Typescript',
-    id: 0
+    id: 0,
+    color: '#36b9cc'
   },
   {
     name: 'Javascript',
-    id: 1
+    id: 1,
+    color: '#f6c23e'
   },
   {
     name: 'Ruby',
-    id: 2
+    id: 2,
+    color: '#e74a3b'
   },
   {
     name: 'Java',
-    id: 3
+    id: 3,
+    color: '#5a5c69'
   },
   {
     name: 'Pyton',
-    id: 4
+    id: 4,
+    color: '#4e73df'
   },
   {
     name: 'UX',
-    id: 5
+    id: 5,
+    color: '#1cc88a'
   }
   ];
 
@@ -82,6 +88,7 @@ export class GroupsComponent implements OnInit {
             this.languages.map(language => {
               if (group.programming_language_id === language.id) {
                 group.language = language.name;
+                group.color = language.color;
               }
             });
         });
