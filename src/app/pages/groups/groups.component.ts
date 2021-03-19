@@ -70,7 +70,6 @@ export class GroupsComponent implements OnInit {
         this.hasGroup = false;
       }
       this.loadingMembers = false;
-      console.log(res);
     } catch (error) {
       console.error(error);
       this.hasGroup = false;
@@ -92,14 +91,12 @@ export class GroupsComponent implements OnInit {
               }
             });
         });
-        console.log('Nueva lista ', this.listGroups);
         this.hasListGroups = true;
       } else {
         this.toastr.error('No se pudieron cargar los Grupos', 'Error al cargar los grupos');
         this.hasListGroups = false;
       }
       this.loadingGroups = false;
-      console.log(res);
     } catch (error) {
       console.error(error);
       this.hasListGroups = false;
@@ -116,7 +113,6 @@ export class GroupsComponent implements OnInit {
         this.toastr.error(res.mensaje, 'Error');
       }
       this.getMembers();
-      console.log(res);
     } catch (error) {
       this.toastr.error(error.error.mensaje);
     }
@@ -133,7 +129,6 @@ export class GroupsComponent implements OnInit {
       } else {
         this.toastr.error(res.mensaje, 'Error');
       }
-      console.log(res);
     } catch (error) {
       this.toastr.error(error.error.mensaje);
     }
