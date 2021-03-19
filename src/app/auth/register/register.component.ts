@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.toastr.success(res.ok === true ? 'Usuario creado exitosamente' : res.ok);
 
         // Navegar al inicio
-        this.router.navigateByUrl('/client?iduser=' + user._id);
+        this.router.navigateByUrl('/client/inicio?iduser=' + user._id);
       }, err => {
         if (err?.email.kind) {
           this.toastr.error(err.email.kind === 'unique' ? 'Ya existe una cuenta asociada a este correo electrónico' : 'Error al generar el usuario');
