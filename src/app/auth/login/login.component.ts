@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
 
         // Navegar al inicio
-        this.router.navigateByUrl('/client');
+        this.router.navigateByUrl('/client?iduser=' + user._id);
       }, err => {
         this.loading = false;
         this.toastr.error(err);
