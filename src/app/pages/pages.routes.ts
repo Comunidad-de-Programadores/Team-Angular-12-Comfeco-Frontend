@@ -12,7 +12,7 @@ const routes: Routes = [{
   path: 'client',
   component: PagesComponent,
   children: [
-    { path: 'inicio/:id', component: HomeComponent },
+    { path: 'inicio', component: HomeComponent },
     { path: 'perfil', component: MainProfileComponent, canActivate: [AuthenticationGuard] },
     { path: 'editar-perfil', component: EditarPerfilComponent, canActivate: [AuthenticationGuard], canDeactivate: [HasUnsavedChangesGuard] },
     { path: '', redirectTo: 'inicio', pathMatch: 'full' }
