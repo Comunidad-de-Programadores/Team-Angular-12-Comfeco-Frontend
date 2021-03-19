@@ -6,7 +6,7 @@ import { PagesRoutingModule } from './pages/pages.routes';
 import { AuthComponent } from './auth/auth.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'client/inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'client/inicio/1', pathMatch: 'full' },
   { path: '**', component: AuthComponent }
 ];
 
