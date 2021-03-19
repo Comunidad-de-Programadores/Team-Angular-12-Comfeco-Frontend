@@ -59,6 +59,7 @@
 .cardTile {
     width: 100%;
     height: 30px;
+    margin-bottom: 1.3em;
 }
 
 .cardDescriptionCustomize {
@@ -70,7 +71,7 @@
 }
 
 .cardDescriptionCustomize::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
 }
 
 .cardDescriptionCustomize::-webkit-scrollbar-track {
