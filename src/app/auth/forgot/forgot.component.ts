@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -41,7 +41,7 @@ export class ForgotComponent implements OnInit, OnDestroy {
 
       this.form.reset();
     }, err => {
-      this.toast.error('Ocurrio un error al intentar recuperar la contraseña.');
+      this.toast.error(err.error.mensaje ? err.error.mensaje : 'Ocurrió un error al intentar recuperar la contraseña.');
     });
   }
 

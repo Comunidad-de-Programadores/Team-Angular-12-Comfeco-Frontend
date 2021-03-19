@@ -18,8 +18,8 @@ export class EventsComponent implements OnInit {
 
 
   constructor(private events: EventsService,
-    private user: UserService,
-    private toastr: ToastrService) { }
+              private user: UserService,
+              private toastr: ToastrService) { }
 
   async ngOnInit() {
     await this.getEvents();
@@ -62,8 +62,6 @@ export class EventsComponent implements OnInit {
     const res: any = await this.events.getEvents().toPromise();
     if (res.ok) {
       this.eventsList = res.listEvent;
-      console.log(this.eventsList);
-
     } else {
       console.log(res);
     }
@@ -76,8 +74,6 @@ export class EventsComponent implements OnInit {
 
     res = await (await this.events.getUserEvents(uid)).toPromise();
     this.userEvents = res.listEvent;
-    console.log(this.userEvents);
-
   }
 
   async leaveEvent() {

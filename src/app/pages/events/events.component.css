@@ -51,7 +51,7 @@
 }
 
 .cardCostumize {
-    width: 355px;
+    width: auto;
     height: 172px;
     object-fit: cover;
 }
@@ -85,7 +85,6 @@
 .socialRed {
     width: 48px;
     height: 32px;
-    ;
 }
 
 @media (max-width: 440px) {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { BehaviorSubject, Subject, throwError } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
@@ -66,7 +66,7 @@ export class UserService {
     this.getHeader();
     const body = new FormData();
 
-    body.append('newpassword', newpassword)
+    body.append('newpassword', newpassword);
     return this.http.put(`${this.url}/user/changePassword`, body, this.option);
   }
 
@@ -85,12 +85,12 @@ export class UserService {
       body.append('socialNetwork', element);
     });
 
-    return this.http.put(`${this.url}/user`, body, this.option)
+    return this.http.put(`${this.url}/user`, body, this.option);
   }
 
   getUser() {
     this.getHeader();
-    return this.http.get(`${this.url}/user`, this.option)
+    return this.http.get(`${this.url}/user`, this.option);
   }
 
   getUserSubject() {
