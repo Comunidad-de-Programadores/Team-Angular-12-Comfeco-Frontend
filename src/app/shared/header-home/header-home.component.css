@@ -1,20 +1,18 @@
-.img-profile{
-    height: 2rem;
-    width: 2rem;
+.img-profile {
+  height: 2rem;
+  width: 2rem;
 }
 
-
-.popup{
-    max-width: 60px;
+.popup {
+  max-width: 60px;
 }
 
-.headerLinks{
-    cursor: pointer;
-    padding: 5px;
-    margin-bottom: 3px;
+.headerLinks {
+  cursor: pointer;
+  padding: 5px;
+  margin-bottom: 3px;
 }
 
 .black {
-    color: black !important;
+  color: black !important;
 }
-

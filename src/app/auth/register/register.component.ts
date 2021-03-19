@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { ValidatorsService } from '../../services/validators.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
@@ -14,12 +13,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-
   //inicia una instancia para crear grupos de formulario
   form: FormGroup;
-
   loading = false;
-
   createUserSubscription: Subscription;
 
   constructor(
@@ -60,7 +56,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       const user: User = {
         nick: this.form.value.nick,
         email: this.form.value.email,
-        password: this.form.value.password
+        password: this.form.value.password,
+        img: ''
       };
 
       this.loading = true;

@@ -1,1 +1,51 @@
-<p>events works!</p>
+<div class="animate__animated animate__fadeIn">
+    <h3 class="text-center bg-warning text-white rounded p-1">Eventos</h3>
+    <div class="wrapper">
+        <div class="card mx-auto shadow" *ngFor="let event of eventsList; let id = index;">
+            <a class="btn btn-sm btn-warning share socialRed">
+                <i class="fa fa-share-alt"></i>
+            </a>
+            <img class="card-img-top cardCostumize" [src]="event.img" [alt]="event.name">
+            <div class="card-body">
+                <h5 class="card-title cardTile"> {{event.name}} </h5>
+                <p class="card-text text-justify cardDescriptionCustomize"> {{event.description}} </p>
+
+                <div class="options">
+                    <a href="">
+                  Más información
+                </a>
+                    <a *ngIf="!hasJoined(event)" class="btn btn-warning btn-user" (click)="clickJoin(event._id)">
+                  Participar
+                </a>
+                    <a data-toggle="modal" data-target="#leaveModal" (click)="clickLeave(event._id)" *ngIf="hasJoined(event)" class="btn btn-secondary btn-user">
+                  Salir
+                </a>
+
+                </div>
+            </div>
+        </div>
+        <div *ngIf="loading" class="text-center loading">
+            <app-loading></app-loading>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="label">¿Estás seguro?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+            </div>
+            <div class="modal-body">
+                Al abandonar un evento no podrás volver a unirte.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="loading = false">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="leaveEvent()">Abandonar evento</button>
+            </div>
+        </div>
+    </div>
+</div>

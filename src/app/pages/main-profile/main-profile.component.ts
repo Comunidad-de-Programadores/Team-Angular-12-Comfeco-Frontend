@@ -9,7 +9,7 @@ export class MainProfileComponent implements OnInit {
 
   activeView = 'profile';
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -18,16 +18,16 @@ export class MainProfileComponent implements OnInit {
   changeMenu(option: string) {
     switch (option) {
       case 'profile':
-          this.activeView = 'profile';
+        this.activeView = 'profile';
         break;
       case 'badges':
-          this.activeView = 'badges';
+        this.activeView = 'badges';
         break;
       case 'groups':
-          this.activeView = 'groups';
+        this.activeView = 'groups';
         break;
       case 'events':
-          this.activeView = 'events';
+        this.activeView = 'events';
         break;
       default: this.activeView = 'profile';
         break;

@@ -16,9 +16,7 @@ export class CommunityService {
 
     constructor(
         private http: HttpClient
-    ) {
-
-    }
+    ) { }
 
     getHeader() {
         const tk = localStorage.getItem('token');

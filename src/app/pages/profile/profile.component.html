@@ -1,72 +1,80 @@
-<div class="row">
-    <div class="col-md-3">
-        <div class="card text-center">
+<div class="row animate__animated animate__fadeIn">
+    <div class="col-md-12 col-lg-3 mb-4">
+        <div class="card text-center" style="    max-width: 400px;
+        margin: auto;">
             <div class="card-header header-profile">
-              <a class="float-right" href="#" title="Editar Perfil"><i class="fas fa-user-edit btn-edit-profile"></i></a>  
-              <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
+                <a class="float-right" routerLink="/client/editar-perfil" title="Editar Perfil"><i class="fas fa-user-edit btn-edit-profile"></i></a>
+                <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{userData.nick}}</h5>
-              <p class="card-text">Front Developer / UI/UX</p>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime voluptates, minus architecto quasi debitis nesciunt error officia cum nulla, cupiditate molestias ab! Harum architecto dolorem optio qui aspernatur laboriosam necessitatibus.</p>
+                <h5 class="card-title">{{userData.nick}}</h5>
+                <p class="card-text"> {{userData.knowledgeArea || ''}} </p>
+                <p class="card-text"> {{userData.biography || '' }} </p>
             </div>
-            <div class="card-footer text-muted">
-              <div>
-                <i class="fab fa-twitter social-networks"></i>
-                <i class="fab fa-facebook social-networks"></i>
-                <i class="fab fa-instagram social-networks"></i>
-              </div>
+            <div *ngIf="userData.socialNetwork" class="card-footer text-muted">
+                <div class="d-flex justify-content-around">
+                    <a *ngFor="let net of socialNetworks" [href]="net.link" target="_blank">
+                        <i [class]="net.icon" class="social-networks"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-lg-6 mb-4">
         <div class="card text-center">
             <div class="card-header header-badges">
-              <h5 class="text-center">Insignias</h5> 
-              <swiper [config]="config">
-
-                <div class="swiper-wrapper">
-    
-                    <div class="swiper-slide" *ngFor="let medal of listMedals">
-                        <div class="card-circle shadow">
-                            <img class="medal-img" [src]="medal.img" [alt]="medal.name" [title]="medal.name">
-                        </div>
+                <h5 class="text-center">Insignias</h5>
+                <swiper [config]="config">
+                    <div class="swiper-wrapper containerCards">
+                        <ng-container *ngIf="preg; then myBadge; else notBadge">
+                        </ng-container>
+                        <ng-template #myBadge>
+                            <div class="swiper-slide" *ngFor="let badge of badgesUser">
+                                <div class="card-circle justify-content-center shadowCustommize">
+                                    <img class="medal-img" [src]="badge.img" [alt]="badge.name" [title]="badge.name">
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template #notBadge>
+                            <div class="swiper-slide">
+                                <div class="card-circle shadow justify-content-center">
+                                    <p class="text-gray-300">No tienes insiginias</p>
+                                </div>
+                            </div>
+                        </ng-template>
                     </div>
-    
-                </div>
-                <div class="swiper-pagination"></div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-              </swiper>
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </swiper>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Actividad reciente</h5>
-              <hr>
-              <div>
-                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
-                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
-                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
-                  </div>
-                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
-                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
-                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
-                  </div>
-                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
-                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
-                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
-                  </div>
-                  <div class="row text-justify shadow-sm mb-3" style="font-size: large;">
-                    <div class="col-10">Te has unido al evento Community Fest and Code</div> 
-                    <div class="col text-right"><span class="fas fa-check-circle icon-check"></span></div>
-                  </div>
-              </div>
+                <h5 class="card-title">Actividad reciente</h5>
+                <hr>
+                <div>
+                    <div class="item-activity shadow-sm">
+                        <p>Te has unido al evento Community Fest and Code</p>
+                        <span class="far fa-calendar-check fa-2x icon-check"></span>
+                    </div>
+                    <div class="item-activity shadow-sm">
+                        <p>Te has unido al evento Community Fest and Code</p>
+                        <span class="far fa-calendar-check fa-2x icon-check"></span>
+                    </div>
+                    <div class="item-activity shadow-sm">
+                        <p>Te has unido al evento Community Fest and Code</p>
+                        <span class="far fa-calendar-check fa-2x icon-check"></span>
+                    </div>
+                    <div class="item-activity shadow-sm">
+                        <p>Te has unido al evento Community Fest and Code</p>
+                        <span class="far fa-calendar-check fa-2x icon-check"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card shadow comunidades" style="overflow-y: auto; 
-        max-height: 500px;">
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card shadow comunidades">
 
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between header-events">
                 <h6 class="m-0 font-weight-bold">Eventos de tu interés</h6>
@@ -74,44 +82,95 @@
                     <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false"> Ver más </a>
                 </div>
             </div>
-        
-            <div class="card-body">
-               <div class="mb-2">
-                <div class="row mb-2 text-center">
-                    <div class="col">
-                        <img class="img-event" src="https://www.comfeco.com/icons/code-icon.svg">
+
+            <div class="card-body card-bodyCustomize">
+                <div class="mb-2 shadow p-4">
+                    <div class="row mb-2 text-center">
+                        <div class="col">
+                            <img class="img-event" src="https://www.comfeco.com/icons/code-icon.svg">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto text-center text-uppercase">
+                            <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto unirme">
+                            <a href="https://www.comfeco.com/" class="badge badge-primary">Unirme</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <div class="col my-auto text-center text-uppercase">
-                        <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                <div class="mb-2 shadow p-4">
+                    <div class="row mb-2 text-center">
+                        <div class="col">
+                            <img class="img-event" src="https://www.comfeco.com/icons/code-icon.svg">
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto text-center text-uppercase">
+                            <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col my-auto unirme">
+                            <a href="https://www.comfeco.com/" class="badge badge-primary">Unirme</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <div class="col my-auto unirme">
-                        <a href="https://www.comfeco.com/" class="badge badge-primary small">Unirme</a>
-                    </div>
-                </div>
-               </div>
-               <div class="mb-2">
-                <div class="row mb-2 text-center">
-                    <div class="col">
-                        <img class="img-event" src="https://www.comfeco.com/icons/code-icon.svg">
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col my-auto text-center text-uppercase">
-                        <h6 class="my-auto">Community Fest and Code (Comfeco)</h6>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col my-auto unirme">
-                        <a href="https://www.comfeco.com/" class="badge badge-primary small">Unirme</a>
-                    </div>
-                </div>
-               </div>
             </div>
-            
+
+        </div>
+    </div>
+</div>
+<div class="row joined text-center">
+
+    <div class="col-sm-12 col-md-6 mb-4">
+        <div class="card text-center">
+            <div class="card-header header-badges">
+                <h5 class="text-center">Participaciones</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Eventos a los que te uniste</h5>
+                <hr>
+                <div *ngIf="userEvents.length > 0">
+                    <div class="item-activity shadow-sm" *ngFor="let event  of userEvents">
+                        <p>{{event.name}}</p>
+                        <a data-toggle="modal" data-target="#leaveModal" class="btn btn-secondary btn-user">
+                            Salir
+                          </a>
+
+                        <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="label">¿Estás seguro?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Al abandonar un evento no podrás volver a unirte.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clickLeave(event._id)">Abandonar evento</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="userEvents.length <= 0">
+                    <div class="item-activity shadow-sm">
+                        <p>No estás unido a ningún evento</p>
+                        <span class="far fa-sad-cry fa-2x icon-sad"></span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="loading" class="text-center loading">
+                <app-loading></app-loading>
+            </div>
         </div>
     </div>
 </div>

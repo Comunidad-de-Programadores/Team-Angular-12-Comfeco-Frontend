@@ -12,17 +12,27 @@ import { BadgesComponent } from './badges/badges.component';
 import { GroupsComponent } from './groups/groups.component';
 import { EventsComponent } from './events/events.component';
 import { MainProfileComponent } from './main-profile/main-profile.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [PagesComponent, HomeComponent, ProfileComponent, EditarPerfilComponent, BadgesComponent, GroupsComponent, EventsComponent, MainProfileComponent],
+  declarations: [
+    PagesComponent,
+    HomeComponent,
+    ProfileComponent,
+    EditarPerfilComponent,
+    BadgesComponent,
+    GroupsComponent,
+    EventsComponent,
+    MainProfileComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
     ComponentsModule,
     NgxUsefulSwiperModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   exports: [EditarPerfilComponent]

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { throwError } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
@@ -10,12 +10,15 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
 
+
+  private userSubject = new Subject<any>();
   private url = environment.baseUrl;
   option;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getHeader() {
+  private getHeader() {
     const tk = localStorage.getItem('token');
     this.option = {
       headers: new HttpHeaders({ 'access-token': `${tk}` })
@@ -23,7 +26,7 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post(`${ this.url }/user/register`, user).pipe(
+    return this.http.post(`${this.url}/user/register`, user).pipe(
       catchError(e => {
         return throwError(e.error.error.errors);
       })
@@ -36,15 +39,15 @@ export class UserService {
       password
     };
 
-    return this.http.post(`${ this.url }/user/login`, credentials).pipe(
+    return this.http.post(`${this.url}/user/login`, credentials).pipe(
       catchError(e => {
         return throwError(e.error.mensaje);
       })
     );
   }
-  
+
   sendEmail(email: string) {
-    return this.http.post(`${ this.url }/user/sendemail`, { email }).pipe(
+    return this.http.post(`${this.url}/user/sendemail`, { email }).pipe(
       catchError(e => {
         return throwError(e);
       })
@@ -52,29 +55,58 @@ export class UserService {
   }
 
   changePassword(token: string, newpassword: string) {
-    return this.http.post(`${ this.url }/user/changePassword`, { token, newpassword }).pipe(
+    return this.http.post(`${this.url}/user/changePassword`, { token, newpassword }).pipe(
       catchError(e => {
         return throwError(e);
       })
     );
   }
 
-  putUser(value){
+  editPassword(newpassword: string) {
+    this.getHeader();
+    const body = new FormData();
+
+    body.append('newpassword', newpassword);
+    return this.http.put(`${this.url}/user/changePassword`, body, this.option);
+  }
+
+  putUser(value) {
     this.getHeader();
     const body = new FormData();
 
     body.append('nick', value.nick);
-    body.append('img', value.nick);
-    body.append('public_id', value.nick);
-    body.append('gender', value.nick);
-    body.append('birthday', value.nick);
-    body.append('country', value.nick);
-    body.append('biography', value.nick);
-    body.append('socialNetwork', value.nick);
+    body.append('img', value.img);
+    body.append('gender', value.gender);
+    body.append('birthday', value.birthday);
+    body.append('country', value.country);
+    body.append('biography', value.biography);
+    body.append('knowledgeArea', value.knowledgeArea);
+    value.socialNetwork.forEach(element => {
+      body.append('socialNetwork', element);
+    });
 
-    return this.http.put(`${ this.url }/user`, body , this.option)
+    return this.http.put(`${this.url}/user`, body, this.option);
   }
 
+  getUser() {
+    this.getHeader();
+    return this.http.get(`${this.url}/user`, this.option);
+  }
 
+  getUserSubject() {
+    return this.userSubject;
+  }
 
+  setUserSubect(data) {
+    this.userSubject.next(data);
+  }
+
+  private getInitValue() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  getBadges() {
+    this.getHeader();
+    return this.http.get(`${this.url}/user/` + this.getInitValue()._id + '/insignias', this.option);
+  }
 }

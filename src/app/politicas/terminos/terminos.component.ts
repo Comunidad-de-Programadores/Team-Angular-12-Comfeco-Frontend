@@ -11,5 +11,4 @@ export class TerminosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

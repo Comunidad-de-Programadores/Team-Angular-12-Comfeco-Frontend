@@ -33,6 +33,7 @@ export class TimerComponent implements OnInit {
     //Add 'implements OnDestroy' to the class.
     this.timerObs.unsubscribe();
   }
+  
   count() {
     this.timerObs = interval(this.MILLISECONDS_OF_A_SECOND).subscribe(
       resp => {

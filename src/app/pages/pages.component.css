@@ -1,4 +1,4 @@
 .container-fluid {
-    min-height: calc(100vh - 120px);
-    background-color: #f8f9fc;
+  min-height: calc(100vh - 120px);
+  background-color: #f8f9fc;
 }

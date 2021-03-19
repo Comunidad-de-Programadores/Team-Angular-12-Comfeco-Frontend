@@ -1,40 +1,134 @@
 #user-image {
-    width: 8rem;
-    height: auto;
-    border-radius: 30px;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 60px;
 }
 
 .social-networks {
-    font-size: 1.5em;
-    margin: 5px;
+  font-size: 1.5em;
+  margin: 5px;
 }
 
 .medal-img {
-    width: 2.5rem;
-    height: auto;
-    background-color: white;
-    border-radius: 22%;
-    padding: 5px;
+  width: 3rem;
+  height: auto;
+  background-color: white;
+  border-radius: 22%;
+  padding: 5px;
 }
 
-.header-profile, .header-badges, .header-events {
-    background-color: #4e73df;
-    color: white;
+.header-profile,
+.header-badges,
+.header-events {
+  background-color: #4e73df;
+  color: white;
 }
 
 .btn-edit-profile {
-   color: white;
+  color: white;
 }
 
-.swiper-button-next,.swiper-button-prev {
-    color: white;
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
 }
 
 .icon-check {
-    color: green;
+  color: green;
+}
+.icon-sad {
+  color: gray;
 }
 
 .img-event {
-    width: 11rem;
-    height: auto;
+  width: 70%;
+  height: auto;
+}
+
+.item-activity {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+.item-activity p {
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+}
+
+.comunidades .card-body {
+  overflow: scroll;
+  max-height: 500px;
+}
+
+.card-header img {
+  object-fit: cover;
+}
+
+.joined {
+  margin-top: -170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-bodyCustomize {
+  scrollbar-color: rgb(78, 115, 223) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+}
+
+.card-bodyCustomize::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-bodyCustomize::-webkit-scrollbar-track {
+  background: white;
+}
+
+.card-bodyCustomize::-webkit-scrollbar-thumb {
+  background-color:rgb(78, 115, 223);
+  border: 0px solid orange;
+}
+
+.socialRed {
+  width:48px;
+  height: 32px;;
+}
+
+@media (max-width: 991px) {
+  .joined {
+    margin-top: 0px !important;
+  }
+}
+@media (max-width: 1089px) {
+  .joined {
+    margin-top: -120px;
+  }
+}
+
+.containerCards {
+  width: 146.75px;
+  height:65px;
+}
+
+.shadowCustommize {
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  box-shadow: 0px 0px 8px black;
+  margin-top:10px;
+}
+
+.loading {
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(225, 225, 225, 0.6);
+  z-index: 10;
 }

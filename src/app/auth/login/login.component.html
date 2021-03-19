@@ -13,37 +13,43 @@
                                 </div>
                                 <form class="user" [formGroup]="form" (ngSubmit)="loginClick()">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" formControlName="email" [class.is-invalid]="checkValid('email')" />
+                                        <input type="email" class="form-control form-control-user"
+                                            id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email"
+                                            formControlName="email" [class.is-invalid]="checkValid('email')" />
                                         <div *ngIf="checkValid('email')">
                                             <small *ngIf="form.controls.email.errors.required" class="text-danger">
-                          Campo requerido
-                      </small>
+                                                Campo requerido
+                                            </small>
                                             <small *ngIf="form.controls.email.errors.pattern" class="text-danger">
-                          Formato no válido
-                      </small>
+                                                Formato no válido
+                                            </small>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña" formControlName="password" [class.is-invalid]="checkValid('password')" />
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Contraseña"
+                                            formControlName="password" [class.is-invalid]="checkValid('password')" />
                                         <div *ngIf="checkValid('password')">
                                             <small *ngIf="form.controls.password.errors.required" class="text-danger">
-                          Campo requerido
-                      </small>
+                                                Campo requerido
+                                            </small>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck" formControlName="rememberCheckbox" />
+                                            <input type="checkbox" class="custom-control-input" id="customCheck"
+                                                formControlName="rememberCheckbox" />
                                             <label class="custom-control-label" for="customCheck">
-                      Recordar email
-                    </label>
+                                                Recordar email
+                                            </label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="form.invalid">
-                  Iniciar sesión
-                </button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block"
+                                        [disabled]="form.invalid">
+                                        Iniciar sesión
+                                    </button>
                                 </form>
-                                <hr/>
+                                <hr />
                                 <div class="text-center">
                                     <a routerLink="/auth/recuperar" class="small">Olvidaste tu contraseña?</a>
                                 </div>
@@ -53,7 +59,8 @@
                                 <div class="text-center mt-1">
                                     <p class="small">
                                         Acceda a nuestros
-                                        <a routerLink="/politics/terminos" target="_blank">Términos y condiciones</a> y
+                                        <a routerLink="/politics/terminos" target="_blank">Términos y condiciones</a>
+                                        y
                                         <a routerLink="/politics/politicas" target="_blank">Acuerdos de privacidad</a>
                                     </p>
                                 </div>
