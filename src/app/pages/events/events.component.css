@@ -1,127 +1,127 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  min-height: 100vh;
-  padding-left: 10px;
-  padding-right: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
 }
 
 .wrapper .card {
-  height: 430px;
+    height: 430px;
 }
 
 .card {
-  width: 85%;
-  margin-bottom: 50px;
+    width: 85%;
+    margin-bottom: 50px;
 }
 
 .card-text {
-  height: 70px;
-  margin-bottom: 5em;
+    height: 70px;
+    margin-bottom: 5em;
 }
 
 .share {
-  position: absolute;
-  right: 0;
-  width: 40px;
-  height: 30px;
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 30px;
 }
 
 .options a {
-  border-radius: 10rem;
+    border-radius: 10rem;
 }
 
 .options {
-  margin-top: -30px;
-  display: flex;
-  justify-content: space-between;
+    margin-top: -30px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .loading {
-  top: 0;
-  min-width: 100%;
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  background-color: rgba(225, 225, 225, 0.6);
-  z-index: 10;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(225, 225, 225, 0.6);
+    z-index: 10;
 }
 
 .cardCostumize {
-  width: 355px;
-  height: 172px;
-  object-fit: cover;
+    width: 355px;
+    height: 172px;
+    object-fit: cover;
 }
 
 .cardTile {
-  width: 100%;
-  height: 30px;
+    width: 100%;
+    height: 30px;
 }
 
 .cardDescriptionCustomize {
-  width: 100%;
-  height: 90px;
-  scrollbar-color: rgb(78, 115, 223) rgba(0, 0, 0, 0);
-  scrollbar-width: thin;
-  overflow-y: auto;
+    width: 100%;
+    height: 90px;
+    scrollbar-color: rgb(78, 115, 223) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+    overflow-y: auto;
 }
 
 .cardDescriptionCustomize::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 .cardDescriptionCustomize::-webkit-scrollbar-track {
-  background: white;
+    background: white;
 }
 
 .cardDescriptionCustomize::-webkit-scrollbar-thumb {
-  background-color: rgb(78, 115, 223);
-  border: 0px solid orange;
+    background-color: rgb(78, 115, 223);
+    border: 0px solid orange;
 }
 
 .socialRed {
-    width:48px;
-    height: 32px;;
-  }
-  
+    width: 48px;
+    height: 32px;
+    ;
+}
+
 @media (max-width: 440px) {
-  .options {
-    flex-direction: column;
-    align-items: flex-end;
-  }
+    .options {
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }
 
 @media (max-width: 576px) {
-  .card {
-    width: 100% !important;
-  }
-  .wrapper {
-    grid-template-columns: 20px 1fr 20px !important;
-  }
+    .card {
+        width: 100% !important;
+    }
+    .wrapper {
+        grid-template-columns: 20px 1fr 20px !important;
+    }
 }
 
 @media (max-width: 768px) {
-  .card {
-    width: 80%;
-  }
-  .wrapper .card {
-    height: 450px !important;
-  }
+    .card {
+        width: 80%;
+    }
+    .wrapper .card {
+        height: 450px !important;
+    }
 }
 
 @media (max-width: 992px) {
-  .wrapper {
-    grid-template-columns: 50px 1fr 50px;
-  }
-
-  .card {
-    grid-column: 2;
-    width: 400px;
-  }
-
-  .wrapper .card {
-    height: 480px;
-  }
+    .wrapper {
+        grid-template-columns: 50px 1fr 50px;
+    }
+    .card {
+        grid-column: 2;
+        width: 400px;
+    }
+    .wrapper .card {
+        height: 480px;
+    }
 }

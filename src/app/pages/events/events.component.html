@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title cardTile"> {{event.name}} </h5>
                 <p class="card-text text-justify cardDescriptionCustomize"> {{event.description}} </p>
-    
+
                 <div class="options">
                     <a href="">
                   Más información
@@ -23,9 +23,9 @@
 
                 </div>
             </div>
-            <div *ngIf="loading" class="text-center loading">
-                <app-loading></app-loading>
-            </div>
+        </div>
+        <div *ngIf="loading" class="text-center loading">
+            <app-loading></app-loading>
         </div>
     </div>
 </div>
@@ -49,4 +49,3 @@
         </div>
     </div>
 </div>
-

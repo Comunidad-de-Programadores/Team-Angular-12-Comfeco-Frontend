@@ -11,22 +11,22 @@ import { ToastrService } from 'ngx-toastr';
 export class EventsComponent implements OnInit {
   public button;
   public onEvent = false;
-  public loading = false;
+  public loading = true;
   public eventsList = [];
   public userEvents = [];
   private selectedEventId: string;
 
 
   constructor(private events: EventsService,
-              private user: UserService,
-              private toastr: ToastrService) { }
+    private user: UserService,
+    private toastr: ToastrService) { }
 
-  ngOnInit(): void {
-    this.getEvents();
+  async ngOnInit() {
+    await this.getEvents();
     this.getUserEvents();
   }
 
-  async clickJoin(eventId: string){
+  async clickJoin(eventId: string) {
     this.loading = true;
 
     try {
@@ -35,64 +35,65 @@ export class EventsComponent implements OnInit {
 
       if (res.ok) {
         this.loading = false;
-        this.toastr.success(res.mensaje);   
+        this.toastr.success(res.mensaje);
       } else {
         this.loading = false;
         this.toastr.error(res.mensaje);
-      }  
-      
+      }
+
     } catch (error) {
       this.loading = false;
       this.toastr.error(error.error.mensaje);
     }
-  
+
     this.getEvents();
   }
-  
-  async clickLeave(eventId: string){
+
+  async clickLeave(eventId: string) {
     this.loading = true;
     this.selectedEventId = eventId;
   }
 
-  hasJoined(event:any){
+  hasJoined(event: any) {
     return event.join;
   }
 
-  private async getEvents(){
+  private async getEvents() {
     const res: any = await this.events.getEvents().toPromise();
-    if(res.ok){
+    if (res.ok) {
       this.eventsList = res.listEvent;
       console.log(this.eventsList);
-      
-    }else {
+
+    } else {
       console.log(res);
     }
+    this.loading = false;
   }
 
-  private async getUserEvents(){
+  private async getUserEvents() {
     var res: any = await this.user.getUser().toPromise();
     const uid = res.userFound._id;
 
-    res = await (await this.events.getUserEvents(uid)).toPromise();    
+    res = await (await this.events.getUserEvents(uid)).toPromise();
     this.userEvents = res.listEvent;
     console.log(this.userEvents);
-    
+
   }
 
-  async leaveEvent(){
-    try{
+  async leaveEvent() {
+    try {
       const res: any = await this.events.leaveEvent(this.selectedEventId).toPromise();
-  
+
       if (res.ok) {
         this.loading = false;
-        this.toastr.success(res.mensaje);   
+        this.toastr.success(res.mensaje);
       } else {
         this.loading = false;
         this.toastr.error(res.mensaje);
-      }    
-    }catch(error){
+      }
+    } catch (error) {
       this.loading = false;
-      this.toastr.error(error.error.mensaje);     
+      this.toastr.error(error.error.mensaje);
     }
 
     this.getEvents();
