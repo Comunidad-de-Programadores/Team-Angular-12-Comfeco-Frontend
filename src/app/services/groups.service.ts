@@ -25,7 +25,7 @@ export class GroupsService {
     this.getHeader();
 
     return this.http.get(
-      `${this.url}/group/?name=${name}&language_id=${language}`,
+      `${this.url}/group/?name=${name.toLowerCase().toUpperCase()}&language_id=${language}`,
       this.option
     );
   }
