@@ -9,11 +9,9 @@ export class MainProfileComponent implements OnInit {
 
   activeView = 'profile';
 
-  constructor() {
-  }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   changeMenu(option: string) {
     switch (option) {

@@ -50,9 +50,13 @@
     z-index: 10;
 }
 
+.top {
+    margin-top: 7px;
+}
+
 .cardCostumize {
     width: auto;
-    height: 172px;
+    height: 162px;
     object-fit: cover;
 }
 

@@ -36,6 +36,10 @@ main {
   background-color: red;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .biographyCount {
   position: relative;
   float: right;

@@ -16,3 +16,7 @@
 .black {
   color: black !important;
 }
+
+.cursor {
+  cursor: Pointer;
+}
