@@ -7,8 +7,7 @@ import { Creators } from '../models/creators.model';
   providedIn: 'root'
 })
 export class CreatorsService {
-
-  option;
+  option:any;
 
   private url = environment.baseUrl;
 

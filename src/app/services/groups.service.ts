@@ -6,9 +6,8 @@ import { environment } from '../../environments/environment.prod';
 	providedIn: 'root'
 })
 export class GroupsService {
-
 	private url = environment.baseUrl;
-	private option;
+	private option:any;
 	private userData;
 
 	constructor(private http: HttpClient) { }

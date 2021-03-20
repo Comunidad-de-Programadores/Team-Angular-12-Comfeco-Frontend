@@ -5,8 +5,8 @@
 
             <div>
                 <div id="preview" class="drag-drop">
-                    <a class="btn-primary btn-circle text-white" (click)="fileInput.click()">
-                        <i class="fa fa-plus "></i>
+                    <a class="btn-primary btn-circle text-white cursor " (click)="fileInput.click()">
+                        <i class="fa fa-plus"></i>
                     </a>
                     <img *ngIf="imagePath" [src]="imagePath">
                     <input type="file" id="file" #fileInput (change)="changeListener($event)" style="display:none;" />
@@ -20,7 +20,7 @@
                     <div class="row g-3">
 
                         <div class="col-sm-12 col-md-4 mb-4">
-                            <label for="nickInput" class="form-label float-left">Nick <span class="text-muted"></span></label>
+                            <label for="nickInput" class="form-label float-left">Nick <span class="text-muted"> *</span></label>
                             <input formControlName="nick" type="text" class="form-control form-control-user" id="nickInput" placeholder="Nick de usuario, el que verán los usuarios" value="" [class.is-invalid]="checkValid('nick')" required/>
                             <div *ngIf="checkValid('nick')">
                                 <small *ngIf="formEdit.controls.nick.errors.required" class="text-danger validationTypeDanger">
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="col-sm-12 col-md-4 mb-5">
-                            <label for="generoInput" class="form-label float-left">Género <span class="text-muted">*</span></label>
+                            <label for="generoInput" class="form-label float-left">Género <span class="text-muted"></span></label>
                             <input formControlName="gender" type="text" class="form-control form-control-user" style="text-transform: capitalize;" id="generoInput" placeholder="Tú genero"/>
                             <div *ngIf="checkValid('gender')">
                                 <small class="text-danger validationTypeDanger">
@@ -108,24 +108,33 @@
                             <span class="biographyCount">{{formEdit.value.biography?.length}}/140</span>
                             <div *ngIf="checkValid('biography')">
                                 <small *ngIf="formEdit.controls.biography.errors.maxlength" class="text-danger validationTypeDanger">
-                                    Máximo 140 caractéres
+                                    Máximo 140 caracteres
                                 </small>
                             </div>
                         </div>
-                    </div>
 
-                    <button [disabled]="!formEdit.dirty || formEdit.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+                        <div class="col mt-2">
+                            <button [disabled]="!formEdit.dirty || formEdit.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
         </div>
         <hr class="my-4">
         <div class="py-5 text-center">
-            <h4 class="mb-3">Editar Contraseña</h4>
+            <h4 class="mb-4">Editar Contraseña</h4>
             <form class="user" [formGroup]="formChangePassword" (ngSubmit)="changeNewPassword()">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6  mb-3">
-                        <input formControlName="newPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" id="newPassword" placeholder="Nueva contraseña"/>
+                    <div class="col-sm-12 col-md-6 mb-3">
+                        <div class="input-group">
+                            <input formControlName="newPassword" type="password" class="form-control form-control-user" id="passwordInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" id="newPassword" placeholder="Nueva contraseña"/>
+                            <div class="input-group-append">
+                                <button id="show_password" class="btn btn-primary" type="button">
+                                    <span id="iconShow" class="fa fa-eye-slash icon"></span>
+                                </button>
+                            </div>
+                        </div>
                         <div *ngIf="checkValidPassword('newPassword')">
                             <small *ngIf="formChangePassword.controls.newPassword.errors.required" class="text-danger validationTypeDanger">
                                 La contraseña es requerida.
@@ -138,8 +147,15 @@
                             </small>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-6  mb-3">
-                        <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user especifyInput" [class.is-invalid]="samePassword()" id="confirmNewPassword" placeholder="Confirmar contraseña"/>
+                    <div class="col-sm-12 col-md-6 mb-3">
+                        <div class="input-group">
+                            <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user" [class.is-invalid]="samePassword()" id="confirmNewPassword" placeholder="Confirmar contraseña"/>
+                            <div class="input-group-append">
+                                <button id="show_passwordRepeat" class="btn btn-primary" type="button">
+                                    <span id="iconShowRepeat" class="fa fa-eye-slash icon"></span>
+                                </button>
+                            </div>
+                        </div>     
                         <div *ngIf="checkValidPassword('confirmNewPassword')">
                             <small *ngIf="formChangePassword.controls.confirmNewPassword.errors.required" class="text-danger validationTypeDanger">
                                 La contraseña es requerida.
@@ -150,9 +166,11 @@
                         </div>
                     </div>
                 </div>
-                <button [disabled]="formChangePassword.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
-                <div class="options">
-                    <a href="/client/perfil" class="w-12 btn btn-primary btn-md float-right mr-4">Volver a Mi Perfil</a>
+                <div class="col-12 mt-2">
+                    <button [disabled]="formChangePassword.invalid" class="w-12 btn btn-primary btn-md float-right" type="submit">Guardar cambios</button>
+                    <div class="options">
+                        <a href="/client/perfil" class="w-12 btn btn-primary btn-md float-right mr-4">Volver a Mi Perfil</a>
+                    </div>
                 </div>
             </form>
         </div>

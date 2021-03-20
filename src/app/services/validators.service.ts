@@ -20,7 +20,6 @@ export class ValidatorsService {
       } else {
         passwordForm2.setErrors({ noSame: true });
       }
-
     }
   }
 }
