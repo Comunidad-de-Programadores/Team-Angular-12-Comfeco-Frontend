@@ -10,13 +10,11 @@ import { environment } from '../../environments/environment';
     })
 
 export class CommunityService {
-    option;
+    option:any;
 
     private url = environment.baseUrl;
 
-    constructor(
-        private http: HttpClient
-    ) { }
+    constructor(private http: HttpClient) { }
 
     getHeader() {
         const tk = localStorage.getItem('token');

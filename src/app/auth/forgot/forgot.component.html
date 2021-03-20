@@ -11,14 +11,14 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-2">Olvidaste tu contraseña?</h1>
-                                    <p class="mb-4">Te enviaremos un correo electronico con un enlace privado para que reasignes tu contraseña. Este enlace sera valido por una hora!</p>
+                                    <p class="mb-4">Te enviaremos un correo electrónico con un enlace privado para que reasignes tu contraseña. Este enlace será valido por una hora!</p>
                                 </div>
                                 <form class="user" [formGroup]="form" (ngSubmit)="sendData()">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo electronico" formControlName="email" [class.is-invalid]="inputValid('email')">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="form.invalid">
-                                      Enviar enlace
+                                        Enviar enlace
                                     </button>
                                 </form>
                                 <hr>

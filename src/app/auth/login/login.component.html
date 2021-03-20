@@ -17,10 +17,10 @@
                                             id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email"
                                             formControlName="email" [class.is-invalid]="checkValid('email')" />
                                         <div *ngIf="checkValid('email')">
-                                            <small *ngIf="form.controls.email.errors.required" class="text-danger">
+                                            <small *ngIf="form.controls.email.errors.required" class="text-danger validationTypeDanger">
                                                 Campo requerido
                                             </small>
-                                            <small *ngIf="form.controls.email.errors.pattern" class="text-danger">
+                                            <small *ngIf="form.controls.email.errors.pattern" class="text-danger validationTypeDanger">
                                                 Formato no válido
                                             </small>
                                         </div>
@@ -30,7 +30,7 @@
                                             id="exampleInputPassword" placeholder="Contraseña"
                                             formControlName="password" [class.is-invalid]="checkValid('password')" />
                                         <div *ngIf="checkValid('password')">
-                                            <small *ngIf="form.controls.password.errors.required" class="text-danger">
+                                            <small *ngIf="form.controls.password.errors.required" class="text-danger validationTypeDanger">
                                                 Campo requerido
                                             </small>
                                         </div>

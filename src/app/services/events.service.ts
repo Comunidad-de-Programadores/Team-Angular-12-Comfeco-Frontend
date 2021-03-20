@@ -6,12 +6,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class EventsService {
-
   private BASE_URL = environment.baseUrl;
   private option;
 
   constructor(private http: HttpClient) { }
-
 
   private getHeader() {
     const tk = localStorage.getItem('token');

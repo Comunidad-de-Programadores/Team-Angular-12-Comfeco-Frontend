@@ -14,6 +14,14 @@ main {
   z-index: 10;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
+.cursor:hover {
+  text-decoration: none;
+}
+
 .customizeSelect {
   margin: 2em;
   padding: 0.5em;
@@ -26,6 +34,10 @@ main {
   width: 100%;
   font-size: 0.8rem;
   background-color: red;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .biographyCount {
@@ -42,10 +54,6 @@ main {
   height: 24px;
 }
 
-.especifyInput {
-  width: 100%;
-}
-
 .validationTypeDanger {
   left: 2%;
   position: absolute;
@@ -58,6 +66,7 @@ main {
   position: relative;
   padding: 2px;
   float: left;
+  margin-bottom: -23px;
 }
 
 /* Estilo del área del input[file] */
@@ -130,7 +139,8 @@ textarea {
   border-radius: 1.5em !important;
 }
 
-.options a, button {
+.options a,
+button {
   border-radius: 10rem;
 }
 

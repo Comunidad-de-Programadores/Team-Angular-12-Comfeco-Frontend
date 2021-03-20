@@ -65,6 +65,36 @@ export class EditarPerfilComponent implements OnInit {
     this.initForm();
     this.validarMaxString();
     this.knowledgeAreaInputControler();
+
+    this.renderer.listen(<HTMLElement>document.getElementById('iconShow'), "click", () => {
+      var cambio = <HTMLInputElement>document.getElementById("passwordInput");
+      var containerIconShow = <HTMLInputElement>document.getElementById('iconShow');
+
+      if (cambio.type == "password") {
+        cambio.type = "text";
+        containerIconShow.removeAttribute('class');
+        containerIconShow.setAttribute('class', 'fa fa-eye')
+      } else {
+        cambio.type = "password";
+        containerIconShow.removeAttribute('class');
+        containerIconShow.setAttribute('class', 'fa fa-eye-slash');
+      }
+    });
+
+    this.renderer.listen(<HTMLElement>document.getElementById('iconShowRepeat'), "click", () => {
+      var cambio = <HTMLInputElement>document.getElementById("confirmNewPassword");
+      var containerIconShow = <HTMLInputElement>document.getElementById('iconShowRepeat');
+
+      if (cambio.type == "password") {
+        cambio.type = "text";
+        containerIconShow.removeAttribute('class');
+        containerIconShow.setAttribute('class', 'fa fa-eye')
+      } else {
+        cambio.type = "password";
+        containerIconShow.removeAttribute('class');
+        containerIconShow.setAttribute('class', 'fa fa-eye-slash');
+      }
+    });
   }
 
   selectRol(selectRol: string) {
@@ -85,13 +115,13 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   knowledgeAreaInputControler() {
-    this.renderer.listen((<HTMLInputElement>document.getElementById("knowledgeAreaInput")), "input", () => {
+    this.renderer.listen(<HTMLInputElement>document.getElementById("knowledgeAreaInput"), "input", () => {
       (<HTMLInputElement>document.getElementById('knowledgeAreaInput')).value = "";
     });
 
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
 
-    this.renderer.listen((<HTMLInputElement>document.getElementById("knowledgeAreaInput")), "click", () => {
+    this.renderer.listen(<HTMLInputElement>document.getElementById("knowledgeAreaInput"), "click", () => {
       (<HTMLElement>document.getElementById('customizeSelectUl')).removeAttribute;
       (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:block !important");
     });
@@ -199,9 +229,6 @@ export class EditarPerfilComponent implements OnInit {
     this.formEdit.get('biography').setValue(user.biography || '');
     this.formEdit.get('knowledgeArea').setValue(user.knowledgeArea || '');
 
-
-
-
     user.socialNetwork.forEach((net: any) => {
       if (net !== null) {
         switch (net.substr(0, 2)) {
@@ -267,8 +294,8 @@ export class EditarPerfilComponent implements OnInit {
   async sendData() {
     this.loading = true;
 
-    if(this.formEdit.invalid){
-      this.formEdit.markAllAsTouched();     
+    if (this.formEdit.invalid) {
+      this.formEdit.markAllAsTouched();
       this.loading = false;
       return;
     }
@@ -331,7 +358,7 @@ export class EditarPerfilComponent implements OnInit {
     }
   }
 
-  private hasUnsavedChanges(){
+  private hasUnsavedChanges() {
     return this.formEdit.dirty || this.formChangePassword.dirty;
   }
 }

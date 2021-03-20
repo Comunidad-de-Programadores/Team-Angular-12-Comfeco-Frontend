@@ -9,14 +9,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-
-
   private userSubject = new Subject<any>();
   private url = environment.baseUrl;
   option;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   private getHeader() {
     const tk = localStorage.getItem('token');
