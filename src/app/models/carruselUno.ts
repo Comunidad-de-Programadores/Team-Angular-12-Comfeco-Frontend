@@ -1,5 +1,4 @@
-export interface CarruselUno
-{
+export interface CarruselUno {
     _id: string,
     description: string,
     img: string,

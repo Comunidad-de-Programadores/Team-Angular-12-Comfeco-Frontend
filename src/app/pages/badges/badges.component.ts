@@ -43,5 +43,4 @@ export class BadgesComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.insignia);
   }
-
 }

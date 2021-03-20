@@ -1,41 +1,41 @@
 .programming-language,
 .group-members {
-    width: 2.2rem;
-    height: 2.2rem;
+  width: 2.2rem;
+  height: 2.2rem;
 }
 
 .share {
-    position: absolute;
-    right: 0;
-    width: 3rem;
-    height: 2rem;
+  position: absolute;
+  right: 0;
+  width: 3rem;
+  height: 2rem;
 }
 
 .cardCustomize {
-    width: auto;
-    height: 124px;
-    object-fit: cover;
+  width: auto;
+  height: 124px;
+  object-fit: cover;
 }
 
 .cardTile {
-    width: 100%;
-    height: 30px;
+  width: 100%;
+  height: 30px;
 }
 
 .cursorPointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .options a {
-    border-radius: 10rem;
+  border-radius: 10rem;
 }
 
 .programming-language {
-    object-fit: cover;
-    margin: 0.5em 0 0.5em 0.5em
+  object-fit: cover;
+  margin: 0.5em 0 0.5em 0.5em;
 }
 
 .programming-language-name {
-    margin: 1em 0;
-    width: 80%;
+  margin: 1em 0;
+  width: 80%;
 }

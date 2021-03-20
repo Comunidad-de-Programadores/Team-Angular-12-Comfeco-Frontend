@@ -7,8 +7,9 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-info">
                     <h6 class="m-0 font-weight-bold text-white">Mi grupo</h6>
                     <div class="dropdown no-arrow">
-                        <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false"> Ir al
-                            grupo </a>
+                        <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false">
+                            Ir al grupo 
+                        </a>
                     </div>
                 </div>
 
@@ -25,7 +26,7 @@
                                 <div class="row d-flex flex-row align-items-center justify-content-between">
                                     <img class="group-members bg-info img-fluid text-right rounded-circle" [src]="member.img" [alt]="member.nick">
                                     <div class="col">
-                                        <strong>{{member.nick | uppercase}}</strong>
+                                        <strong> {{member.nick | uppercase}} </strong>
                                         <div>Medio</div>
                                     </div>
                                     {{member.miInfoGroup.type === 0 ? 'Integrante' : 'Líder'}}
@@ -54,7 +55,7 @@
                 <div class="col-md-4">
                     <select (change)="changeLanguage($event)" class="custom-select">
                         <option selected value="">Filtrar por lenguaje</option>
-                        <option [value]="language.id" *ngFor="let language of languages">{{language.name}}</option>
+                        <option [value]="language.id" *ngFor="let language of languages"> {{language.name}} </option>
                     </select>
                 </div>
                 <div class="col-md-8">
@@ -76,9 +77,9 @@
                                 </a>
                                 <img class="card-img-top cardCustomize" [src]="group.img" [alt]="group.name">
                                 <div class="card-body">
-                                    <span class="badge badge-info" [ngStyle]="{'background-color': group.color}">{{group.language}}</span>
-                                    <h6 class="card-title mt-3 cardTile"><strong>{{group.name | uppercase}}</strong></h6>
-                                    <p class="card-text text-justify">{{group.description}}</p>
+                                    <span class="badge badge-info" [ngStyle]="{'background-color': group.color}"> {{group.language}} </span>
+                                    <h6 class="card-title mt-3 cardTile"><strong> {{group.name | uppercase}} </strong></h6>
+                                    <p class="card-text text-justify"> {{group.description}} </p>
                                 </div>
                                 <div class="card-footer text-center">
                                     <a class="btn btn-info" (click)="joinGroup(group.id)">Unirse</a>

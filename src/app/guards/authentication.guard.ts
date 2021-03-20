@@ -11,9 +11,8 @@ export class AuthenticationGuard implements CanActivate {
   constructor(
     private router: Router,
     private toastr: ToastrService
-  ) {
+  ) { }
 
-  }
   canActivate() {
     if (localStorage.getItem('token')) {
       return true;
@@ -22,7 +21,5 @@ export class AuthenticationGuard implements CanActivate {
       this.router.navigate(['auth/login']);
       return false;
     }
-
   }
-
 }

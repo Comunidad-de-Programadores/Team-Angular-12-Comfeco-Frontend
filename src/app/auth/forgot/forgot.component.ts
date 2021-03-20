@@ -10,7 +10,6 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./forgot.component.css']
 })
 export class ForgotComponent implements OnInit, OnDestroy {
-
   form: FormGroup;
   sendEmailSubscription: Subscription;
 
@@ -22,8 +21,7 @@ export class ForgotComponent implements OnInit, OnDestroy {
     this.createForm();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   createForm(): void {
     this.form = this.fb.group({

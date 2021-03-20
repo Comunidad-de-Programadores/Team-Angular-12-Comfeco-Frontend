@@ -8,22 +8,19 @@ import { UserService } from '../services/user.service';
 })
 export class HasUnsavedChangesGuard implements CanDeactivate<unknown> {
 
-  constructor(private userService: UserService){
+  constructor(private userService: UserService) { }
 
-  }
-  
   canDeactivate(component: HasUnsavedChanges,
-                currentRoute: ActivatedRouteSnapshot, 
-                currentState: RouterStateSnapshot, 
-                nextState?: RouterStateSnapshot): boolean {
-    
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot): boolean {
+
     if (component.hasUnsavedChanges()) {
-      if(nextState.url === '/auth/login'){
+      if (nextState.url === '/auth/login') {
         return true;
       }
       return confirm('¿Quieres volver a cargar el sitio web? Es posible que los cambios no se guarden');
     }
     return true;
   }
-  
 }

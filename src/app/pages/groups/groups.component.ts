@@ -5,10 +5,9 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.css']
+  styleUrls: ['./groups.component.css'],
 })
 export class GroupsComponent implements OnInit {
-
   myGroup: any = {};
   listGroups = [];
   loadingMembers = true;
@@ -18,41 +17,40 @@ export class GroupsComponent implements OnInit {
   hasListGroups: boolean;
   languageSelected = '';
   term = '';
-  languages = [{
-    name: 'TypeScript',
-    id: 0,
-    color: '#36b9cc'
-  },
-  {
-    name: 'JavaScript',
-    id: 1,
-    color: '#f6c23e'
-  },
-  {
-    name: 'Ruby',
-    id: 2,
-    color: '#e74a3b'
-  },
-  {
-    name: 'Java',
-    id: 3,
-    color: '#5a5c69'
-  },
-  {
-    name: 'Python',
-    id: 4,
-    color: '#4e73df'
-  },
-  {
-    name: 'UX',
-    id: 5,
-    color: '#1cc88a'
-  }
+  languages = [
+    {
+      name: 'TypeScript',
+      id: 0,
+      color: '#36b9cc',
+    },
+    {
+      name: 'JavaScript',
+      id: 1,
+      color: '#f6c23e',
+    },
+    {
+      name: 'Ruby',
+      id: 2,
+      color: '#e74a3b',
+    },
+    {
+      name: 'Java',
+      id: 3,
+      color: '#5a5c69',
+    },
+    {
+      name: 'Python',
+      id: 4,
+      color: '#4e73df',
+    },
+    {
+      name: 'UX',
+      id: 5,
+      color: '#1cc88a',
+    },
   ];
 
-  constructor(
-    private groups: GroupsService,
-    private toastr: ToastrService) { }
+  constructor(private groups: GroupsService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getMembers();
@@ -66,7 +64,10 @@ export class GroupsComponent implements OnInit {
         this.myGroup = res.listGroup;
         this.hasGroup = true;
       } else {
-        this.toastr.error('No se pudieron cargar los miembros del Grupo', 'Error al cargar los integrantes');
+        this.toastr.error(
+          'No se pudieron cargar los miembros del Grupo',
+          'Error al cargar los integrantes'
+        );
         this.hasGroup = false;
       }
       this.loadingMembers = false;
@@ -75,25 +76,29 @@ export class GroupsComponent implements OnInit {
       this.hasGroup = false;
       this.loadingMembers = false;
     }
-
   }
 
   async getGroups() {
     try {
-      const res: any = await this.groups.getGroups(this.term, this.languageSelected).toPromise();
+      const res: any = await this.groups
+        .getGroups(this.term, this.languageSelected)
+        .toPromise();
       if (res.ok) {
         this.listGroups = res.listGroup;
         this.listGroups.map((group: any) => {
-            this.languages.map(language => {
-              if (group.programming_language_id === language.id) {
-                group.language = language.name;
-                group.color = language.color;
-              }
-            });
+          this.languages.map((language) => {
+            if (group.programming_language_id === language.id) {
+              group.language = language.name;
+              group.color = language.color;
+            }
+          });
         });
         this.hasListGroups = true;
       } else {
-        this.toastr.error('No se pudieron cargar los Grupos', 'Error al cargar los grupos');
+        this.toastr.error(
+          'No se pudieron cargar los Grupos',
+          'Error al cargar los grupos'
+        );
         this.hasListGroups = false;
       }
       this.loadingGroups = false;
@@ -122,7 +127,9 @@ export class GroupsComponent implements OnInit {
 
   async leaveGroup() {
     try {
-      const res: any = await this.groups.leaveGroup(this.myGroup.id).toPromise();
+      const res: any = await this.groups
+        .leaveGroup(this.myGroup.id)
+        .toPromise();
       if (res.ok) {
         this.toastr.success(res.mensaje, 'Éxito');
         this.hasGroup = false;
@@ -136,8 +143,8 @@ export class GroupsComponent implements OnInit {
     this.loading = false;
   }
 
-  changeLanguage(e) {
-    this.languageSelected = e.target.value;
+  changeLanguage(e: Event) {
+    this.languageSelected = (<HTMLSelectElement>e.target).value;
     this.getGroups();
   }
 
@@ -145,5 +152,4 @@ export class GroupsComponent implements OnInit {
     this.term = term;
     this.getGroups();
   }
-
 }

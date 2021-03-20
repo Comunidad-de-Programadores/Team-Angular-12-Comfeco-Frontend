@@ -6,20 +6,19 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.css'],
 })
 export class EventsComponent implements OnInit {
-  public button;
-  public onEvent = false;
   public loading = true;
   public eventsList = [];
   public userEvents = [];
   private selectedEventId: string;
 
-
-  constructor(private events: EventsService,
-              private user: UserService,
-              private toastr: ToastrService) { }
+  constructor(
+    private events: EventsService,
+    private user: UserService,
+    private toastr: ToastrService
+  ) {}
 
   async ngOnInit() {
     await this.getEvents();
@@ -30,7 +29,6 @@ export class EventsComponent implements OnInit {
     this.loading = true;
 
     try {
-
       const res: any = await this.events.joinEvent(eventId).toPromise();
 
       if (res.ok) {
@@ -40,7 +38,6 @@ export class EventsComponent implements OnInit {
         this.loading = false;
         this.toastr.error(res.mensaje);
       }
-
     } catch (error) {
       this.loading = false;
       this.toastr.error(error.error.mensaje);
@@ -78,7 +75,9 @@ export class EventsComponent implements OnInit {
 
   async leaveEvent() {
     try {
-      const res: any = await this.events.leaveEvent(this.selectedEventId).toPromise();
+      const res: any = await this.events
+        .leaveEvent(this.selectedEventId)
+        .toPromise();
 
       if (res.ok) {
         this.loading = false;
@@ -94,6 +93,4 @@ export class EventsComponent implements OnInit {
 
     this.getEvents();
   }
-
-
 }

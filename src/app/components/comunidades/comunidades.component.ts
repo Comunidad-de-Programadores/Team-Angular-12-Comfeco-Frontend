@@ -11,14 +11,13 @@ import { CommunityService } from 'src/app/services/community.service';
   styleUrls: ['./comunidades.component.css']
 })
 export class ComunidadesComponent implements OnInit {
-
-  listCommunity;
+  listCommunity:Community;
   loading = true;
+
   constructor(
     private route: ActivatedRoute,
     private communityservice: CommunityService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.getCommunities();
@@ -26,9 +25,7 @@ export class ComunidadesComponent implements OnInit {
 
   async getCommunities() {
     const res: any = await this.communityservice.loadCommunity().toPromise();
-    //console.log(res);
     this.listCommunity = res.listCommunity;
     this.loading = false;
   }
-
 }

@@ -2,19 +2,20 @@
  Reset de CSS
 */
 
-html, body{
-    height: 100%;
-    position: relative;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height:100vh !important;
+html,
+body {
+  height: 100%;
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
 }
 
-body{
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.main-container{
-    min-height: 100vh;
+.main-container {
+  min-height: 100vh;
 }

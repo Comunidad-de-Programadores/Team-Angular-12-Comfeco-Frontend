@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./recover-password.component.css']
 })
 export class RecoverPasswordComponent implements OnInit, OnDestroy {
-
   form: FormGroup;
   loading = false;
   token = '';
@@ -57,5 +56,4 @@ export class RecoverPasswordComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.userSubscription?.unsubscribe();
   }
-
 }

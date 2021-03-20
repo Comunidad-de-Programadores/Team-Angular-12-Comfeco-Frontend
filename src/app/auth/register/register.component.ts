@@ -21,20 +21,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     //instancia para crear elementos de formulario
     private fb: FormBuilder,
-
     //instancia para validaciones de campos
     private validador: ValidatorsService,
-
     private user: UserService,
     private toastr: ToastrService,
     private router: Router
   ) {
-    //ejecuta la inicialiacion del formulario
-    this.createForm();
+    this.createForm(); //ejecuta la inicialiacion del formulario
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   // crea el formulario
   createForm(): void {
@@ -43,10 +39,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confPassword: ['', [Validators.required, Validators.minLength(8)]]
-    }, {
-
-      //a nivel de formulario cuando los campos ya han sido creados
-      validators: this.validador.samesPasswordService('password', 'confPassword')
+    }, { 
+      validators: this.validador.samesPasswordService('password', 'confPassword') //a nivel de formulario cuando los campos ya han sido creados
     });
   }
 
