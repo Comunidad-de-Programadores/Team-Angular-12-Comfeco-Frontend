@@ -127,8 +127,9 @@
             <form class="user" [formGroup]="formChangePassword" (ngSubmit)="changeNewPassword()">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 mb-3">
+                        <label for="passwordInput" class="form-label float-left">Contraseña</label>
                         <div class="input-group">
-                            <input formControlName="newPassword" type="password" class="form-control form-control-user" id="passwordInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" id="newPassword" placeholder="Nueva contraseña"/>
+                            <input formControlName="newPassword" type="password" class="form-control form-control-user" id="passwordInput" [class.is-invalid]="samePassword() || checkValidPassword('confirmNewPassword')" placeholder="Nueva contraseña"/>
                             <div class="input-group-append">
                                 <button id="show_password" class="btn btn-primary" type="button">
                                     <span id="iconShow" class="fa fa-eye-slash icon"></span>
@@ -148,8 +149,9 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 mb-3">
+                        <label for="confirmNewPassword" class="form-label float-left">Repetir contraseña</label>
                         <div class="input-group">
-                            <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user" [class.is-invalid]="samePassword()" id="confirmNewPassword" placeholder="Confirmar contraseña"/>
+                            <input formControlName="confirmNewPassword" type="password" class="form-control form-control-user" id="confirmNewPassword" [class.is-invalid]="samePassword()" placeholder="Confirmar contraseña"/>
                             <div class="input-group-append">
                                 <button id="show_passwordRepeat" class="btn btn-primary" type="button">
                                     <span id="iconShowRepeat" class="fa fa-eye-slash icon"></span>

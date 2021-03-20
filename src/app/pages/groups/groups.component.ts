@@ -19,12 +19,12 @@ export class GroupsComponent implements OnInit {
   languageSelected = '';
   term = '';
   languages = [{
-    name: 'Typescript',
+    name: 'TypeScript',
     id: 0,
     color: '#36b9cc'
   },
   {
-    name: 'Javascript',
+    name: 'JavaScript',
     id: 1,
     color: '#f6c23e'
   },
@@ -39,7 +39,7 @@ export class GroupsComponent implements OnInit {
     color: '#5a5c69'
   },
   {
-    name: 'Pyton',
+    name: 'Python',
     id: 4,
     color: '#4e73df'
   },

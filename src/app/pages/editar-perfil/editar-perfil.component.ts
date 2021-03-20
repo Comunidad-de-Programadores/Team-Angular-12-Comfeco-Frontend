@@ -67,7 +67,7 @@ export class EditarPerfilComponent implements OnInit {
     this.knowledgeAreaInputControler();
 
     this.renderer.listen(<HTMLElement>document.getElementById('iconShow'), "click", () => {
-      var cambio = <HTMLInputElement>document.getElementById("newPassword");
+      var cambio = <HTMLInputElement>document.getElementById("passwordInput");
       var containerIconShow = <HTMLInputElement>document.getElementById('iconShow');
 
       if (cambio.type == "password") {
