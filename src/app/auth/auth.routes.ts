@@ -15,7 +15,7 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'recuperar', component: ForgotComponent },
             { path: 'registro', component: RegisterComponent },
-            { path: 'cambiar-contraseña', component: RecoverPasswordComponent },
+            { path: 'cambiar-contrasena', component: RecoverPasswordComponent },
             { path: '', redirectTo: 'auth', pathMatch: 'full' },
         ]
     }
