@@ -123,7 +123,7 @@
 </div>
 <div class="row joined text-center">
 
-    <div class="col-sm-12 col-md-6 mb-4">
+    <div class="col-sm-12 col-md-6 my-4">
         <div class="card text-center">
             <div class="card-header header-badges">
                 <h5 class="text-center">Participaciones</h5>
@@ -138,8 +138,7 @@
                             Salir
                         </a>
 
-                        <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label"
-                            aria-hidden="true">
+                        <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -152,10 +151,8 @@
                                         Al abandonar un evento no podrás volver a unirte.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                            (click)="clickLeave(event._id)">Abandonar evento</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clickLeave(event._id)">Abandonar evento</button>
                                     </div>
                                 </div>
                             </div>
