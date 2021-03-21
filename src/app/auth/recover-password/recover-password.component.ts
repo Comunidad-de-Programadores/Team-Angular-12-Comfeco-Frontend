@@ -42,7 +42,7 @@ export class RecoverPasswordComponent implements OnInit, OnDestroy {
 
     this.userSubscription = this.user.changePassword(this.token, newPassword).subscribe((res: any) => {
       this.toastr.success('Contraseña actualizada correctamente');
-      this.router.navigate(['login']);
+      this.router.navigate(['auth/login']);
       this.loading = false;
     }, err => {
       this.toastr.error(err.error.mensaje ? err.error.mensaje : 'Ha ocurrido un error inesperado.')
