@@ -2,7 +2,8 @@
     <div class="col-md-12 col-lg-3 mb-4">
         <div class="card text-center" style="max-width: 400px;margin: auto;">
             <div class="card-header header-profile">
-                <a class="float-right" routerLink="/client/editar-perfil" title="Editar Perfil"><i class="fas fa-user-edit btn-edit-profile"></i></a>
+                <a class="float-right" routerLink="/client/editar-perfil" title="Editar Perfil"><i
+                        class="fas fa-user-edit btn-edit-profile"></i></a>
                 <img id="user-image" [src]="userData?.img" class="img-fluid bg-white" [alt]="userData?.nick">
             </div>
             <div class="card-body">
@@ -23,30 +24,27 @@
         <div class="card text-center">
             <div class="card-header header-badges">
                 <h5 class="text-center">Insignias</h5>
-                <swiper [config]="config">
-                    <div class="swiper-wrapper containerCards">
-                        <ng-container *ngIf="preg; then myBadge; else notBadge">
-                        </ng-container>
-                        <ng-template #myBadge>
+                <ng-container *ngIf="preg; then myBadge; else notBadge">
+                </ng-container>
+                <ng-template #myBadge>
+                    <swiper [config]="config">
+                        <div class="swiper-wrapper containerCards">
                             <div class="swiper-slide" *ngFor="let badge of badgesUser">
                                 <div class="card-circle justify-content-center shadowCustommize">
                                     <img class="medal-img" [src]="badge.img" [alt]="badge.name" [title]="badge.name">
                                 </div>
                             </div>
-                        </ng-template>
-                        <ng-template #notBadge>
-                            <div class="swiper-slide">
-                                <div class="card-circle shadow justify-content-center">
-                                    <p class="text-gray-300">No tienes insiginias</p>
-                                </div>
-                            </div>
-                        </ng-template>
+                        </div>
+                        <br>
+                        <div class="swiper-pagination"></div>
+                    </swiper>
+                </ng-template>
+                <ng-template #notBadge>
+                    <div class="text-white">
+                        No tienes insignias
                     </div>
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </swiper>
+                </ng-template>
+
             </div>
             <div class="card-body">
                 <h5 class="card-title">Actividad reciente</h5>
@@ -78,7 +76,8 @@
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between header-events">
                 <h6 class="m-0 font-weight-bold">Eventos de tu interés</h6>
                 <div class="dropdown no-arrow">
-                    <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false"> Ver más </a>
+                    <a href="#" class="text-white" role="button" aria-haspopup="true" aria-expanded="false"> Ver más
+                    </a>
                 </div>
             </div>
 
@@ -137,23 +136,26 @@
                         <p>{{event.name}}</p>
                         <a data-toggle="modal" data-target="#leaveModal" class="btn btn-secondary btn-user">
                             Salir
-                          </a>
+                        </a>
 
-                        <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+                        <div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="label"
+                            aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="label">¿Estás seguro?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <div class="modal-body">
                                         Al abandonar un evento no podrás volver a unirte.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clickLeave(event._id)">Abandonar evento</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                            (click)="clickLeave(event._id)">Abandonar evento</button>
                                     </div>
                                 </div>
                             </div>
