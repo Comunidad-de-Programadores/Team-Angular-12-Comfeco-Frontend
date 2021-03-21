@@ -72,7 +72,7 @@ export class GroupsComponent implements OnInit {
       }
       this.loadingMembers = false;
     } catch (error) {
-      console.error(error);
+      console.info(error.error.mensaje);
       this.hasGroup = false;
       this.loadingMembers = false;
     }
