@@ -65,7 +65,10 @@ export class EditarPerfilComponent implements OnInit {
     this.initForm();
     this.validarMaxString();
     this.knowledgeAreaInputControler();
+    this.changeViewInputPasswordController();
+  }
 
+  changeViewInputPasswordController() {
     this.renderer.listen(<HTMLElement>document.getElementById('iconShow'), "click", () => {
       var cambio = <HTMLInputElement>document.getElementById("passwordInput");
       var containerIconShow = <HTMLInputElement>document.getElementById('iconShow');
@@ -96,7 +99,6 @@ export class EditarPerfilComponent implements OnInit {
       }
     });
   }
-
   selectRol(selectRol: string) {
     this.formEdit.patchValue({
       knowledgeArea: selectRol
@@ -105,7 +107,6 @@ export class EditarPerfilComponent implements OnInit {
     (<HTMLElement>document.getElementById('customizeSelectUl')).setAttribute("style", "display:none !important");
     this.formEdit.markAsDirty();
   }
-
   validarMaxString() {
     const containebiografiaInput = (<HTMLInputElement>document.getElementById('biografiaInput'));
     this.renderer.listen((<HTMLInputElement>document.getElementById('biografiaInput')), 'input', () => {
