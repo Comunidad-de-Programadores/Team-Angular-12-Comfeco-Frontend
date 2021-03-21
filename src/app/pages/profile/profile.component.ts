@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   badgesUser = [];
 
   config: SwiperOptions = {
+    pagination: { el: '.swiper-pagination', type: 'bullets', clickable: true },
     slidesPerView: 4,
     autoplay: true,
     centeredSlides: true,
